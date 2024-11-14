@@ -23,8 +23,9 @@ namespace KarateTournamentManager
         public TournamentStatus Status { get; set; } = TournamentStatus.Upcoming;
 
         public ICollection<Participant> EnrolledParticipants { get; set; } = new List<Participant>();
+
+        //Колекция за етапите. В началото може да е празна.
         
-        //Колекция за етапите
         public ICollection<Stage> Stages { get; set; } = new List<Stage>();
 
 
