@@ -12,6 +12,6 @@ namespace KarateTournamentManager
 
         public int StageNumber { get; set; }
 
-        public ICollection<Match> Matches { get; set; } = new List<Match>();
+        public IList<Match> Matches { get; set; } = new List<Match>();
     }
 }
