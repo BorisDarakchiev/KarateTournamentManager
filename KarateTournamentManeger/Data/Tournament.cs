@@ -14,16 +14,18 @@ namespace KarateTournamentManager
         public string Location { get; set; } = null!;
 
         [Required]
+        public string Description { get; set; } = string.Empty;
+
+        [Required]
         public DateTime Date { get; set; }
 
         [Required]
         public TournamentStatus Status { get; set; } = TournamentStatus.Upcoming;
 
-        [Required]
-        [Range(1, 5)]
-        public int NumberOfTatamis { get; set; }
+        public ICollection<Participant> EnrolledParticipants { get; set; } = new List<Participant>();
 
-        public ICollection<Participant> ЕnrolledParticipants { get; set; } = new List<Participant>();
+        public ICollection<Stage> Stages { get; set; } = new List<Stage>();
+
 
     }
 }
