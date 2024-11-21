@@ -5,7 +5,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace KarateTournamentManager
 {
-    public class Tournament
+    public abstract class Tournament
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -22,11 +22,11 @@ namespace KarateTournamentManager
         [Required]
         public TournamentStatus Status { get; set; } = TournamentStatus.Upcoming;
 
-        public IList<Participant> EnrolledParticipants { get; set; } = new List<Participant>();
+        public ICollection<Participant> EnrolledParticipants { get; set; } = new List<Participant>();
 
         //Колекция за етапите. В началото може да е празна.
         
-        public IList<Stage> Stages { get; set; } = new List<Stage>();
+        public ICollection<Stage> Stages { get; set; } = new List<Stage>();
 
 
     }
