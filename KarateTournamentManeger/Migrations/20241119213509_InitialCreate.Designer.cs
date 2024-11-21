@@ -9,11 +9,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
 
-namespace KarateTournamentManeger.Data.Migrations
+namespace KarateTournamentManeger.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241119202222_UpdateIdentitySchema")]
-    partial class UpdateIdentitySchema
+    [Migration("20241119213509_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
