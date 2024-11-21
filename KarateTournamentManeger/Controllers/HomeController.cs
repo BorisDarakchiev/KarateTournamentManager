@@ -22,11 +22,12 @@ namespace KarateTournamentManeger.Controllers
             return View();
         }
 
-        public IActionResult Turnaments()
+        public IActionResult Tîurnaments()
         {
-            //return RedirectToAction(nameof("Home"));s
+            //return RedirectToAction(nameof("Home"));
             return View();
         }
+
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()
