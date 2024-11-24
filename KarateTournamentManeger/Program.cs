@@ -1,6 +1,8 @@
 using KarateTournamentManager.Identity;
 using KarateTournamentManeger.Data;
+using KarateTournamentManeger.Services;
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 
 
@@ -9,17 +11,25 @@ var builder = WebApplication.CreateBuilder(args);
 var connectionString = builder.Configuration.GetConnectionString("DefaultConnection") ?? throw new InvalidOperationException("Connection string 'DefaultConnection' not found.");
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(connectionString));
-builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+
+
 
 builder.Services.AddIdentity<ApplicationUser, IdentityRole>(options =>
 {
-    options.SignIn.RequireConfirmedAccount = true;
+    options.SignIn.RequireConfirmedAccount = false;
+    options.Password.RequireDigit = false;
+    options.Password.RequireNonAlphanumeric = false;
+    options.Password.RequireUppercase = false;
 })
+.AddRoles<IdentityRole>()
 .AddEntityFrameworkStores<ApplicationDbContext>()
 .AddDefaultTokenProviders();
 
+builder.Services.AddSingleton<IEmailSender, NullEmailSender>();
+
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
+
 
 
 
@@ -46,8 +56,8 @@ using (var scope = app.Services.CreateScope())
     }
     catch (Exception ex)
     {
-        // Логни грешката
-        Console.WriteLine($"Грешка при инициализацията на ролите: {ex.Message}");
+        // Р›РѕРіРЅРё РіСЂРµС€РєР°С‚Р°
+        Console.WriteLine($"Р“СЂРµС€РєР° РїСЂРё РёРЅРёС†РёР°Р»РёР·Р°С†РёСЏС‚Р° РЅР° СЂРѕР»РёС‚Рµ: {ex.Message}");
     }
 }
 

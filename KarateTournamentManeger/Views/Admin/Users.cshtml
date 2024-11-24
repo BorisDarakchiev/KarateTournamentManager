@@ -1,0 +1,53 @@
+﻿@model IEnumerable<KarateTournamentManeger.Models.UserRoleViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<h1>Manage Users</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Username</th>
+            <th>Email</th>
+            <th>Roles</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>
+                    @foreach (var role in user.Roles)
+                    {
+                        <span class="badge bg-info text-dark">@role</span>
+                    }
+                </td>
+                <td>
+                    <form asp-controller="Admin" asp-action="AssignRole" method="post" style="display: inline;">
+                        <input type="hidden" name="userId" value="@user.UserId" />
+                        <select name="role" class="form-select form-select-sm d-inline" style="width: auto;">
+                            <option value="Participant">Participant</option>
+                            <option value="Assistant">Assistant</option>
+                        </select>
+                        <button type="submit" class="btn btn-success btn-sm">Assign</button>
+                    </form>
+                    <form asp-controller="Admin" asp-action="RemoveRole" method="post" style="display: inline;">
+                        <input type="hidden" name="userId" value="@user.UserId" />
+                        <select name="role" class="form-select form-select-sm d-inline" style="width: auto;">
+                            @foreach (var role in user.Roles)
+                            {
+                                <option value="@role">@role</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-danger btn-sm">Remove</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

@@ -13,7 +13,7 @@ namespace KarateTournamentManeger.Controllers
             return View();
         }
 
-        public IActionResult Tîurnaments()
+        public IActionResult Tournaments()
         {
             return View();
         }

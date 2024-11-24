@@ -1,5 +1,43 @@
-﻿@{
-    ViewData["Title"] = "Tournaments Management";
+﻿@model IEnumerable<KarateTournamentManeger.Data.Models.Tournament>
+
+@{
+    ViewData["Title"] = "Tournaments";
 }
-<h1>@ViewData["Title"]</h1>
-<p>Това е страницата за управление на турнирите.</p>
+
+<h1>All Tournaments</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Location</th>
+            <th>Description</th>
+            <th>Date</th>
+            <th>Status</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>Varna</td>
+            <td>Турнир по Ката</td>
+            <td>30.06.2025</td>
+            <td>Предстоящ</td>
+            <td>
+                <a href="#">Approve</a> |
+                <a href="#">Remove</a>
+            </td>
+        </tr>
+@*         @foreach (var tournament in Model)
+        {
+            <tr>
+                <td>@tournament.Location</td>
+                <td>@tournament.Description</td>
+                <td>@tournament.Date.ToShortDateString()</td>
+                <td>@tournament.Status</td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
+                </td>
+            </tr>
+        } *@
+    </tbody>
+</table>
