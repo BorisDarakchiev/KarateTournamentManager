@@ -2,8 +2,8 @@
 {
     public enum TournamentStatus
     {
-        Upcoming,      // Предстоящ
-        Ongoing,       // В момента се провежда
-        Completed      // Завършил
+        Upcoming,      
+        Ongoing,       
+        Completed
     }
 }

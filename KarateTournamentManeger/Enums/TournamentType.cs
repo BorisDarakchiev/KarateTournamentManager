@@ -2,7 +2,7 @@
 {
     public enum TournamentType
     {
-        Kata,       // Индивидуално изпълнение
-        Kumite      // Срещу противник
+        Kata,
+        Kumite
     }
 }

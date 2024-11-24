@@ -1,9 +1,14 @@
-﻿using KarateTournamentManager.Identity;
+﻿using KarateTournamentManager.Enums;
+using KarateTournamentManager.Identity;
+using KarateTournamentManeger.Data;
 using KarateTournamentManeger.Data.Models;
 using KarateTournamentManeger.Models;
+using KarateTournamentManeger.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+
 
 [Route("Admin")]
 [Authorize(Roles = "Administrator")]
@@ -11,11 +16,13 @@ public class AdminController : Controller
 {
     private readonly UserManager<ApplicationUser> userManager;
     private readonly RoleManager<IdentityRole> roleManager;
+    private readonly ApplicationDbContext context;
 
-    public AdminController(UserManager<ApplicationUser> _userManager, RoleManager<IdentityRole> _roleManager)
+    public AdminController(UserManager<ApplicationUser> _userManager, RoleManager<IdentityRole> _roleManager, ApplicationDbContext _context)
     {
         userManager = _userManager;
         roleManager = _roleManager;
+        context = _context;
     }
 
     public IActionResult Index()
@@ -24,9 +31,20 @@ public class AdminController : Controller
     }
 
     [Route("Tournaments")]
-    public IActionResult Tournaments()
+    public async Task<IActionResult> Tournaments()
     {
-        return View();
+        var model = await context.Tournaments
+            .Select(t => new Tournament()
+            {
+                Location = t.Location,
+                Description = t.Description,
+                Date = t.Date,
+                Status = t.Status
+            })
+            .AsNoTracking()
+            .ToListAsync();
+
+        return View(model);
     }
 
     [Route("Participants")]
@@ -93,19 +111,52 @@ public class AdminController : Controller
         return RedirectToAction("Users");
     }
 
+    [HttpGet]
+    [Route("Admin/CreateTournament")]
+    public IActionResult CreateTournament()
+    {
+        var model = new TournamentViewModel
+        {
+            Date = DateTime.Now,  // Започваме с текущата дата
+            Status = TournamentStatus.Upcoming,  // По подразбиране статусът е "Предстоящ"
+            EnrolledParticipants = new List<ParticipantViewModel>(),  // Празен списък
+            Stages = new List<StageViewModel>(),  // Празен списък
+        };
+        return View(model);
+    }
 
 
     [HttpPost]
-    [Route("CreateTournament")]
-    public IActionResult CreateTournament(Tournament model)
+    [ValidateAntiForgeryToken]
+    [Route("Admin/CreateTournament")]
+    public async Task<IActionResult> CreateTournament(TournamentViewModel model)
     {
         if (ModelState.IsValid)
         {
-            // Логика за добавяне в базата данни
+            // Създаваме нов турнир с данните от модела
+            var tournament = new Tournament
+            {
+                Id = Guid.NewGuid(),  // Генерираме нов GUID за турнира
+                Location = model.Location,
+                Description = model.Description,
+                Date = model.Date,
+                Status = TournamentStatus.Upcoming,  // Статусът е "Предстоящ"
+                EnrolledParticipants = new List<Participant>(),  // Празен списък на участници
+                Stages = new List<Stage>(),  // Празен списък на етапи
+            };
+
+            // Добавяме турнира в контекста на базата данни
+            context.Tournaments.Add(tournament);
+            await context.SaveChangesAsync();
+
+            // Пренасочваме към списъка с турнири (или към съответната страница)
+            return RedirectToAction("Tournaments");
         }
-        // Пренасочваме към действието Tournaments
-        return RedirectToAction("Tournaments");
+
+        // Ако има грешки в модела, връщаме формата със съществуващите данни
+        return View(model);
     }
+
 
     // Път за ApproveParticipant
     [HttpPost]

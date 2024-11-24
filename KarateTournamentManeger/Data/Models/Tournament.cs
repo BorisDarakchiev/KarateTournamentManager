@@ -1,11 +1,12 @@
 ﻿using KarateTournamentManager.Enums;
+using KarateTournamentManager.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace KarateTournamentManeger.Data.Models
 {
-    public abstract class Tournament
+    public class Tournament
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
@@ -22,11 +23,9 @@ namespace KarateTournamentManeger.Data.Models
         [Required]
         public TournamentStatus Status { get; set; } = TournamentStatus.Upcoming;
 
-        public ICollection<Participant> EnrolledParticipants { get; set; } = new List<Participant>();
-
+        public ICollection<ApplicationUser> Participants { get; set; } = new List<ApplicationUser>();
 
         public ICollection<Stage> Stages { get; set; } = new List<Stage>();
-
-
+        public List<Participant> EnrolledParticipants { get; internal set; }
     }
 }

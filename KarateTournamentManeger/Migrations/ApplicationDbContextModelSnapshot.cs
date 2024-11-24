@@ -17,10 +17,25 @@ namespace KarateTournamentManeger.Migrations
         {
 #pragma warning disable 612, 618
             modelBuilder
-                .HasAnnotation("ProductVersion", "8.0.10")
+                .HasAnnotation("ProductVersion", "8.0.11")
                 .HasAnnotation("Relational:MaxIdentifierLength", 128);
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
+
+            modelBuilder.Entity("ApplicationUserTournament", b =>
+                {
+                    b.Property<string>("ParticipantsId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TournamentsId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("ParticipantsId", "TournamentsId");
+
+                    b.HasIndex("TournamentsId");
+
+                    b.ToTable("ApplicationUserTournament");
+                });
 
             modelBuilder.Entity("KarateTournamentManager.Identity.ApplicationUser", b =>
                 {
@@ -44,9 +59,6 @@ namespace KarateTournamentManeger.Migrations
                     b.Property<string>("FullName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
-
-                    b.Property<bool>("IsApproved")
-                        .HasColumnType("bit");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -92,6 +104,117 @@ namespace KarateTournamentManeger.Migrations
                         .HasFilter("[NormalizedUserName] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Match", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Participant1Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Participant1Score")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Participant2Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Participant2Score")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("RemainingTime")
+                        .HasColumnType("time");
+
+                    b.Property<Guid?>("StageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tatami")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("WinnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("StageId");
+
+                    b.HasIndex("WinnerId");
+
+                    b.ToTable("Matchs");
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Participant", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("DateOfBirth")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Participants");
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Stage", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<string>("Name")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<Guid?>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("Stages");
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Tournament", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime>("Date")
+                        .HasColumnType("datetime2");
+
+                    b.Property<string>("Description")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Location")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.HasKey("Id");
+
+                    b.ToTable("Tournaments");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -227,6 +350,41 @@ namespace KarateTournamentManeger.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("ApplicationUserTournament", b =>
+                {
+                    b.HasOne("KarateTournamentManager.Identity.ApplicationUser", null)
+                        .WithMany()
+                        .HasForeignKey("ParticipantsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Tournament", null)
+                        .WithMany()
+                        .HasForeignKey("TournamentsId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Match", b =>
+                {
+                    b.HasOne("KarateTournamentManeger.Data.Models.Stage", null)
+                        .WithMany("Matches")
+                        .HasForeignKey("StageId");
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Participant", "Winner")
+                        .WithMany("Matches")
+                        .HasForeignKey("WinnerId");
+
+                    b.Navigation("Winner");
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Stage", b =>
+                {
+                    b.HasOne("KarateTournamentManeger.Data.Models.Tournament", null)
+                        .WithMany("Stages")
+                        .HasForeignKey("TournamentId");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -276,6 +434,21 @@ namespace KarateTournamentManeger.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Participant", b =>
+                {
+                    b.Navigation("Matches");
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Stage", b =>
+                {
+                    b.Navigation("Matches");
+                });
+
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Tournament", b =>
+                {
+                    b.Navigation("Stages");
                 });
 #pragma warning restore 612, 618
         }

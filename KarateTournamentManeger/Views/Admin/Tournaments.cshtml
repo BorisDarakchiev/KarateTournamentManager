@@ -4,7 +4,13 @@
     ViewData["Title"] = "Tournaments";
 }
 
+
+
 <h1>All Tournaments</h1>
+
+<a class="btn btn-primary" asp-action="CreateTournament" asp-controller="Admin" role="button">
+    Add Tournament
+</a>
 
 <table class="table table-striped">
     <thead>
@@ -17,7 +23,7 @@
         </tr>
     </thead>
     <tbody>
-        <tr>
+@*         <tr>
             <td>Varna</td>
             <td>Турнир по Ката</td>
             <td>30.06.2025</td>
@@ -26,8 +32,8 @@
                 <a href="#">Approve</a> |
                 <a href="#">Remove</a>
             </td>
-        </tr>
-@*         @foreach (var tournament in Model)
+        </tr> *@
+        @foreach (var tournament in Model)
         {
             <tr>
                 <td>@tournament.Location</td>
@@ -38,6 +44,6 @@
                     <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
                 </td>
             </tr>
-        } *@
+        }
     </tbody>
 </table>

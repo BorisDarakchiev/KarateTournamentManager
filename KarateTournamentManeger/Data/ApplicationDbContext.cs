@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using KarateTournamentManager.Identity;
+using KarateTournamentManeger.Data.Models;
 
 namespace KarateTournamentManeger.Data
 {
@@ -10,5 +11,10 @@ namespace KarateTournamentManeger.Data
             : base(options)
         {
         }
+
+        public DbSet<Tournament> Tournaments { get; set; }
+        public DbSet<Stage> Stages { get; set; }
+        public DbSet<Match> Matchs { get; set; }
+        public DbSet<Participant> Participants { get; set; }
     }
 }

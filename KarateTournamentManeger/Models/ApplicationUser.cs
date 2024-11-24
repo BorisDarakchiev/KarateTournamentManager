@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using KarateTournamentManeger.Data.Models;
+using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 
 namespace KarateTournamentManager.Identity
@@ -8,6 +9,6 @@ namespace KarateTournamentManager.Identity
         [Required]
         public string FullName { get; set; } = string.Empty;
 
-        public bool IsApproved { get; set; } = false;
+        public ICollection<Tournament> Tournaments { get; set; } = new List<Tournament>();
     }
 }

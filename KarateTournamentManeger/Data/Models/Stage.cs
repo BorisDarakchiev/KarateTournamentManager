@@ -8,9 +8,7 @@ namespace KarateTournamentManeger.Data.Models
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
-        public string Name { get; set; } = string.Empty;
-
-        public int StageNumber { get; set; }
+        public string Name { get; set; } = null!;
 
         public IList<Match> Matches { get; set; } = new List<Match>();
     }
