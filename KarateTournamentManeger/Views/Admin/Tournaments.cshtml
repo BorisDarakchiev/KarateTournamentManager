@@ -4,8 +4,6 @@
     ViewData["Title"] = "Tournaments";
 }
 
-
-
 <h1>All Tournaments</h1>
 
 <a class="btn btn-primary" asp-action="CreateTournament" asp-controller="Admin" role="button">
@@ -23,16 +21,6 @@
         </tr>
     </thead>
     <tbody>
-@*         <tr>
-            <td>Varna</td>
-            <td>Турнир по Ката</td>
-            <td>30.06.2025</td>
-            <td>Предстоящ</td>
-            <td>
-                <a href="#">Approve</a> |
-                <a href="#">Remove</a>
-            </td>
-        </tr> *@
         @foreach (var tournament in Model)
         {
             <tr>

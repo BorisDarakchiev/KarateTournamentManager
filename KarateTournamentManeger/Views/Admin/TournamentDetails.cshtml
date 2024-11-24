@@ -1,0 +1,59 @@
+﻿@model TournamentViewModel
+
+<h2>Детайли за турнир: @Model.Location</h2>
+
+<div class="card">
+    <div class="card-header">
+        <strong>Информация за турнира</strong>
+    </div>
+    <div class="card-body">
+        <p><strong>Описание:</strong> @Model.Description</p>
+        <p><strong>Дата:</strong> @Model.Date.ToString("dd/MM/yyyy")</p>
+        <p><strong>Статус:</strong> @Model.Status</p>
+        <p><strong>Записани участници:</strong> @Model.EnrolledParticipantsCount</p>
+    </div>
+</div>
+
+<h3>Участници</h3>
+@if (Model.EnrolledParticipants.Count > 0)
+{
+    <ul>
+        @foreach (var participant in Model.EnrolledParticipants)
+        {
+            <li>
+                @participant.Name
+                <form asp-action="RemoveParticipant" method="post" style="display:inline;">
+                    <input type="hidden" name="tournamentId" value="@Model.Id" />
+                    <input type="hidden" name="participantId" value="@participant.Id" />
+                    <button type="submit" class="btn btn-danger btn-sm">Откажи участник</button>
+                </form>
+            </li>
+        }
+    </ul>
+}
+else
+{
+    <p>Няма записани участници за този турнир.</p>
+}
+
+
+<h3>Етапи</h3>
+@if (Model.Stages.Count > 0)
+{
+    <ul>
+        @foreach (var stage in Model.Stages)
+        {
+            <li>@stage.Name</li>
+        }
+    </ul>
+}
+else
+{
+    <p>Няма етапи за този турнир.</p>
+}
+
+<form asp-action="FinalizeEnrollment" method="post">
+    <input type="hidden" name="tournamentId" value="@Model.Id" />
+    <button type="submit" class="btn btn-success">Край на записването</button>
+</form>
+

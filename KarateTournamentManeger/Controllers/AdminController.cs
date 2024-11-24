@@ -4,6 +4,7 @@ using KarateTournamentManeger.Data;
 using KarateTournamentManeger.Data.Models;
 using KarateTournamentManeger.Models;
 using KarateTournamentManeger.Models.ViewModels;
+using KarateTournamentManeger.Models.ViewModels.KarateTournamentManeger.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -156,6 +157,71 @@ public class AdminController : Controller
         // Ако има грешки в модела, връщаме формата със съществуващите данни
         return View(model);
     }
+
+
+    [HttpGet]
+    [Route("TournamentDetails/{id}")]
+    public async Task<IActionResult> TournamentDetails(Guid id)
+    {
+        // Зареждаме турнира с необходимите свързани данни
+        var tournament = await context.Tournaments
+            .Include(t => t.EnrolledParticipants)  // Включваме участниците
+            .Include(t => t.Stages)  // Включваме етапите
+            .FirstOrDefaultAsync(t => t.Id == id);  // Търсим турнира по ID
+
+        // Ако турнирът не бъде намерен, връщаме 404
+        if (tournament == null)
+        {
+            return NotFound();
+        }
+
+        // Преобразуваме в TournamentViewModel, за да предадем данните към View-то
+        var model = new TournamentViewModel
+        {
+            Id = tournament.Id,
+            Location = tournament.Location,
+            Description = tournament.Description,
+            Date = tournament.Date,
+            Status = tournament.Status,
+            EnrolledParticipants = tournament.EnrolledParticipants.Any()
+                ? tournament.EnrolledParticipants
+                    .Select(p => new ParticipantViewModel { Name = p.Name, Id = p.Id })
+                    .ToList()
+                : new List<ParticipantViewModel>(),  // Ако няма участници, предаваме празен списък
+            Stages = tournament.Stages
+                .Select(s => new StageViewModel { Name = s.Name, Id = s.Id })
+                .ToList()  // Преобразуваме етапите
+        };
+
+        // Връщаме данните към View-то
+        return View(model);
+    }
+
+
+
+    //[HttpPost]
+    //[Route("Admin/RemoveParticipant")]
+    //public async Task<IActionResult> RemoveParticipant(Guid tournamentId, Guid participantId)
+    //{
+    //    var tournament = await context.Tournaments
+    //        .Include(t => t.EnrolledParticipants)
+    //        .FirstOrDefaultAsync(t => t.Id == tournamentId);
+
+    //    if (tournament == null)
+    //    {
+    //        return NotFound();
+    //    }
+
+    //    var participant = tournament.EnrolledParticipants.FirstOrDefault(p => p.Id == participantId);
+    //    if (participant != null)
+    //    {
+    //        tournament.EnrolledParticipants.Remove(participant);
+    //        await context.SaveChangesAsync();
+    //    }
+
+    //    return RedirectToAction("TournamentDetails", new { id = tournamentId });
+    //}
+
 
 
     // Път за ApproveParticipant

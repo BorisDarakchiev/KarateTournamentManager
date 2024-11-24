@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManeger.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241124135155_AddTournamentParticipantAndStageModels")]
-    partial class AddTournamentParticipantAndStageModels
+    [Migration("20241124183648_UpdateModels")]
+    partial class UpdateModels
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -109,54 +109,6 @@ namespace KarateTournamentManeger.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Match", b =>
-                {
-                    b.Property<Guid>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid>("Participant1Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Participant1Score")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("Participant2Id")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Participant2Score")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Period")
-                        .HasColumnType("int");
-
-                    b.Property<TimeSpan>("RemainingTime")
-                        .HasColumnType("time");
-
-                    b.Property<Guid?>("StageId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("Status")
-                        .HasColumnType("int");
-
-                    b.Property<int>("Tatami")
-                        .HasColumnType("int");
-
-                    b.Property<Guid>("TournamentId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<Guid?>("WinnerId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.HasKey("Id");
-
-                    b.HasIndex("StageId");
-
-                    b.HasIndex("WinnerId");
-
-                    b.ToTable("Matchs");
-                });
-
             modelBuilder.Entity("KarateTournamentManeger.Data.Models.Participant", b =>
                 {
                     b.Property<Guid>("Id")
@@ -170,9 +122,14 @@ namespace KarateTournamentManeger.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<Guid?>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.HasKey("Id");
 
-                    b.ToTable("Participant");
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("Participants");
                 });
 
             modelBuilder.Entity("KarateTournamentManeger.Data.Models.Stage", b =>
@@ -218,6 +175,70 @@ namespace KarateTournamentManeger.Migrations
                     b.HasKey("Id");
 
                     b.ToTable("Tournaments");
+                });
+
+            modelBuilder.Entity("Match", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid>("Participant1Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Participant1Score")
+                        .HasColumnType("int");
+
+                    b.Property<Guid>("Participant2Id")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Participant2Score")
+                        .HasColumnType("int");
+
+                    b.Property<Guid?>("ParticipantId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Period")
+                        .HasColumnType("int");
+
+                    b.Property<TimeSpan>("RemainingTime")
+                        .HasColumnType("time");
+
+                    b.Property<Guid?>("StageId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Status")
+                        .HasColumnType("int");
+
+                    b.Property<int>("Tatami")
+                        .HasColumnType("int");
+
+                    b.Property<string>("TimerManagerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<Guid?>("WinnerId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("Participant1Id");
+
+                    b.HasIndex("Participant2Id");
+
+                    b.HasIndex("ParticipantId");
+
+                    b.HasIndex("StageId");
+
+                    b.HasIndex("TimerManagerId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.HasIndex("WinnerId");
+
+                    b.ToTable("Matchs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -368,17 +389,11 @@ namespace KarateTournamentManeger.Migrations
                         .IsRequired();
                 });
 
-            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Match", b =>
+            modelBuilder.Entity("KarateTournamentManeger.Data.Models.Participant", b =>
                 {
-                    b.HasOne("KarateTournamentManeger.Data.Models.Stage", null)
-                        .WithMany("Matches")
-                        .HasForeignKey("StageId");
-
-                    b.HasOne("KarateTournamentManeger.Data.Models.Participant", "Winner")
-                        .WithMany("Matches")
-                        .HasForeignKey("WinnerId");
-
-                    b.Navigation("Winner");
+                    b.HasOne("KarateTournamentManeger.Data.Models.Tournament", null)
+                        .WithMany("EnrolledParticipants")
+                        .HasForeignKey("TournamentId");
                 });
 
             modelBuilder.Entity("KarateTournamentManeger.Data.Models.Stage", b =>
@@ -386,6 +401,55 @@ namespace KarateTournamentManeger.Migrations
                     b.HasOne("KarateTournamentManeger.Data.Models.Tournament", null)
                         .WithMany("Stages")
                         .HasForeignKey("TournamentId");
+                });
+
+            modelBuilder.Entity("Match", b =>
+                {
+                    b.HasOne("KarateTournamentManeger.Data.Models.Participant", "Participant1")
+                        .WithMany()
+                        .HasForeignKey("Participant1Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Participant", "Participant2")
+                        .WithMany()
+                        .HasForeignKey("Participant2Id")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Participant", null)
+                        .WithMany("Matches")
+                        .HasForeignKey("ParticipantId");
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Stage", null)
+                        .WithMany("Matches")
+                        .HasForeignKey("StageId");
+
+                    b.HasOne("KarateTournamentManager.Identity.ApplicationUser", "TimerManager")
+                        .WithMany()
+                        .HasForeignKey("TimerManagerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Tournament", "Tournament")
+                        .WithMany()
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("KarateTournamentManeger.Data.Models.Participant", "Winner")
+                        .WithMany()
+                        .HasForeignKey("WinnerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.Navigation("Participant1");
+
+                    b.Navigation("Participant2");
+
+                    b.Navigation("TimerManager");
+
+                    b.Navigation("Tournament");
+
+                    b.Navigation("Winner");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -451,6 +515,8 @@ namespace KarateTournamentManeger.Migrations
 
             modelBuilder.Entity("KarateTournamentManeger.Data.Models.Tournament", b =>
                 {
+                    b.Navigation("EnrolledParticipants");
+
                     b.Navigation("Stages");
                 });
 #pragma warning restore 612, 618
