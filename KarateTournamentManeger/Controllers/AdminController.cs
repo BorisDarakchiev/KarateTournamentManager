@@ -37,6 +37,7 @@ public class AdminController : Controller
         var model = await context.Tournaments
             .Select(t => new Tournament()
             {
+                Id = t.Id,
                 Location = t.Location,
                 Description = t.Description,
                 Date = t.Date,
