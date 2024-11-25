@@ -1,0 +1,49 @@
+﻿@model IEnumerable<KarateTournamentManeger.Models.ViewModels.ManageUsersViewModel>
+
+@{
+    ViewData["Title"] = "Manage Users";
+}
+
+<h2>Manage Users</h2>
+
+@if (TempData["Error"] != null)
+{
+    <div class="alert alert-danger">
+        @TempData["Error"]
+    </div>
+}
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>User Name</th>
+            <th>Email</th>
+            <th>Participant Name</th>
+            <th>Current Role</th>
+            <th>Change Role</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var user in Model)
+        {
+            <tr>
+                <td>@user.UserName</td>
+                <td>@user.Email</td>
+                <td>@user.UserName</td>
+                <td>@user.CurrentRole</td>
+                <td>
+                    <form asp-action="ManageUsers" method="post">
+                        <input type="hidden" name="UserId" value="@user.UserId" />
+                        <select name="SelectedRole" class="form-control">
+                            @foreach (var role in user.AvailableRoles)
+                            {
+                                <option value="@role" selected="@(user.AvailableRoles != null && user.AvailableRoles.Contains(role) ? "selected" : null)">@role</option>
+                            }
+                        </select>
+                        <button type="submit" class="btn btn-primary mt-2">Change Role</button>
+                    </form>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>

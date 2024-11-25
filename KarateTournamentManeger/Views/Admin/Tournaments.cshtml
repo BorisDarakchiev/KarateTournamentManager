@@ -30,6 +30,11 @@
                 <td>@tournament.Status</td>
                 <td>
                     <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
+
+                    <form asp-controller="Admin" asp-action="DeleteTournament" method="post" style="display:inline;" onsubmit="return confirm('Сигурни ли сте, че искате да изтриете този турнир?');">
+                        <input type="hidden" name="id" value="@tournament.Id" />
+                        <button type="submit" class="btn btn-danger">Delete</button>
+                    </form>
                 </td>
             </tr>
         }

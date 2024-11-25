@@ -4,11 +4,11 @@ using KarateTournamentManeger.Data;
 using KarateTournamentManeger.Data.Models;
 using KarateTournamentManeger.Models;
 using KarateTournamentManeger.Models.ViewModels;
-using KarateTournamentManeger.Models.ViewModels.KarateTournamentManeger.Models.ViewModels;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+
 
 
 [Route("Admin")]
@@ -55,62 +55,76 @@ public class AdminController : Controller
         return View();
     }
 
-    [Route("Admin/Users")]
-    public IActionResult Users()
+    [HttpGet]
+    [Route("ManageUsers")]
+    public async Task<IActionResult> ManageUsers()
     {
-        //var users = userManager.Users
-        //    .Select(user => new UserRoleViewModel
-        //    {
-        //        UserId = user.Id,
-        //        UserName = user.UserName,
-        //        Email = user.Email,
-        //        Roles = userManager.GetRolesAsync(user).Result
-        //    })
-        //    .ToList();
+        var roles = await roleManager.Roles.Select(r => r.Name).ToListAsync();
 
-        //return View(users);
-        return View();
+        var users = await userManager.Users
+            .Include(u => u.Participant)
+            .ToListAsync();
+
+        var userRolesViewModel = new List<ManageUsersViewModel>();
+
+        foreach (var user in users)
+        {
+            var userRoles = await userManager.GetRolesAsync(user);
+            var currentRole = userRoles.FirstOrDefault() ?? "No Role";
+
+            userRolesViewModel.Add(new ManageUsersViewModel
+            {
+                UserId = user.Id,
+                UserName = user.UserName,
+                Email = user.Email,
+                CurrentRole = currentRole,
+                SelectedRole = currentRole,
+                AvailableRoles = roles
+            });
+        }
+
+        return View(userRolesViewModel);
     }
 
     [HttpPost]
-    [Route("Admin/AssignRole")]
-    public async Task<IActionResult> AssignRole(string userId, string role)
+    [ValidateAntiForgeryToken]
+    [Route("ManageUsers")]
+    public async Task<IActionResult> ChangeParticipantRole(ParticipantViewModel model)
     {
-        var user = await userManager.FindByIdAsync(userId);
+        if (!ModelState.IsValid)
+        {
+            TempData["Error"] = "Invalid data provided.";
+            return RedirectToAction(nameof(ManageUsers));
+        }
+
+        var user = await userManager.Users.FirstOrDefaultAsync(u => u.ParticipantId == model.Id);
         if (user == null)
         {
-            return NotFound("User not found.");
+            TempData["Error"] = "No user associated with this participant.";
+            return RedirectToAction(nameof(ManageUsers));
         }
 
-        if (!await roleManager.RoleExistsAsync(role))
+        var currentRoles = await userManager.GetRolesAsync(user);
+
+        if (currentRoles.Any())
         {
-            return BadRequest("Role does not exist.");
+            await userManager.RemoveFromRolesAsync(user, currentRoles);
         }
 
-        if (!await userManager.IsInRoleAsync(user, role))
+        if (!string.IsNullOrEmpty(model.Role))
         {
-            await userManager.AddToRoleAsync(user, role);
+            var roleExists = await roleManager.RoleExistsAsync(model.Role);
+            if (roleExists)
+            {
+                await userManager.AddToRoleAsync(user, model.Role);
+            }
+            else
+            {
+                TempData["Error"] = "The selected role does not exist.";
+            }
         }
 
-        return RedirectToAction("Users");
-    }
-
-    [HttpPost]
-    [Route("Admin/RemoveRole")]
-    public async Task<IActionResult> RemoveRole(string userId, string role)
-    {
-        var user = await userManager.FindByIdAsync(userId);
-        if (user == null)
-        {
-            return NotFound("User not found.");
-        }
-
-        if (await userManager.IsInRoleAsync(user, role))
-        {
-            await userManager.RemoveFromRoleAsync(user, role);
-        }
-
-        return RedirectToAction("Users");
+        return RedirectToAction(nameof(ManageUsers));
     }
 
     [HttpGet]
@@ -119,10 +133,10 @@ public class AdminController : Controller
     {
         var model = new TournamentViewModel
         {
-            Date = DateTime.Now,  // Започваме с текущата дата
-            Status = TournamentStatus.Upcoming,  // По подразбиране статусът е "Предстоящ"
-            EnrolledParticipants = new List<ParticipantViewModel>(),  // Празен списък
-            Stages = new List<StageViewModel>(),  // Празен списък
+            Date = DateTime.Now,
+            Status = TournamentStatus.Upcoming,
+            EnrolledParticipants = new List<ParticipantViewModel>(),
+            Stages = new List<StageViewModel>(),
         };
         return View(model);
     }
@@ -135,27 +149,23 @@ public class AdminController : Controller
     {
         if (ModelState.IsValid)
         {
-            // Създаваме нов турнир с данните от модела
             var tournament = new Tournament
             {
-                Id = Guid.NewGuid(),  // Генерираме нов GUID за турнира
+                Id = Guid.NewGuid(),
                 Location = model.Location,
                 Description = model.Description,
                 Date = model.Date,
-                Status = TournamentStatus.Upcoming,  // Статусът е "Предстоящ"
-                EnrolledParticipants = new List<Participant>(),  // Празен списък на участници
-                Stages = new List<Stage>(),  // Празен списък на етапи
+                Status = TournamentStatus.Upcoming,
+                EnrolledParticipants = new List<Participant>(),
+                Stages = new List<Stage>(),
             };
 
-            // Добавяме турнира в контекста на базата данни
             context.Tournaments.Add(tournament);
             await context.SaveChangesAsync();
 
-            // Пренасочваме към списъка с турнири (или към съответната страница)
             return RedirectToAction("Tournaments");
         }
 
-        // Ако има грешки в модела, връщаме формата със съществуващите данни
         return View(model);
     }
 
@@ -164,19 +174,17 @@ public class AdminController : Controller
     [Route("TournamentDetails/{id}")]
     public async Task<IActionResult> TournamentDetails(Guid id)
     {
-        // Зареждаме турнира с необходимите свързани данни
         var tournament = await context.Tournaments
-            .Include(t => t.EnrolledParticipants)  // Включваме участниците
-            .Include(t => t.Stages)  // Включваме етапите
-            .FirstOrDefaultAsync(t => t.Id == id);  // Търсим турнира по ID
+            .Include(t => t.EnrolledParticipants)
+            .Include(t => t.Stages)
+            .FirstOrDefaultAsync(t => t.Id == id); 
 
-        // Ако турнирът не бъде намерен, връщаме 404
+
         if (tournament == null)
         {
             return NotFound();
         }
 
-        // Преобразуваме в TournamentViewModel, за да предадем данните към View-то
         var model = new TournamentViewModel
         {
             Id = tournament.Id,
@@ -184,46 +192,36 @@ public class AdminController : Controller
             Description = tournament.Description,
             Date = tournament.Date,
             Status = tournament.Status,
-            EnrolledParticipants = tournament.EnrolledParticipants.Any()
+            EnrolledParticipants = tournament.EnrolledParticipants != null && tournament.EnrolledParticipants.Any()
                 ? tournament.EnrolledParticipants
                     .Select(p => new ParticipantViewModel { Name = p.Name, Id = p.Id })
                     .ToList()
-                : new List<ParticipantViewModel>(),  // Ако няма участници, предаваме празен списък
+                : new List<ParticipantViewModel>(),
+
             Stages = tournament.Stages
                 .Select(s => new StageViewModel { Name = s.Name, Id = s.Id })
-                .ToList()  // Преобразуваме етапите
+                .ToList()
         };
 
-        // Връщаме данните към View-то
         return View(model);
     }
 
+    [HttpPost]
+    [Route("Admin/DeleteTournament")]
+    [ValidateAntiForgeryToken]
+    public async Task<IActionResult> DeleteTournament(Guid id)
+    {
+        var tournament = await context.Tournaments.FindAsync(id);
+        if (tournament == null)
+        {
+            return NotFound();
+        }
 
+        context.Tournaments.Remove(tournament);
+        await context.SaveChangesAsync();
 
-    //[HttpPost]
-    //[Route("Admin/RemoveParticipant")]
-    //public async Task<IActionResult> RemoveParticipant(Guid tournamentId, Guid participantId)
-    //{
-    //    var tournament = await context.Tournaments
-    //        .Include(t => t.EnrolledParticipants)
-    //        .FirstOrDefaultAsync(t => t.Id == tournamentId);
-
-    //    if (tournament == null)
-    //    {
-    //        return NotFound();
-    //    }
-
-    //    var participant = tournament.EnrolledParticipants.FirstOrDefault(p => p.Id == participantId);
-    //    if (participant != null)
-    //    {
-    //        tournament.EnrolledParticipants.Remove(participant);
-    //        await context.SaveChangesAsync();
-    //    }
-
-    //    return RedirectToAction("TournamentDetails", new { id = tournamentId });
-    //}
-
-
+        return RedirectToAction("Tournaments");
+    }
 
     // Път за ApproveParticipant
     [HttpPost]

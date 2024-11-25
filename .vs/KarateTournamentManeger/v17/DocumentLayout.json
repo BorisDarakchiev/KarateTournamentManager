@@ -3,72 +3,319 @@
   "WorkspaceRootPath": "D:\\repos\\Karate\\KarateTournamentManeger\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\tournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\tournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\stage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\stage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\participant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\participant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\kumitetournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\kumitetournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\katatournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\katatournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\applicationdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\applicationdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\migrations\\20241125211508_updateroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\migrations\\20241125211508_updateroles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\admincontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\karatetournamentmaneger.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\karatetournamentmaneger.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\karatetournamentmaneger.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\karatetournamentmaneger.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\participantviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\participantviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\applicationuser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\manageusers.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\manageusersviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\manageusersviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\userroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\userroleviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|C:\\Users\\Boris\\AppData\\Local\\SourceServer\\7732768d5386aa62b38d78abfa00147375a85c8306307b27c846b691a1e5a43d\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\shared\\_loginpartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\home\\tournaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\home\\tournaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\home\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\users.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\tournaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\tournaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\tournamentdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\tournamentdetails.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\participants.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\participants.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\createtournament.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\createtournament.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\services\\nullemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\services\\nullemailsender.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\tournamentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\tournamentviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\homecontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\errorviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\matchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\matchviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\registerviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\models\\stageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\models\\stageviewmodel.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\applicationdbcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\enums\\matchstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\enums\\matchstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\enums\\matchperiod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\enums\\matchperiod.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\models\\tournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\models\\tournament.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\models\\stage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\models\\stage.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\models\\participant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\models\\participant.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\models\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\models\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125202022_UpdateUserParticipantForeignKey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241125202022_UpdateUserParticipantForeignKey.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\tournamentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\tournamentcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\timermanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\timermanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\enums\\tournamenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\enums\\tournamenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\enums\\tournamentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\enums\\tournamentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125200731_AddParticipantTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241125200731_AddParticipantTable.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\register.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\managenavpages.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\register.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\migrations\\20241125193247_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\migrations\\20241125193247_initialmigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125190622_InitialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241125190622_InitialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\participantcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119202222_UpdateIdentitySchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Data\\Migrations\\20241119202222_UpdateIdentitySchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\controllers\\timermanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\controllers\\timermanagercontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124183334_UpdateModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241124183334_UpdateModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\applicationdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\applicationdbinitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124135659_ParticipantModelsAddToDBContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241124135659_ParticipantModelsAddToDBContext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124130052_AddTournamentAndStageModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241124130052_AddTournamentAndStageModels.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124123809_InitialModels01.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241124123809_InitialModels01.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\personaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\personaldata.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\_managenav.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\scaffoldingreadme.txt||{8B382828-6202-11D1-8870-0000F87579D2}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\_statusmessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\_statusmessage.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\manage\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\logout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\logout.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\logout.cshtml.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\_viewstart.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\karatetournamentmaneger.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\karatetournamentmaneger.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\shared\\_layout.cshtml.css||{A5401142-F49D-43DB-90B1-F57BA349E55C}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\login.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241121151751_InitialID.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241121151751_InitialID.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\areas\\identity\\pages\\account\\_viewimports.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241121143356_InitialIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241121143356_InitialIdentity.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\shared\\error.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\shared\\_validationscriptspartial.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241119213105_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241119213105_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241119210526_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Migrations\\20241119210526_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\karatetournamentmaneger.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|",
+      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\karatetournamentmaneger.csproj||{04B8AB82-A572-4FEF-95CE-5222444B6B64}|"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -83,64 +330,16 @@
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\migrations\\applicationdbcontextmodelsnapshot.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\admin\\tournaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\admin\\tournaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\data\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\data\\match.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119191536_AddApplicationUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Data\\Migrations\\20241119191536_AddApplicationUser.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{A2FE74E1-B743-11D0-AE1A-00A0C90FFFC3}|\u003CMiscFiles\u003E|solutionrelative:KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\shared\\_layout.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js||{14D17961-FE51-464D-9111-C4AF11D7D99A}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\views\\home\\turnaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\views\\home\\turnaments.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\enums\\tournamentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\enums\\tournamentstatus.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
-      "AbsoluteMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|d:\\repos\\karate\\karatetournamentmaneger\\karatetournamentmaneger\\enums\\tournamenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{3343E6C6-884F-4B96-8A63-B1C475DC1402}|KarateTournamentManeger\\KarateTournamentManeger.csproj|solutionrelative:karatetournamentmaneger\\enums\\tournamenttype.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     }
   ],
   "DocumentGroupContainers": [
@@ -150,187 +349,19 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 4,
+          "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 6,
-              "Title": "ApplicationDbContext.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAABAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T17:47:19.222Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 9,
-              "Title": "KarateTournamentManeger",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "RelativeToolTip": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-19T20:21:13.2Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 8,
-              "Title": "AdminController.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\AdminController.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\AdminController.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\AdminController.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\AdminController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAApAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:29:03.944Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 7,
-              "Title": "ApplicationDbInitializer.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:20:54.754Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 0,
-              "Title": "HomeController.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\HomeController.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\HomeController.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\HomeController.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\HomeController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAkAAAAAAAAAA==",
+              "Title": "20241125211508_UpdateRoles.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125211508_UpdateRoles.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241125211508_UpdateRoles.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125211508_UpdateRoles.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241125211508_UpdateRoles.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T18:23:58.098Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 5,
-              "Title": "KataTournament.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\KataTournament.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\KataTournament.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\KataTournament.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\KataTournament.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T18:58:59.529Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 4,
-              "Title": "KumiteTournament.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\KumiteTournament.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\KumiteTournament.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\KumiteTournament.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\KumiteTournament.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T18:59:42.711Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 3,
-              "Title": "Participant.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Participant.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Participant.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Participant.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Participant.cs",
-              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAYAAAAcAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T19:35:14.197Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Stage.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Stage.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Stage.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Stage.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Stage.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-14T18:40:35.588Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 1,
-              "Title": "Tournament.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Tournament.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Tournament.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Tournament.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Tournament.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAKAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-12T17:50:17.212Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 13,
-              "Title": "TournamentController.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TournamentController.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\TournamentController.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TournamentController.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\TournamentController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:35:22.047Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 16,
-              "Title": "20241119202222_UpdateIdentitySchema.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119202222_UpdateIdentitySchema.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119202222_UpdateIdentitySchema.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119202222_UpdateIdentitySchema.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119202222_UpdateIdentitySchema.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:22:22.27Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 11,
-              "Title": "ApplicationUser.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ApplicationUser.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\ApplicationUser.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ApplicationUser.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Models\\ApplicationUser.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAA8AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:11:02.543Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 12,
-              "Title": "Program.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Program.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Program.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Program.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Program.cs",
-              "ViewState": "AgIAACYAAAAAAAAAAADwvzEAAAA6AAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T18:59:17.508Z",
+              "WhenOpened": "2024-11-25T21:15:09.161Z",
               "EditorCaption": ""
             },
             {
@@ -339,276 +370,1044 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 10,
-              "Title": "KarateTournamentManeger.csproj",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "RelativeToolTip": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
-              "WhenOpened": "2024-11-14T18:05:34.687Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 15,
-              "Title": "ParticipantController.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\ParticipantController.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\ParticipantController.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\ParticipantController.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\ParticipantController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAATAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:29:35.571Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
               "DocumentIndex": 14,
-              "Title": "TimerManagerController.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAjAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:29:58.353Z",
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Home\\Index.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Home\\Index.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Home\\Index.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Home\\Index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T13:41:53.9Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 17,
-              "Title": "20241119201801_UpdateIdentitySchema.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:18:01.435Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 19,
-              "Title": "20241119195540_InitialCreate.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAABEAAAAJAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:55:40.689Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 18,
-              "Title": "20241119200821_ApplicationUsersAndRoles.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T20:08:21.436Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 20,
-              "Title": "ApplicationDbContextModelSnapshot.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\ApplicationDbContextModelSnapshot.cs",
-              "ViewState": "AgIAAAkAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:03:16.847Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 24,
-              "Title": "20241119192326_ApplicationDbInitializer.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:23:26.944Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 21,
-              "Title": "20241119194115_ApplicationRoles.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:41:15.725Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 22,
+              "DocumentIndex": 13,
               "Title": "Tournaments.cshtml",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
-              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-19T19:37:09.89Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 25,
-              "Title": "20241119191536_AddApplicationUser.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119191536_AddApplicationUser.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119191536_AddApplicationUser.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119191536_AddApplicationUser.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119191536_AddApplicationUser.cs",
-              "ViewState": "AgIAAFQAAAAAAAAAAAAowAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:15:36.591Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 26,
-              "Title": "20241119190247_initialMigration.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2024-11-19T19:02:47.587Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 31,
-              "Title": "additional-methods.js",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-              "RelativeToolTip": "KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
-              "ViewState": "AgIAAAABAAAAAAAAAAAnwBIBAAAfAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-19T18:57:27.586Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 30,
-              "Title": "bootstrap.esm.js",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-              "RelativeToolTip": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
-              "ViewState": "AgIAALsDAAAAAAAAAAApwM0DAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-19T18:57:24.743Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 29,
-              "Title": "bootstrap.bundle.js",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-              "RelativeToolTip": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
-              "ViewState": "AgIAAMADAAAAAAAAAAApwNIDAAAhAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
-              "WhenOpened": "2024-11-19T18:57:22.604Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 27,
-              "Title": "appsettings.json",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\appsettings.json",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\appsettings.json",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\appsettings.json",
-              "RelativeToolTip": "KarateTournamentManeger\\appsettings.json",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAAAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
-              "WhenOpened": "2024-11-19T18:53:56.25Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 28,
-              "Title": "_Layout.cshtml",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
-              "RelativeToolTip": "KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
-              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB0AAAAWAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2024-11-19T18:25:46.192Z",
-              "EditorCaption": ""
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 32,
-              "Title": "Turnaments.cshtml",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Home\\Turnaments.cshtml",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Home\\Turnaments.cshtml",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Home\\Turnaments.cshtml",
-              "RelativeToolTip": "KarateTournamentManeger\\Views\\Home\\Turnaments.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAEAAAAjAAAAAAAAAA==",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Home\\Tournaments.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Home\\Tournaments.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Home\\Tournaments.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Home\\Tournaments.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
               "WhenOpened": "2024-11-19T18:23:20.45Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 23,
-              "Title": "Match.cs",
-              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Match.cs",
-              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Match.cs",
-              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Match.cs",
-              "RelativeToolTip": "KarateTournamentManeger\\Data\\Match.cs",
+              "DocumentIndex": 12,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml",
+              "ViewState": "AgIAACAAAAAAAAAAAAAAAC8AAAA0AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-19T18:25:46.192Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "AdminController.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\AdminController.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\AdminController.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\AdminController.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\AdminController.cs",
+              "ViewState": "AgIAACcAAAAAAAAAAAAcwFoAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:29:03.944Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "UserRoleViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\UserRoleViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\UserRoleViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\UserRoleViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\UserRoleViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T12:30:36.751Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "ParticipantViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ParticipantViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\ParticipantViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ParticipantViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\ParticipantViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T14:07:40.884Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "ManageUsers.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\ManageUsers.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\ManageUsers.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\ManageUsers.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\ManageUsers.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACsAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-25T18:00:02.661Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "ApplicationUser.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ApplicationUser.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\ApplicationUser.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ApplicationUser.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\ApplicationUser.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAsAAAA1AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:11:02.543Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "ManageUsersViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ManageUsersViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\ManageUsersViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ManageUsersViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\ManageUsersViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAiAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T17:58:51.303Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 15,
+              "Title": "Users.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Users.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\Users.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Users.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\Users.cshtml",
+              "ViewState": "AgIAABUAAAAAAAAAAAAAABIAAAAeAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T12:35:45.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 16,
+              "Title": "Tournaments.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\Tournaments.cshtml",
+              "ViewState": "AgIAAA8AAAAAAAAAAAAAACQAAAAbAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-19T19:37:09.89Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "ApplicationDbInitializer.cs",
+              "DocumentMoniker": "C:\\Users\\Boris\\AppData\\Local\\SourceServer\\7732768d5386aa62b38d78abfa00147375a85c8306307b27c846b691a1e5a43d\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
+              "ToolTip": "C:\\Users\\Boris\\AppData\\Local\\SourceServer\\7732768d5386aa62b38d78abfa00147375a85c8306307b27c846b691a1e5a43d\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAABRAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T20:33:00.044Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 17,
+              "Title": "TournamentDetails.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\TournamentDetails.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\TournamentDetails.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\TournamentDetails.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\TournamentDetails.cshtml",
+              "ViewState": "AgIAACoAAAAAAAAAAAAAADcAAABBAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T17:39:24.387Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 18,
+              "Title": "Participants.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Participants.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\Participants.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\Participants.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\Participants.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAIAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T12:00:12.381Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\_ViewImports.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\_ViewImports.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\_ViewImports.cshtml",
               "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-25T20:32:03.748Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\appsettings.json",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\appsettings.json",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\appsettings.json",
+              "RelativeToolTip": "KarateTournamentManeger\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-19T18:53:56.25Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Program.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Program.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Program.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Program.cs",
+              "ViewState": "AgIAACQAAAAAAAAAAAAAADYAAAA6AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T18:59:17.508Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 19,
+              "Title": "index.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\index.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\index.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\index.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\index.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAA5AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T16:09:00.546Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 11,
+              "Title": "_LoginPartial.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Shared\\_LoginPartial.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_LoginPartial.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Shared\\_LoginPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAACYAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T13:43:39.942Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 20,
+              "Title": "CreateTournament.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\CreateTournament.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Admin\\CreateTournament.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Admin\\CreateTournament.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Admin\\CreateTournament.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T15:33:53.967Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 21,
+              "Title": "NullEmailSender.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Services\\NullEmailSender.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Services\\NullEmailSender.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Services\\NullEmailSender.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Services\\NullEmailSender.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:45:48.892Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 22,
+              "Title": "TournamentViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\TournamentViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\TournamentViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\TournamentViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\TournamentViewModel.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAEAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T14:06:20.419Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 23,
+              "Title": "HomeController.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\HomeController.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\HomeController.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\HomeController.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\HomeController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T18:23:58.098Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 24,
+              "Title": "ErrorViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ErrorViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\ErrorViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\ErrorViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\ErrorViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T13:41:43.072Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 25,
+              "Title": "MatchViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\MatchViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\MatchViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\MatchViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\MatchViewModel.cs",
+              "ViewState": "AgIAABcAAAAAAAAAAAAIwAUAAAAwAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T14:07:55.654Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 26,
+              "Title": "RegisterViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\RegisterViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\RegisterViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\RegisterViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\RegisterViewModel.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T19:30:40.276Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 27,
+              "Title": "StageViewModel.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\StageViewModel.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Models\\StageViewModel.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Models\\StageViewModel.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Models\\StageViewModel.cs",
+              "ViewState": "AgIAAAEAAAAAAAAAAAAlwA0AAAAUAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T14:07:02.802Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 28,
+              "Title": "ApplicationDbContext.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\ApplicationDbContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T17:47:19.222Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 29,
+              "Title": "MatchStatus.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\MatchStatus.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Enums\\MatchStatus.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\MatchStatus.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Enums\\MatchStatus.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAUAAAATAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T12:55:21.429Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 30,
+              "Title": "MatchPeriod.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\MatchPeriod.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Enums\\MatchPeriod.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\MatchPeriod.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Enums\\MatchPeriod.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAABAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T12:55:44.123Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 31,
+              "Title": "Tournament.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Tournament.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Models\\Tournament.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Tournament.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Models\\Tournament.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwBEAAAA/AAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T17:50:17.212Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 32,
+              "Title": "Stage.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Stage.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Models\\Stage.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Stage.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Models\\Stage.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAoAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-14T18:40:35.588Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 33,
+              "Title": "Participant.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Participant.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Models\\Participant.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Participant.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Models\\Participant.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAQwBwAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-12T19:35:14.197Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 34,
+              "Title": "Match.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Match.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Models\\Match.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Models\\Match.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Models\\Match.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwCsAAAADAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-14T19:02:03.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 33,
+              "DocumentIndex": 35,
+              "Title": "20241125202022_UpdateUserParticipantForeignKey.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125202022_UpdateUserParticipantForeignKey.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241125202022_UpdateUserParticipantForeignKey.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125202022_UpdateUserParticipantForeignKey.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241125202022_UpdateUserParticipantForeignKey.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T20:20:22.289Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 36,
+              "Title": "TournamentController.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TournamentController.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\TournamentController.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TournamentController.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\TournamentController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA4AAAAjAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:35:22.047Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 38,
               "Title": "TournamentStatus.cs",
               "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\TournamentStatus.cs",
               "RelativeDocumentMoniker": "KarateTournamentManeger\\Enums\\TournamentStatus.cs",
               "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\TournamentStatus.cs",
               "RelativeToolTip": "KarateTournamentManeger\\Enums\\TournamentStatus.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-12T18:01:12.71Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 34,
+              "DocumentIndex": 37,
               "Title": "TournamentType.cs",
               "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\TournamentType.cs",
               "RelativeDocumentMoniker": "KarateTournamentManeger\\Enums\\TournamentType.cs",
               "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Enums\\TournamentType.cs",
               "RelativeToolTip": "KarateTournamentManeger\\Enums\\TournamentType.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAgAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAQAAAANAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-11-12T18:00:43.567Z",
               "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 39,
+              "Title": "20241125200731_AddParticipantTable.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125200731_AddParticipantTable.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241125200731_AddParticipantTable.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125200731_AddParticipantTable.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241125200731_AddParticipantTable.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T20:07:31.3Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 40,
+              "Title": "Register.cshtml.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml.cs",
+              "ViewState": "AgIAAKAAAAAAAAAAAAAAwLMAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:23:42.234Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 43,
+              "Title": "Register.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Register.cshtml",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAwwCcAAAASAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T14:42:09.789Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 44,
+              "Title": "20241125193247_InitialMigration.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125193247_InitialMigration.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241125193247_InitialMigration.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125193247_InitialMigration.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241125193247_InitialMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T19:32:48.158Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 42,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T14:41:21.991Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 41,
+              "Title": "ManageNavPages.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\ManageNavPages.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T08:30:37.695Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 45,
+              "Title": "20241125190622_InitialMigration.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125190622_InitialMigration.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241125190622_InitialMigration.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241125190622_InitialMigration.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241125190622_InitialMigration.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-25T19:06:22.383Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 46,
+              "Title": "ParticipantController.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\ParticipantController.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\ParticipantController.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\ParticipantController.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\ParticipantController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:29:35.571Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 47,
+              "Title": "TimerManagerController.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Controllers\\TimerManagerController.cs",
+              "ViewState": "AgIAAAsAAAAAAAAAAAAQwAYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:29:58.353Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 48,
+              "Title": "20241124183334_UpdateModels.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124183334_UpdateModels.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241124183334_UpdateModels.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124183334_UpdateModels.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241124183334_UpdateModels.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T18:33:34.735Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 49,
+              "Title": "ApplicationDbInitializer.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\ApplicationDbInitializer.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABYAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:20:54.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 51,
+              "Title": "bootstrap.bundle.js",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+              "RelativeToolTip": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.bundle.js",
+              "ViewState": "AgIAAMMDAAAAAAAAAADgv9IDAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-19T18:57:22.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 50,
+              "Title": "additional-methods.js",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "RelativeToolTip": "KarateTournamentManeger\\wwwroot\\lib\\jquery-validation\\dist\\additional-methods.js",
+              "ViewState": "AgIAAAIBAAAAAAAAAIAwwBIBAAAfAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-19T18:57:27.586Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 52,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\Index.cshtml",
+              "ViewState": "AgIAAAwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:37:01.571Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 53,
+              "Title": "bootstrap.esm.js",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+              "RelativeToolTip": "KarateTournamentManeger\\wwwroot\\lib\\bootstrap\\dist\\js\\bootstrap.esm.js",
+              "ViewState": "AgIAAL4DAAAAAAAAAADgv80DAAAdAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001646|",
+              "WhenOpened": "2024-11-19T18:57:24.743Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 54,
+              "Title": "20241124135659_ParticipantModelsAddToDBContext.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124135659_ParticipantModelsAddToDBContext.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241124135659_ParticipantModelsAddToDBContext.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124135659_ParticipantModelsAddToDBContext.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241124135659_ParticipantModelsAddToDBContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T13:57:00.057Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 55,
+              "Title": "20241124130052_AddTournamentAndStageModels.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124130052_AddTournamentAndStageModels.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241124130052_AddTournamentAndStageModels.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124130052_AddTournamentAndStageModels.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241124130052_AddTournamentAndStageModels.cs",
+              "ViewState": "AgIAAAYAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T13:00:52.896Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 56,
+              "Title": "20241124123809_InitialModels01.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124123809_InitialModels01.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241124123809_InitialModels01.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241124123809_InitialModels01.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241124123809_InitialModels01.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T12:38:09.912Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 60,
+              "Title": "ScaffoldingReadMe.txt",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\ScaffoldingReadMe.txt",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\ScaffoldingReadMe.txt",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\ScaffoldingReadMe.txt",
+              "RelativeToolTip": "KarateTournamentManeger\\ScaffoldingReadMe.txt",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAMAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003109|",
+              "WhenOpened": "2024-11-21T14:41:09.939Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 57,
+              "Title": "PersonalData.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\PersonalData.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:40:39.056Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 64,
+              "Title": "Logout.cshtml.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-24T08:25:53.514Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 63,
+              "Title": "Logout.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Logout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:25:53.664Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 58,
+              "Title": "_ManageNav.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ManageNav.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:30:37.572Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 62,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:30:37.804Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 59,
+              "Title": "_Layout.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Manage\\_Layout.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:30:37.905Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 61,
+              "Title": "_StatusMessage.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_StatusMessage.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-24T08:39:16.67Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 66,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T14:41:20.333Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 65,
+              "Title": "_ViewStart.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\_ViewStart.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T13:43:07.898Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 67,
+              "Title": "KarateTournamentManeger.csproj",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "RelativeToolTip": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAawBIAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-14T18:05:34.687Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 68,
+              "Title": "_Layout.cshtml.css",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml.css",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml.css",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Shared\\_Layout.cshtml.css",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.003000|",
+              "WhenOpened": "2024-11-21T19:31:35.119Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 69,
+              "Title": "Login.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\Login.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T14:42:08.748Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 71,
+              "Title": "_ViewImports.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Areas\\Identity\\Pages\\Account\\_ViewImports.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T15:06:21.854Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 70,
+              "Title": "20241121151751_InitialID.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241121151751_InitialID.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241121151751_InitialID.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241121151751_InitialID.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241121151751_InitialID.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T15:17:52.03Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 72,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Properties\\launchSettings.json",
+              "RelativeToolTip": "KarateTournamentManeger\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2024-11-21T15:11:24.749Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 73,
+              "Title": "20241121143356_InitialIdentity.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241121143356_InitialIdentity.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241121143356_InitialIdentity.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241121143356_InitialIdentity.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241121143356_InitialIdentity.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-21T14:33:56.392Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 75,
+              "Title": "_ValidationScriptsPartial.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Shared\\_ValidationScriptsPartial.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T14:06:12.568Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 74,
+              "Title": "Error.cshtml",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\Error.cshtml",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Views\\Shared\\Error.cshtml",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Views\\Shared\\Error.cshtml",
+              "RelativeToolTip": "KarateTournamentManeger\\Views\\Shared\\Error.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2024-11-21T14:06:13.893Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 76,
+              "Title": "20241119213105_InitialCreate.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241119213105_InitialCreate.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241119213105_InitialCreate.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241119213105_InitialCreate.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241119213105_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T21:31:05.604Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 77,
+              "Title": "20241119210526_InitialCreate.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241119210526_InitialCreate.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Migrations\\20241119210526_InitialCreate.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Migrations\\20241119210526_InitialCreate.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Migrations\\20241119210526_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T21:05:26.699Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 78,
+              "Title": "KarateTournamentManeger",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "RelativeToolTip": "KarateTournamentManeger\\KarateTournamentManeger.csproj",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2024-11-19T20:21:13.2Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 79,
+              "Title": "20241119201801_UpdateIdentitySchema.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119201801_UpdateIdentitySchema.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T20:18:01.435Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 81,
+              "Title": "20241119195540_InitialCreate.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119195540_InitialCreate.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:55:40.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 80,
+              "Title": "20241119200821_ApplicationUsersAndRoles.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119200821_ApplicationUsersAndRoles.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T20:08:21.436Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 83,
+              "Title": "20241119192326_ApplicationDbInitializer.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119192326_ApplicationDbInitializer.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:23:26.944Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 82,
+              "Title": "20241119194115_ApplicationRoles.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119194115_ApplicationRoles.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:41:15.725Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 84,
+              "Title": "20241119190247_initialMigration.cs",
+              "DocumentMoniker": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
+              "RelativeDocumentMoniker": "KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
+              "ToolTip": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
+              "RelativeToolTip": "KarateTournamentManeger\\Data\\Migrations\\20241119190247_initialMigration.cs",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2024-11-19T19:02:47.587Z"
             }
           ]
         }

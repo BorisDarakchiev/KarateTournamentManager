@@ -19,6 +19,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
+using KarateTournamentManeger.Data;
+using KarateTournamentManeger.Data.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace KarateTournamentManeger.Areas.Identity.Pages.Account
 {
@@ -30,13 +33,15 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
         private readonly IUserEmailStore<ApplicationUser> _emailStore;
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
+        private readonly ApplicationDbContext _dbContext;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
             IUserStore<ApplicationUser> userStore,
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
-            IEmailSender emailSender)
+            IEmailSender emailSender,
+            ApplicationDbContext dbContext)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -44,6 +49,7 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
             _signInManager = signInManager;
             _logger = logger;
             _emailSender = emailSender;
+            _dbContext = dbContext;
         }
 
         /// <summary>
@@ -98,6 +104,15 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
             [Display(Name = "Confirm password")]
             [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
             public string ConfirmPassword { get; set; }
+
+            [Required]
+            [Display(Name = "Name")]
+            public string Name { get; set; } = null!;
+
+            [Required]
+            [Display(Name = "Date of Birth")]
+            [DataType(DataType.Date)]
+            public DateTime DateOfBirth { get; set; }
         }
 
 
@@ -110,50 +125,62 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
-                var user = CreateUser();
+                // Създаване на нов потребител
+                var user = new ApplicationUser
+                {
+                    UserName = Input.Email,
+                    Email = Input.Email
+                };
 
-                await _userStore.SetUserNameAsync(user, Input.Email, CancellationToken.None);
-                await _emailStore.SetEmailAsync(user, Input.Email, CancellationToken.None);
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
+                    // Логиране на успех
                     _logger.LogInformation("User created a new account with password.");
 
-                    var userId = await _userManager.GetUserIdAsync(user);
-                    var code = await _userManager.GenerateEmailConfirmationTokenAsync(user);
-                    code = WebEncoders.Base64UrlEncode(Encoding.UTF8.GetBytes(code));
-                    var callbackUrl = Url.Page(
-                        "/Account/ConfirmEmail",
-                        pageHandler: null,
-                        values: new { area = "Identity", userId = userId, code = code, returnUrl = returnUrl },
-                        protocol: Request.Scheme);
-
-                    await _emailSender.SendEmailAsync(Input.Email, "Confirm your email",
-                        $"Please confirm your account by <a href='{HtmlEncoder.Default.Encode(callbackUrl)}'>clicking here</a>.");
-
-                    if (_userManager.Options.SignIn.RequireConfirmedAccount)
+                    // Създаване на нов Participant
+                    var participant = new Participant
                     {
-                        return RedirectToPage("RegisterConfirmation", new { email = Input.Email, returnUrl = returnUrl });
-                    }
-                    else
+                        Name = Input.Name, // Увери се, че Name е част от InputModel
+                        DateOfBirth = Input.DateOfBirth, // Увери се, че DateOfBirth е част от InputModel
+                    };
+
+                    // Записване на участника в базата данни
+                    try
                     {
-                        await _signInManager.SignInAsync(user, isPersistent: false);
-                        return LocalRedirect(returnUrl);
+                        _dbContext.Participants.Add(participant);
+                        await _dbContext.SaveChangesAsync();
                     }
+                    catch (Exception ex)
+                    {
+                        _logger.LogError("Error creating participant: {Message}", ex.Message);
+                        ModelState.AddModelError(string.Empty, "Unable to create participant.");
+                        return Page();
+                    }
+
+                    // Добавяне на ролята "Participant" към потребителя
+                    await _userManager.AddToRoleAsync(user, "Participant");
+
+                    // Влизане и пренасочване
+                    await _signInManager.SignInAsync(user, isPersistent: false);
+                    return LocalRedirect(returnUrl);
                 }
+
+                // Добавяне на грешки в ModelState, ако създаването на потребител не е успешно
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
-            // If we got this far, something failed, redisplay form
+            // При невалиден ModelState, оставаме на същата страница
             return Page();
         }
+
+
 
         private ApplicationUser CreateUser()
         {
@@ -177,5 +204,6 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
             }
             return (IUserEmailStore<ApplicationUser>)_userStore;
         }
+
     }
 }

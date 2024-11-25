@@ -54,6 +54,9 @@ else
 
 <form asp-action="FinalizeEnrollment" method="post">
     <input type="hidden" name="tournamentId" value="@Model.Id" />
+    <a class="btn btn-primary" asp-controller="Admin" asp-action="Tournaments" role="button">
+        Всички турнири
+    </a>
     <button type="submit" class="btn btn-success">Край на записването</button>
 </form>
 

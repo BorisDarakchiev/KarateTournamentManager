@@ -1,7 +1,5 @@
 ﻿using KarateTournamentManager.Enums;
 using KarateTournamentManeger.Models.ViewModels;
-using System;
-using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
 namespace KarateTournamentManeger.Models

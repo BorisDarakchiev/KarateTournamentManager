@@ -94,6 +94,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/ManageUsers.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/Participants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGFydGljaXBhbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
