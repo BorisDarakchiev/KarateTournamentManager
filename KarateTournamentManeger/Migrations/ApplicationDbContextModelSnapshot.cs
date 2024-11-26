@@ -114,7 +114,7 @@ namespace KarateTournamentManeger.Migrations
 
                     b.HasIndex("TournamentId");
 
-                    b.ToTable("Stages", (string)null);
+                    b.ToTable("Stages");
                 });
 
             modelBuilder.Entity("KarateTournamentManeger.Data.Models.Tournament", b =>
@@ -139,7 +139,7 @@ namespace KarateTournamentManeger.Migrations
 
                     b.HasKey("Id");
 
-                    b.ToTable("Tournaments", (string)null);
+                    b.ToTable("Tournaments");
                 });
 
             modelBuilder.Entity("Match", b =>
@@ -203,7 +203,7 @@ namespace KarateTournamentManeger.Migrations
 
                     b.HasIndex("WinnerId");
 
-                    b.ToTable("Matchs", (string)null);
+                    b.ToTable("Matchs");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -345,16 +345,13 @@ namespace KarateTournamentManeger.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<DateTime>("DateOfBirth")
-                        .HasColumnType("datetime2");
-
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
                     b.HasKey("Id");
 
-                    b.ToTable("Participants", (string)null);
+                    b.ToTable("Participants");
                 });
 
             modelBuilder.Entity("ParticipantTournament", b =>
@@ -369,7 +366,7 @@ namespace KarateTournamentManeger.Migrations
 
                     b.HasIndex("TournamentsId");
 
-                    b.ToTable("ParticipantTournament", (string)null);
+                    b.ToTable("ParticipantTournament");
                 });
 
             modelBuilder.Entity("KarateTournamentManager.Identity.ApplicationUser", b =>

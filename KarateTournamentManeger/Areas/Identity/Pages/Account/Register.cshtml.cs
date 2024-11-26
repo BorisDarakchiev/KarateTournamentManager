@@ -34,6 +34,7 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
         private readonly ILogger<RegisterModel> _logger;
         private readonly IEmailSender _emailSender;
         private readonly ApplicationDbContext _dbContext;
+        private readonly RoleManager<IdentityRole> _roleManager;
 
         public RegisterModel(
             UserManager<ApplicationUser> userManager,
@@ -41,7 +42,8 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
             SignInManager<ApplicationUser> signInManager,
             ILogger<RegisterModel> logger,
             IEmailSender emailSender,
-            ApplicationDbContext dbContext)
+            ApplicationDbContext dbContext,
+            RoleManager<IdentityRole> roleManager)
         {
             _userManager = userManager;
             _userStore = userStore;
@@ -50,6 +52,7 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
             _logger = logger;
             _emailSender = emailSender;
             _dbContext = dbContext;
+            _roleManager = roleManager;
         }
 
         /// <summary>
@@ -107,78 +110,64 @@ namespace KarateTournamentManeger.Areas.Identity.Pages.Account
 
             [Required]
             [Display(Name = "Name")]
-            public string Name { get; set; } = null!;
-
-            [Required]
-            [Display(Name = "Date of Birth")]
-            [DataType(DataType.Date)]
-            public DateTime DateOfBirth { get; set; }
+            public string ParticipantName { get; set; } = null!;
         }
 
 
-        public async Task OnGetAsync(string returnUrl = null)
+        public void OnGet(string returnUrl = null!)
         {
-            ReturnUrl = returnUrl;
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            ReturnUrl = returnUrl ?? Url.Content("~/");
         }
 
-        public async Task<IActionResult> OnPostAsync(string returnUrl = null)
+        public async Task<IActionResult> OnPostAsync(string returnUrl = null!)
         {
             returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
             {
-                // Създаване на нов потребител
-                var user = new ApplicationUser
-                {
-                    UserName = Input.Email,
-                    Email = Input.Email
-                };
-
+                // Създаване на потребителя
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    // Логиране на успех
-                    _logger.LogInformation("User created a new account with password.");
-
-                    // Създаване на нов Participant
+                    // Създаване на Participant
                     var participant = new Participant
                     {
-                        Name = Input.Name, // Увери се, че Name е част от InputModel
-                        DateOfBirth = Input.DateOfBirth, // Увери се, че DateOfBirth е част от InputModel
+                        Name = Input.ParticipantName
                     };
 
-                    // Записване на участника в базата данни
-                    try
+                    // Добавяне на Participant в базата данни (само веднъж)
+                    _dbContext.Participants.Add(participant);
+                    await _dbContext.SaveChangesAsync(); // Това ще генерира ID за Participant
+
+                    // Свързване на Participant с ApplicationUser
+                    user.ParticipantId = participant.Id;
+
+                    // Актуализиране на ApplicationUser с ParticipantId (не е необходимо да се добавя два пъти)
+                    await _userManager.UpdateAsync(user);
+
+                    // Добавяне на потребителя към роля (например "Participant")
+                    if (await _roleManager.RoleExistsAsync("Participant"))
                     {
-                        _dbContext.Participants.Add(participant);
-                        await _dbContext.SaveChangesAsync();
-                    }
-                    catch (Exception ex)
-                    {
-                        _logger.LogError("Error creating participant: {Message}", ex.Message);
-                        ModelState.AddModelError(string.Empty, "Unable to create participant.");
-                        return Page();
+                        await _userManager.AddToRoleAsync(user, "Participant");
                     }
 
-                    // Добавяне на ролята "Participant" към потребителя
-                    await _userManager.AddToRoleAsync(user, "Participant");
-
-                    // Влизане и пренасочване
+                    // Вход на потребителя след успешна регистрация
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
 
-                // Добавяне на грешки в ModelState, ако създаването на потребител не е успешно
+                // Обработване на грешките при създаването на потребителя
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
 
-            // При невалиден ModelState, оставаме на същата страница
+            // Ако стигнем дотук, значи е имало грешка, и трябва да се върнем на формата
             return Page();
         }
+
 
 
 

@@ -1,0 +1,9 @@
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.csproj.AssemblyReference.cache
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.GeneratedMSBuildEditorConfig.editorconfig
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.AssemblyInfoInputs.cache
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.AssemblyInfo.cs
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.csproj.CoreCompileInputs.cache
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.MvcApplicationPartsAssemblyInfo.cache
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.RazorAssemblyInfo.cache
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.RazorAssemblyInfo.cs
+D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.sourcelink.json

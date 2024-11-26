@@ -59,32 +59,63 @@ public class AdminController : Controller
     [Route("ManageUsers")]
     public async Task<IActionResult> ManageUsers()
     {
-        var roles = await roleManager.Roles.Select(r => r.Name).ToListAsync();
+        var users = userManager.Users.ToList();  // Вземаме всички потребители
+        var roles = await roleManager.Roles.ToListAsync();  // Вземаме всички роли
 
-        var users = await userManager.Users
-            .Include(u => u.Participant)
-            .ToListAsync();
-
-        var userRolesViewModel = new List<ManageUsersViewModel>();
+        var model = new List<ManageUsersViewModel>();
 
         foreach (var user in users)
         {
-            var userRoles = await userManager.GetRolesAsync(user);
-            var currentRole = userRoles.FirstOrDefault() ?? "No Role";
+            var userRoles = await userManager.GetRolesAsync(user);  // Вземаме ролите на потребителя
 
-            userRolesViewModel.Add(new ManageUsersViewModel
+            // Вземаме Participant свързан с потребителя
+            var participant = await context.Participants
+                                              .FirstOrDefaultAsync(p => p.Id == user.ParticipantId);
+
+            var viewModel = new ManageUsersViewModel
             {
                 UserId = user.Id,
-                UserName = user.UserName,
+                UserName = participant?.Name ?? user.UserName,  // Вземаме Name от Participant, ако има такъв, иначе UserName
                 Email = user.Email,
-                CurrentRole = currentRole,
-                SelectedRole = currentRole,
-                AvailableRoles = roles
-            });
+                CurrentRole = userRoles.FirstOrDefault(),  // Вземаме първата роля, която е зададена на потребителя
+                AvailableRoles = roles.Select(r => r.Name).ToList()  // Всички възможни роли
+            };
+
+            model.Add(viewModel);
         }
 
-        return View(userRolesViewModel);
+        return View(model);  // Връщаме всички потребители с техните роли в View
     }
+
+
+
+    [HttpPost]
+    public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
+    {
+        var user = await userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        // Премахване на всички предишни роли
+        var currentRoles = await userManager.GetRolesAsync(user);
+        var removeResult = await userManager.RemoveFromRolesAsync(user, currentRoles);
+        if (!removeResult.Succeeded)
+        {
+            return BadRequest("Error removing roles.");
+        }
+
+        // Добавяне на новата роля
+        var addResult = await userManager.AddToRoleAsync(user, selectedRole);
+        if (!addResult.Succeeded)
+        {
+            return BadRequest("Error adding role.");
+        }
+
+        return RedirectToAction("ManageUsers");
+    }
+
 
     [HttpPost]
     [ValidateAntiForgeryToken]

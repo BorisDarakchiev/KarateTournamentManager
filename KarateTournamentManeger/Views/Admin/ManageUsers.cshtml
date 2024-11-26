@@ -1,26 +1,18 @@
-﻿@model IEnumerable<KarateTournamentManeger.Models.ViewModels.ManageUsersViewModel>
+﻿@model List<KarateTournamentManeger.Models.ViewModels.ManageUsersViewModel>
 
 @{
     ViewData["Title"] = "Manage Users";
 }
 
-<h2>Manage Users</h2>
+<h1>@ViewData["Title"]</h1>
 
-@if (TempData["Error"] != null)
-{
-    <div class="alert alert-danger">
-        @TempData["Error"]
-    </div>
-}
-
-<table class="table table-bordered">
+<table class="table table-striped">
     <thead>
         <tr>
             <th>User Name</th>
             <th>Email</th>
-            <th>Participant Name</th>
-            <th>Current Role</th>
-            <th>Change Role</th>
+            <th>Current Roles</th>
+            <th>Assign Role</th>
         </tr>
     </thead>
     <tbody>
@@ -29,19 +21,20 @@
             <tr>
                 <td>@user.UserName</td>
                 <td>@user.Email</td>
-                <td>@user.UserName</td>
                 <td>@user.CurrentRole</td>
                 <td>
-                    <form asp-action="ManageUsers" method="post">
-                        <input type="hidden" name="UserId" value="@user.UserId" />
-                        <select name="SelectedRole" class="form-control">
-                            @foreach (var role in user.AvailableRoles)
-                            {
-                                <option value="@role" selected="@(user.AvailableRoles != null && user.AvailableRoles.Contains(role) ? "selected" : null)">@role</option>
-                            }
-                        </select>
-                        <button type="submit" class="btn btn-primary mt-2">Change Role</button>
-                    </form>
+                    <button class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Update Role</button>
+                    <ul class="dropdown-menu">
+                        @foreach (var role in user.AvailableRoles)
+                        {
+                            <li>
+                                <form method="post" asp-action="UpdateUserRole" asp-route-userId="@user.UserId">
+                                    <input type="hidden" name="SelectedRole" value="@role" />
+                                    <button class="dropdown-item" type="submit">@role</button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
                 </td>
             </tr>
         }
