@@ -59,104 +59,33 @@ public class AdminController : Controller
     [Route("ManageUsers")]
     public async Task<IActionResult> ManageUsers()
     {
-        var users = userManager.Users.ToList();  // Вземаме всички потребители
-        var roles = await roleManager.Roles.ToListAsync();  // Вземаме всички роли
+        var users = userManager.Users.ToList();
+        var roles = await roleManager.Roles.ToListAsync();
 
         var model = new List<ManageUsersViewModel>();
 
         foreach (var user in users)
         {
-            var userRoles = await userManager.GetRolesAsync(user);  // Вземаме ролите на потребителя
+            var userRoles = await userManager.GetRolesAsync(user);
 
-            // Вземаме Participant свързан с потребителя
             var participant = await context.Participants
                                               .FirstOrDefaultAsync(p => p.Id == user.ParticipantId);
 
             var viewModel = new ManageUsersViewModel
             {
                 UserId = user.Id,
-                UserName = participant?.Name ?? user.UserName,  // Вземаме Name от Participant, ако има такъв, иначе UserName
+                UserName = participant?.Name ?? user.UserName,
                 Email = user.Email,
-                CurrentRole = userRoles.FirstOrDefault(),  // Вземаме първата роля, която е зададена на потребителя
-                AvailableRoles = roles.Select(r => r.Name).ToList()  // Всички възможни роли
+                CurrentRole = userRoles.FirstOrDefault(),
+                AvailableRoles = roles.Select(r => r.Name).ToList()
             };
 
             model.Add(viewModel);
         }
 
-        return View(model);  // Връщаме всички потребители с техните роли в View
+        return View(model);
     }
 
-
-
-    [HttpPost]
-    public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
-    {
-        var user = await userManager.FindByIdAsync(userId);
-        if (user == null)
-        {
-            return NotFound();
-        }
-
-        // Премахване на всички предишни роли
-        var currentRoles = await userManager.GetRolesAsync(user);
-        var removeResult = await userManager.RemoveFromRolesAsync(user, currentRoles);
-        if (!removeResult.Succeeded)
-        {
-            return BadRequest("Error removing roles.");
-        }
-
-        // Добавяне на новата роля
-        var addResult = await userManager.AddToRoleAsync(user, selectedRole);
-        if (!addResult.Succeeded)
-        {
-            return BadRequest("Error adding role.");
-        }
-
-        return RedirectToAction("ManageUsers");
-    }
-
-
-    [HttpPost]
-    [ValidateAntiForgeryToken]
-    [Route("ManageUsers")]
-    public async Task<IActionResult> ChangeParticipantRole(ParticipantViewModel model)
-    {
-        if (!ModelState.IsValid)
-        {
-            TempData["Error"] = "Invalid data provided.";
-            return RedirectToAction(nameof(ManageUsers));
-        }
-
-        var user = await userManager.Users.FirstOrDefaultAsync(u => u.ParticipantId == model.Id);
-        if (user == null)
-        {
-            TempData["Error"] = "No user associated with this participant.";
-            return RedirectToAction(nameof(ManageUsers));
-        }
-
-        var currentRoles = await userManager.GetRolesAsync(user);
-
-        if (currentRoles.Any())
-        {
-            await userManager.RemoveFromRolesAsync(user, currentRoles);
-        }
-
-        if (!string.IsNullOrEmpty(model.Role))
-        {
-            var roleExists = await roleManager.RoleExistsAsync(model.Role);
-            if (roleExists)
-            {
-                await userManager.AddToRoleAsync(user, model.Role);
-            }
-            else
-            {
-                TempData["Error"] = "The selected role does not exist.";
-            }
-        }
-
-        return RedirectToAction(nameof(ManageUsers));
-    }
 
     [HttpGet]
     [Route("Admin/CreateTournament")]
@@ -254,12 +183,10 @@ public class AdminController : Controller
         return RedirectToAction("Tournaments");
     }
 
-    // Път за ApproveParticipant
     [HttpPost]
     [Route("ApproveParticipant")]
     public IActionResult ApproveParticipant(Guid participantId)
     {
-        // Логика за одобрение на участник
         return RedirectToAction("Participants");
     }
 
