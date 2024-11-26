@@ -1,0 +1,25 @@
+﻿@model IEnumerable<KarateTournamentManeger.Models.TournamentViewModel>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Име на турнира</th>
+            <th>Дата</th>
+            <th>Локация</th>
+            <th>Статус</th>
+            <th>Записани участници</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tournament in Model)
+        {
+            <tr>
+                <td>@tournament.Description</td>
+                <td>@tournament.Date.ToString("dd/MM/yyyy")</td>
+                <td>@tournament.Location</td>
+                <td>@tournament.Status</td>
+                <td>@tournament.EnrolledParticipantsCount</td>
+            </tr>
+        }
+    </tbody>
+</table>

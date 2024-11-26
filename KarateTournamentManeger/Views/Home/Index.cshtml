@@ -1,10 +1,20 @@
-﻿@{
+﻿
+@{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+    <h4 class="display-6">to Karate Tournament Menager</h4>
+
+    <h1>Предстоящи турнири</h1>
+
+    <div id="tournament-list">
+        @Html.Partial("_TournamentListPartial", ViewData["Tournaments"])
+    </div>
+
+
+
 </div>
 
 
