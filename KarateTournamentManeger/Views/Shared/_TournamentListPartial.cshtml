@@ -1,13 +1,23 @@
-﻿@model IEnumerable<KarateTournamentManeger.Models.TournamentViewModel>
+﻿@using KarateTournamentManager.Identity
+@using Microsoft.AspNetCore.Identity
+@inject UserManager<ApplicationUser> UserManager
 
-<table class="table">
+@model IEnumerable<KarateTournamentManeger.Models.TournamentViewModel>
+
+@{
+    var currentUser = await UserManager.GetUserAsync(User);
+    var isAdmin = currentUser != null && await UserManager.IsInRoleAsync(currentUser, "Administrator");
+}
+
+<table class="table table-striped">
     <thead>
         <tr>
-            <th>Име на турнира</th>
+            <th>Информация</th>
             <th>Дата</th>
             <th>Локация</th>
             <th>Статус</th>
             <th>Записани участници</th>
+            <th>Actions</th>
         </tr>
     </thead>
     <tbody>
@@ -19,6 +29,29 @@
                 <td>@tournament.Location</td>
                 <td>@tournament.Status</td>
                 <td>@tournament.EnrolledParticipantsCount</td>
+                <td>
+                    @if (!isAdmin) // Ако не е администратор, показваме бутоните
+                    {
+                        @if (User.Identity.IsAuthenticated)
+                        {
+                            if (!tournament.IsParticipant)
+                            {
+                                <form method="post" action="@Url.Action("RegisterForTournament", "Participant")">
+                                    <input type="hidden" name="tournamentId" value="@tournament.Id" />
+                                    <button type="submit" class="btn btn-primary">Записване</button>
+                                </form>
+                            }
+                            else
+                            {
+                                <span>Записани сте за турнира!</span>
+                            }
+                        }
+                    }
+                    else
+                    {
+                        <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
+                    }
+                </td>
             </tr>
         }
     </tbody>

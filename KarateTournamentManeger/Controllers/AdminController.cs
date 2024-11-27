@@ -152,11 +152,12 @@ public class AdminController : Controller
             Description = tournament.Description,
             Date = tournament.Date,
             Status = tournament.Status,
-            EnrolledParticipants = tournament.EnrolledParticipants != null && tournament.EnrolledParticipants.Any()
-                ? tournament.EnrolledParticipants
-                    .Select(p => new ParticipantViewModel { Name = p.Name, Id = p.Id })
-                    .ToList()
-                : new List<ParticipantViewModel>(),
+            EnrolledParticipantsCount = tournament.EnrolledParticipants?.Count ?? 0,
+            EnrolledParticipants = tournament.EnrolledParticipants != null
+                    ? tournament.EnrolledParticipants
+                        .Select(p => new ParticipantViewModel { Name = p.Name, Id = p.Id })
+                        .ToList()
+                    : new List<ParticipantViewModel>(),
 
             Stages = tournament.Stages
                 .Select(s => new StageViewModel { Name = s.Name, Id = s.Id })

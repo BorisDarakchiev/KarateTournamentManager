@@ -22,11 +22,14 @@ namespace KarateTournamentManeger.Models
         public TournamentStatus Status { get; set; }
 
         [Display(Name = "Записани участници")]
-        public int EnrolledParticipantsCount => EnrolledParticipants.Count;
+        public int EnrolledParticipantsCount { get; set; }
 
         public List<ParticipantViewModel> EnrolledParticipants { get; set; } = new();
 
         [Display(Name = "Етапи")]
         public List<StageViewModel> Stages { get; set; } = new();
+
+        public bool IsParticipant { get; set; }
+
     }
 }
