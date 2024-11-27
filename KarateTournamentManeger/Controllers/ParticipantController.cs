@@ -34,20 +34,17 @@ public class ParticipantController : Controller
     [HttpPost]
     public async Task<IActionResult> RegisterForTournament(Guid tournamentId)
     {
-        // Проверка дали потребителят е логнат
         var currentUser = await userManager.GetUserAsync(User);
         if (currentUser == null)
         {
             return Unauthorized("Трябва да сте логнат, за да се запишете за турнир.");
         }
 
-        // Проверка дали ParticipantId е валиден
         if (string.IsNullOrEmpty(currentUser.ParticipantId?.ToString()) || !Guid.TryParse(currentUser.ParticipantId.ToString(), out var participantId))
         {
             return BadRequest("Не сте свързан като участник.");
         }
 
-        // Вземаме свързания Participant чрез ParticipantId
         var participant = await context.Participants
             .FirstOrDefaultAsync(p => p.Id == participantId);
 
@@ -56,7 +53,6 @@ public class ParticipantController : Controller
             return BadRequest("Не сте регистриран като участник.");
         }
 
-        // Проверяваме дали турнирът съществува
         var tournament = await context.Tournaments
             .Include(t => t.EnrolledParticipants)
             .FirstOrDefaultAsync(t => t.Id == tournamentId);
@@ -66,19 +62,16 @@ public class ParticipantController : Controller
             return NotFound("Турнирът не е намерен.");
         }
 
-        // Проверяваме дали EnrolledParticipants е null и го инициализираме
         if (tournament.EnrolledParticipants == null)
         {
             tournament.EnrolledParticipants = new List<Participant>();
         }
 
-        // Проверяваме дали участникът вече е записан
         if (tournament.EnrolledParticipants.Any(p => p.Id == participant.Id))
         {
             return BadRequest("Вече сте записан за този турнир.");
         }
 
-        // Добавяме участника към турнира
         tournament.EnrolledParticipants.Add(participant);
         await context.SaveChangesAsync();
 

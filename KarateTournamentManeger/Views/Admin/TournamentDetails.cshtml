@@ -14,27 +14,44 @@
     </div>
 </div>
 
+
 <h3>Участници</h3>
 @if (Model.EnrolledParticipants.Count > 0)
 {
-    <ul>
-        @foreach (var participant in Model.EnrolledParticipants)
-        {
-            <li>
-                @participant.Name
-                <form asp-action="RemoveParticipant" method="post" style="display:inline;">
-                    <input type="hidden" name="tournamentId" value="@Model.Id" />
-                    <input type="hidden" name="participantId" value="@participant.Id" />
-                    <button type="submit" class="btn btn-danger btn-sm">Откажи участник</button>
-                </form>
-            </li>
-        }
-    </ul>
+    <table class="table table-striped">
+        <thead>
+            <tr>
+                <th>#</th>
+                <th>Име</th>
+                <th>Имейл</th>
+                <th>Действия</th>
+            </tr>
+        </thead>
+        <tbody>
+            @for (int i = 0; i < Model.EnrolledParticipants.Count; i++)
+            {
+                var participant = Model.EnrolledParticipants[i];
+                <tr>
+                    <td>@(i + 1)</td>
+                    <td>@participant.Name</td>
+                    <td>@participant.Email</td>
+                    <td>
+                        <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
+                            <input type="hidden" name="tournamentId" value="@Model.Id" />
+                            <input type="hidden" name="participantId" value="@participant.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
+                        </form>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>
 }
 else
 {
     <p>Няма записани участници за този турнир.</p>
 }
+
 
 
 <h3>Етапи</h3>
@@ -59,4 +76,3 @@ else
     </a>
     <button type="submit" class="btn btn-success">Край на записването</button>
 </form>
-

@@ -20,6 +20,12 @@ namespace KarateTournamentManeger.Data
         {
             base.OnModelCreating(modelBuilder);
 
+            modelBuilder.Entity<ApplicationUser>()
+                .HasOne(a => a.Participant)
+                .WithOne()
+                .HasForeignKey<ApplicationUser>(a => a.ParticipantId)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Participant1)

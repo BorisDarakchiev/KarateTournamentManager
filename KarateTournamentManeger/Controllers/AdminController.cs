@@ -8,6 +8,7 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using System.Data;
 
 
 
@@ -35,6 +36,7 @@ public class AdminController : Controller
     public async Task<IActionResult> Tournaments()
     {
         var model = await context.Tournaments
+            .OrderByDescending(t => t.Date)
             .Select(t => new Tournament()
             {
                 Id = t.Id,
@@ -137,13 +139,23 @@ public class AdminController : Controller
         var tournament = await context.Tournaments
             .Include(t => t.EnrolledParticipants)
             .Include(t => t.Stages)
-            .FirstOrDefaultAsync(t => t.Id == id); 
-
+            .FirstOrDefaultAsync(t => t.Id == id);
 
         if (tournament == null)
         {
             return NotFound();
         }
+
+        var enrolledParticipants = tournament.EnrolledParticipants.Select(p =>
+        {
+            var user = context.Users.FirstOrDefault(u => u.ParticipantId == p.Id);
+            return new ParticipantViewModel
+            {
+                Id = p.Id,
+                Name = p.Name,
+                Email = user?.Email ?? "N/A"
+            };
+        }).ToList();
 
         var model = new TournamentViewModel
         {
@@ -152,15 +164,14 @@ public class AdminController : Controller
             Description = tournament.Description,
             Date = tournament.Date,
             Status = tournament.Status,
-            EnrolledParticipantsCount = tournament.EnrolledParticipants?.Count ?? 0,
-            EnrolledParticipants = tournament.EnrolledParticipants != null
-                    ? tournament.EnrolledParticipants
-                        .Select(p => new ParticipantViewModel { Name = p.Name, Id = p.Id })
-                        .ToList()
-                    : new List<ParticipantViewModel>(),
-
+            EnrolledParticipantsCount = enrolledParticipants.Count,
+            EnrolledParticipants = enrolledParticipants,
             Stages = tournament.Stages
-                .Select(s => new StageViewModel { Name = s.Name, Id = s.Id })
+                .Select(s => new StageViewModel
+                {
+                    Name = s.Name,
+                    Id = s.Id
+                })
                 .ToList()
         };
 
@@ -190,5 +201,35 @@ public class AdminController : Controller
     {
         return RedirectToAction("Participants");
     }
+
+    [HttpPost]
+    [Route("Admin/RemoveParticipant")]
+    public async Task<IActionResult> RemoveParticipant(Guid tournamentId, Guid participantId)
+    {
+        var tournament = await context.Tournaments
+            .Include(t => t.EnrolledParticipants)
+            .FirstOrDefaultAsync(t => t.Id == tournamentId);
+
+        if (tournament == null)
+        {
+            return NotFound("Турнирът не е намерен.");
+        }
+
+        var participant = tournament.EnrolledParticipants.FirstOrDefault(p => p.Id == participantId);
+        if (participant == null)
+        {
+            return NotFound("Участникът не е намерен в този турнир.");
+        }
+
+        tournament.EnrolledParticipants.Remove(participant);
+
+        await context.SaveChangesAsync();
+
+        TempData["SuccessMessage"] = $"Участникът {participant.Name} беше успешно премахнат от турнира.";
+        return RedirectToAction("TournamentDetails", new { id = tournamentId });
+    }
+
+
+
 
 }
