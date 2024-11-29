@@ -241,25 +241,20 @@ public class AdminController : Controller
 
         var currentRoles = await userManager.GetRolesAsync(user);
 
-        // Ако потребителят вече има избраната роля, няма нужда да правим нищо
         if (currentRoles.Contains(selectedRole))
         {
             return RedirectToAction("ManageUsers");
         }
 
-        // Премахваме всички текущи роли на потребителя
         await userManager.RemoveFromRolesAsync(user, currentRoles);
 
-        // Добавяме новата роля
         var result = await userManager.AddToRoleAsync(user, selectedRole);
 
         if (result.Succeeded)
         {
-            // Връщаме към страницата с потребителите
             return RedirectToAction("ManageUsers");
         }
 
-        // Ако има грешки, можем да ги покажем на потребителя
         foreach (var error in result.Errors)
         {
             ModelState.AddModelError("", error.Description);
