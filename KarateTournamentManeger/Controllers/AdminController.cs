@@ -228,6 +228,45 @@ public class AdminController : Controller
         return RedirectToAction("TournamentDetails", new { id = tournamentId });
     }
 
+    [HttpPost]
+    [Route("UpdateUserRole")]
+    [Authorize(Roles = "Administrator")]
+    public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
+    {
+        var user = await userManager.FindByIdAsync(userId);
+        if (user == null)
+        {
+            return NotFound();
+        }
+
+        var currentRoles = await userManager.GetRolesAsync(user);
+
+        // Ако потребителят вече има избраната роля, няма нужда да правим нищо
+        if (currentRoles.Contains(selectedRole))
+        {
+            return RedirectToAction("ManageUsers");
+        }
+
+        // Премахваме всички текущи роли на потребителя
+        await userManager.RemoveFromRolesAsync(user, currentRoles);
+
+        // Добавяме новата роля
+        var result = await userManager.AddToRoleAsync(user, selectedRole);
+
+        if (result.Succeeded)
+        {
+            // Връщаме към страницата с потребителите
+            return RedirectToAction("ManageUsers");
+        }
+
+        // Ако има грешки, можем да ги покажем на потребителя
+        foreach (var error in result.Errors)
+        {
+            ModelState.AddModelError("", error.Description);
+        }
+
+        return View();
+    }
 
 
 

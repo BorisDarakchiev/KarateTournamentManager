@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "FyBwuvXdc50=",
+  "dgSpecHash": "Pl8II8AkAYI=",
   "success": true,
-  "projectFilePath": "D:\\SoftUni\\repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+  "projectFilePath": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Boris\\.nuget\\packages\\azure.core\\1.38.0\\azure.core.1.38.0.nupkg.sha512",
     "C:\\Users\\Boris\\.nuget\\packages\\azure.identity\\1.11.4\\azure.identity.1.11.4.nupkg.sha512",

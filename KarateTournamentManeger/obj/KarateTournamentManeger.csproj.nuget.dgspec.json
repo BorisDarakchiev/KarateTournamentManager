@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "D:\\SoftUni\\repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj": {}
+    "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj": {}
   },
   "projects": {
-    "D:\\SoftUni\\repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj": {
+    "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "D:\\SoftUni\\repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+        "projectUniqueName": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
         "projectName": "KarateTournamentManeger",
-        "projectPath": "D:\\SoftUni\\repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+        "projectPath": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
         "packagesPath": "C:\\Users\\Boris\\.nuget\\packages\\",
-        "outputPath": "D:\\SoftUni\\repos\\KarateTournamentManeger\\obj\\",
+        "outputPath": "D:\\_Repos\\KarateTournamentManeger\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
