@@ -10,7 +10,6 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-//Много съм глупав
 
 [Route("Admin")]
 [Authorize(Roles = "Administrator")]
