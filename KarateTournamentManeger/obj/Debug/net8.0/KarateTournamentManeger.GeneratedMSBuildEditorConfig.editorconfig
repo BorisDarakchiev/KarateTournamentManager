@@ -17,131 +17,131 @@ build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property._SupportedPlatformList = Linux,macOS,Windows
 build_property.RootNamespace = KarateTournamentManeger
 build_property.RootNamespace = KarateTournamentManeger
-build_property.ProjectDir = D:\repos\Karate\KarateTournamentManeger\KarateTournamentManeger\
+build_property.ProjectDir = D:\SoftUni\repos\KarateTournamentManeger\
 build_property.EnableComHosting = 
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.RazorLangVersion = 8.0
 build_property.SupportLocalizedComponentNames = 
 build_property.GenerateRazorMetadataSourceChecksumAttributes = 
-build_property.MSBuildProjectDirectory = D:\repos\Karate\KarateTournamentManeger\KarateTournamentManeger
+build_property.MSBuildProjectDirectory = D:\SoftUni\repos\KarateTournamentManeger
 build_property._RazorSourceGeneratorDebug = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Login.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Login.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dpbi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Logout.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Logout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxMb2dvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/ChangePassword.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcQ2hhbmdlUGFzc3dvcmQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/Email.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/Email.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcRW1haWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/Index.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcSW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/PersonalData.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcUGVyc29uYWxEYXRhLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX0xheW91dC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/_ManageNav.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX01hbmFnZU5hdi5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Manage/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxNYW5hZ2VcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/Register.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/Register.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxSZWdpc3Rlci5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/_StatusMessage.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfU3RhdHVzTWVzc2FnZS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/Account/_ViewImports.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/Account/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcQWNjb3VudFxfVmlld0ltcG9ydHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZhbGlkYXRpb25TY3JpcHRzUGFydGlhbC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/_ViewImports.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Areas/Identity/Pages/_ViewStart.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Areas/Identity/Pages/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = QXJlYXNcSWRlbnRpdHlcUGFnZXNcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/CreateTournament.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/CreateTournament.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cQ3JlYXRlVG91cm5hbWVudC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/index.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5caW5kZXguY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/ManageUsers.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/ManageUsers.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cTWFuYWdlVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/Participants.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/Participants.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cUGFydGljaXBhbnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/TournamentDetails.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/TournamentDetails.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVG91cm5hbWVudERldGFpbHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/Tournaments.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/Tournaments.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVG91cm5hbWVudHMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Admin/Users.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Admin/Users.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQWRtaW5cVXNlcnMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Home/Index.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Home/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcSG9tZVxJbmRleC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Shared/Error.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Shared/Error.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXEVycm9yLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Shared/_LoginPartial.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Shared/_LoginPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Mb2dpblBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Shared/_TournamentListPartial.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Shared/_TournamentListPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9Ub3VybmFtZW50TGlzdFBhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Shared/_ValidationScriptsPartial.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Shared/_ValidationScriptsPartial.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/_ViewImports.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/_ViewImports.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdJbXBvcnRzLmNzaHRtbA==
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/_ViewStart.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/_ViewStart.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcX1ZpZXdTdGFydC5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
-[D:/repos/Karate/KarateTournamentManeger/KarateTournamentManeger/Views/Shared/_Layout.cshtml]
+[D:/SoftUni/repos/KarateTournamentManeger/Views/Shared/_Layout.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9MYXlvdXQuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = b-o4kvdrk498
