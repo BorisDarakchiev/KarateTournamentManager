@@ -10,7 +10,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
-
+//test_21
 [Route("Admin")]
 [Authorize(Roles = "Administrator")]
 public class AdminController : Controller
