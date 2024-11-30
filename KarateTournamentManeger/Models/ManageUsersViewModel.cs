@@ -1,4 +1,4 @@
-﻿namespace KarateTournamentManeger.Models.ViewModels
+﻿namespace KarateTournamentManager.Models.ViewModels
 {
     public class ManageUsersViewModel
     {

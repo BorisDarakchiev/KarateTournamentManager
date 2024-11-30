@@ -1,10 +1,11 @@
-﻿using KarateTournamentManager.Enums;
+﻿using KarateTournamentManager.Controllers;
+using KarateTournamentManager.Enums;
 using KarateTournamentManager.Identity;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 
-namespace KarateTournamentManeger.Data.Models
+namespace KarateTournamentManager.Data.Models
 {
     public class Tournament
     {

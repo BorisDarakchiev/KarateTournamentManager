@@ -1,6 +1,6 @@
 using KarateTournamentManager.Identity;
-using KarateTournamentManeger.Data;
-using KarateTournamentManeger.Services;
+using KarateTournamentManager.Data;
+using KarateTournamentManager.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;

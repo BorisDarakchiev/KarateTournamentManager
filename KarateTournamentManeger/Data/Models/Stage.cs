@@ -1,6 +1,7 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using KarateTournamentManager.Controllers;
+using System.ComponentModel.DataAnnotations;
 
-namespace KarateTournamentManeger.Data.Models
+namespace KarateTournamentManager.Data.Models
 {
     public class Stage
     {

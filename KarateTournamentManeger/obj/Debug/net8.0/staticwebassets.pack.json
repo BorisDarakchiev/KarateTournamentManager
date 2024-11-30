@@ -1,8 +1,8 @@
 {
   "Files": [
     {
-      "Id": "D:\\_Repos\\KarateTournamentManeger\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\KarateTournamentManeger.bundle.scp.css",
-      "PackagePath": "staticwebassets\\KarateTournamentManeger.bundle.scp.css"
+      "Id": "D:\\_Repos\\KarateTournamentManeger\\obj\\Debug\\net8.0\\scopedcss\\projectbundle\\KarateTournamentManager.bundle.scp.css",
+      "PackagePath": "staticwebassets\\KarateTournamentManager.bundle.scp.css"
     },
     {
       "Id": "D:\\_Repos\\KarateTournamentManeger\\wwwroot\\css\\site.css",
@@ -245,20 +245,20 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.KarateTournamentManeger.Microsoft.AspNetCore.StaticWebAssets.props",
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.KarateTournamentManager.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.KarateTournamentManeger.props",
-      "PackagePath": "build\\KarateTournamentManeger.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.build.KarateTournamentManager.props",
+      "PackagePath": "build\\KarateTournamentManager.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.KarateTournamentManeger.props",
-      "PackagePath": "buildMultiTargeting\\KarateTournamentManeger.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildMultiTargeting.KarateTournamentManager.props",
+      "PackagePath": "buildMultiTargeting\\KarateTournamentManager.props"
     },
     {
-      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.KarateTournamentManeger.props",
-      "PackagePath": "buildTransitive\\KarateTournamentManeger.props"
+      "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.buildTransitive.KarateTournamentManager.props",
+      "PackagePath": "buildTransitive\\KarateTournamentManager.props"
     }
   ],
   "ElementsToRemove": []

@@ -12,11 +12,11 @@ using System;
 using System.Reflection;
 
 [assembly: Microsoft.AspNetCore.Identity.UI.UIFrameworkAttribute("Bootstrap5")]
-[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-KarateTournamentManeger-c7cc0e98-a317-4803-adab-140c01a0279d")]
+[assembly: Microsoft.Extensions.Configuration.UserSecrets.UserSecretsIdAttribute("aspnet-KarateTournamentManager-c7cc0e98-a317-4803-adab-140c01a0279d")]
 [assembly: System.Reflection.AssemblyCompanyAttribute("KarateTournamentManeger")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0805c9968e6e6fd96f886dd405f5d5b146a6a6df")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+c639eb0828a6d709205480fea21e18bddf1be4f4")]
 [assembly: System.Reflection.AssemblyProductAttribute("KarateTournamentManeger")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KarateTournamentManeger")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

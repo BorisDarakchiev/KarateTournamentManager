@@ -1,51 +1,55 @@
 ﻿using KarateTournamentManager.Identity;
-using KarateTournamentManeger.Data.Models;
-using KarateTournamentManeger.Enums;
+using KarateTournamentManager.Data.Models;
+using KarateTournamentManager.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 
-public class Match
+
+namespace KarateTournamentManager.Controllers
 {
-    [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public class Match
+    {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-    [Required]
-    public int Tatami { get; set; }
+        [Required]
+        public int Tatami { get; set; }
 
-    [Required]
-    public Guid TournamentId { get; set; }
-    public Tournament Tournament { get; set; } = null!;
+        [Required]
+        public Guid TournamentId { get; set; }
+        public Tournament Tournament { get; set; } = null!;
 
-    [Required]
-    public Guid Participant1Id { get; set; }
+        [Required]
+        public Guid Participant1Id { get; set; }
 
-    [ForeignKey(nameof(Participant1Id))]
-    public Participant Participant1 { get; set; } = null!;
+        [ForeignKey(nameof(Participant1Id))]
+        public Participant Participant1 { get; set; } = null!;
 
-    [Required]
-    public Guid Participant2Id { get; set; }
+        [Required]
+        public Guid Participant2Id { get; set; }
 
-    [ForeignKey(nameof(Participant2Id))]
-    public Participant Participant2 { get; set; } = null!;
+        [ForeignKey(nameof(Participant2Id))]
+        public Participant Participant2 { get; set; } = null!;
 
-    public int Participant1Score { get; set; } = 0;
-    public int Participant2Score { get; set; } = 0;
+        public int Participant1Score { get; set; } = 0;
+        public int Participant2Score { get; set; } = 0;
 
-    [Required]
-    public MatchStatus Status { get; set; } = MatchStatus.Upcoming;
+        [Required]
+        public MatchStatus Status { get; set; } = MatchStatus.Upcoming;
 
-    [Required]
-    public MatchPeriod Period { get; set; } = MatchPeriod.Main;
+        [Required]
+        public MatchPeriod Period { get; set; } = MatchPeriod.Main;
 
-    public TimeSpan RemainingTime { get; set; }
+        public TimeSpan RemainingTime { get; set; }
 
-    public Guid? WinnerId { get; set; }
+        public Guid? WinnerId { get; set; }
 
-    [ForeignKey(nameof(WinnerId))]
-    public Participant? Winner { get; set; }
+        [ForeignKey(nameof(WinnerId))]
+        public Participant? Winner { get; set; }
 
-    public string? TimerManagerId { get; set; }
+        public string? TimerManagerId { get; set; }
 
-    [ForeignKey(nameof(TimerManagerId))]
-    public ApplicationUser? TimerManager { get; set; }
+        [ForeignKey(nameof(TimerManagerId))]
+        public ApplicationUser? TimerManager { get; set; }
+    }
 }

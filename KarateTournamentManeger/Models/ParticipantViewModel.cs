@@ -1,6 +1,6 @@
 ﻿using System.ComponentModel.DataAnnotations;
 
-namespace KarateTournamentManeger.Models
+namespace KarateTournamentManager.Models
 {
     public class ParticipantViewModel
     {

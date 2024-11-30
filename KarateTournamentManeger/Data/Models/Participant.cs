@@ -1,15 +1,19 @@
-﻿using KarateTournamentManeger.Data.Models;
+﻿using KarateTournamentManager.Data.Models;
 using System.ComponentModel.DataAnnotations;
 
-public class Participant
+
+namespace KarateTournamentManager.Controllers
 {
-    [Key]
-    public Guid Id { get; set; } = Guid.NewGuid();
+    public class Participant
+    {
+        [Key]
+        public Guid Id { get; set; } = Guid.NewGuid();
 
-    [Required]
-    public string Name { get; set; } = null!;
+        [Required]
+        public string Name { get; set; } = null!;
 
-    public ICollection<Match> Matches { get; set; } = new List<Match>();
+        public ICollection<Match> Matches { get; set; } = new List<Match>();
 
-    public ICollection<Tournament> Tournaments { get; set; } = new List<Tournament>();
+        public ICollection<Tournament> Tournaments { get; set; } = new List<Tournament>();
+    }
 }

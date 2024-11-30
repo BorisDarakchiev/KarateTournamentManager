@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.Extensions.Logging;
 
-namespace KarateTournamentManeger.Areas.Identity.Pages.Account.Manage
+namespace KarateTournamentManager.Areas.Identity.Pages.Account.Manage
 {
     public class PersonalDataModel : PageModel
     {

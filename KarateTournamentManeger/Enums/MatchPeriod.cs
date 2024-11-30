@@ -1,4 +1,4 @@
-﻿namespace KarateTournamentManeger.Enums
+﻿namespace KarateTournamentManager.Enums
 {
     public enum MatchPeriod
     {

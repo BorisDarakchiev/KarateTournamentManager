@@ -1,11 +1,10 @@
-﻿namespace KarateTournamentManeger.Models.ViewModels
+﻿namespace KarateTournamentManager.Models.ViewModels
 {
-    using global::KarateTournamentManeger.Enums;
-    using KarateTournamentManager.Enums;
+    using global::KarateTournamentManager.Enums;
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    namespace KarateTournamentManeger.Models.ViewModels
+    namespace KarateTournamentManager.Models.ViewModels
     {
         public class MatchViewModel
         {

@@ -1,7 +1,7 @@
-﻿using KarateTournamentManeger.Models.ViewModels.KarateTournamentManeger.Models.ViewModels;
+﻿using KarateTournamentManager.Models.ViewModels.KarateTournamentManager.Models.ViewModels;
 using System.ComponentModel.DataAnnotations;
 
-namespace KarateTournamentManeger.Models.ViewModels
+namespace KarateTournamentManager.Models.ViewModels
 {
     public class StageViewModel
     {

@@ -1,13 +1,13 @@
 using KarateTournamentManager.Identity;
-using KarateTournamentManeger.Data;
-using KarateTournamentManeger.Models;
-using KarateTournamentManeger.Models.ViewModels;
+using KarateTournamentManager.Data;
+using KarateTournamentManager.Models;
+using KarateTournamentManager.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Diagnostics;
 
-namespace KarateTournamentManeger.Controllers
+namespace KarateTournamentManager.Controllers
 {
     public class HomeController : Controller
     {

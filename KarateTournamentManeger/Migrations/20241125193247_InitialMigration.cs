@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 #nullable disable
 
-namespace KarateTournamentManeger.Migrations
+namespace KarateTournamentManager.Migrations
 {
     /// <inheritdoc />
     public partial class InitialMigration : Migration

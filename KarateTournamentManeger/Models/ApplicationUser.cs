@@ -1,4 +1,5 @@
-﻿using KarateTournamentManeger.Data.Models;
+﻿using KarateTournamentManager.Controllers;
+using KarateTournamentManager.Data.Models;
 using Microsoft.AspNetCore.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;

@@ -1,5 +1,5 @@
-﻿using KarateTournamentManeger.Data.Models;
-using KarateTournamentManeger.Models.ViewModels;
+﻿using KarateTournamentManager.Data.Models;
+using KarateTournamentManager.Models.ViewModels;
 
 public class TournamentsAndParticipantsViewModel
 {

@@ -1,9 +1,10 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using KarateTournamentManager.Identity;
-using KarateTournamentManeger.Data.Models;
+using KarateTournamentManager.Data.Models;
+using KarateTournamentManager.Controllers;
 
-namespace KarateTournamentManeger.Data
+namespace KarateTournamentManager.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {

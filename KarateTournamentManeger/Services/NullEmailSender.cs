@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity.UI.Services;
 using System.Threading.Tasks;
 
-namespace KarateTournamentManeger.Services
+namespace KarateTournamentManager.Services
 {
     public class NullEmailSender : IEmailSender
     {

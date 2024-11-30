@@ -19,11 +19,12 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.RazorPages;
 using Microsoft.AspNetCore.WebUtilities;
 using Microsoft.Extensions.Logging;
-using KarateTournamentManeger.Data;
-using KarateTournamentManeger.Data.Models;
+using KarateTournamentManager.Data;
+using KarateTournamentManager.Data.Models;
 using Microsoft.EntityFrameworkCore;
+using KarateTournamentManager.Controllers;
 
-namespace KarateTournamentManeger.Areas.Identity.Pages.Account
+namespace KarateTournamentManager.Areas.Identity.Pages.Account
 {
     public class RegisterModel : PageModel
     {

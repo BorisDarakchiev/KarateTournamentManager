@@ -8364,9 +8364,9 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
-      "projectName": "KarateTournamentManeger",
-      "projectPath": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+      "projectUniqueName": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManager.csproj",
+      "projectName": "KarateTournamentManager",
+      "projectPath": "D:\\_Repos\\KarateTournamentManeger\\KarateTournamentManager.csproj",
       "packagesPath": "C:\\Users\\Boris\\.nuget\\packages\\",
       "outputPath": "D:\\_Repos\\KarateTournamentManeger\\obj\\",
       "projectStyle": "PackageReference",
