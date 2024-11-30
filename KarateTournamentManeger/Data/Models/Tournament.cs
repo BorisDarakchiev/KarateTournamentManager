@@ -24,9 +24,8 @@ namespace KarateTournamentManager.Data.Models
         [Required]
         public TournamentStatus Status { get; set; } = TournamentStatus.Upcoming;
 
-        public ICollection<ApplicationUser> Participants { get; set; } = new List<ApplicationUser>();
-
-        public ICollection<Stage> Stages { get; set; } = new List<Stage>();
         public List<Participant>? EnrolledParticipants { get; set; } = new List<Participant>();
     }
+
+
 }

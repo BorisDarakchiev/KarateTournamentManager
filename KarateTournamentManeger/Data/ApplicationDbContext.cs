@@ -13,20 +13,23 @@ namespace KarateTournamentManager.Data
         {
         }
 
-        public ApplicationDbContext()
-        {
-        }
-
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
+
+            modelBuilder.Entity<Match>()
+                .HasOne(m => m.TimerManager)
+                .WithMany()
+                .HasForeignKey(m => m.TimerManagerId)
+                .HasPrincipalKey(u => u.Id)
+                .OnDelete(DeleteBehavior.Restrict);
+
 
             modelBuilder.Entity<ApplicationUser>()
                 .HasOne(a => a.Participant)
                 .WithOne()
                 .HasForeignKey<ApplicationUser>(a => a.ParticipantId)
                 .OnDelete(DeleteBehavior.Restrict);
-
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Participant1)
@@ -45,14 +48,7 @@ namespace KarateTournamentManager.Data
                 .WithMany()
                 .HasForeignKey(m => m.WinnerId)
                 .OnDelete(DeleteBehavior.SetNull);
-
-            modelBuilder.Entity<Match>()
-                .HasOne(m => m.TimerManager)
-                .WithMany()
-                .HasForeignKey(m => m.TimerManagerId)
-                .OnDelete(DeleteBehavior.SetNull);
         }
-
 
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Stage> Stages { get; set; }

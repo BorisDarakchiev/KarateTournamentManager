@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
+using System.Security.Cryptography.X509Certificates;
 
 
 namespace KarateTournamentManager.Controllers
@@ -120,7 +121,6 @@ namespace KarateTournamentManager.Controllers
                     Date = model.Date,
                     Status = TournamentStatus.Upcoming,
                     EnrolledParticipants = new List<Participant>(),
-                    Stages = new List<Stage>(),
                 };
 
                 context.Tournaments.Add(tournament);
@@ -139,7 +139,6 @@ namespace KarateTournamentManager.Controllers
         {
             var tournament = await context.Tournaments
                 .Include(t => t.EnrolledParticipants)
-                .Include(t => t.Stages)
                 .FirstOrDefaultAsync(t => t.Id == id);
 
             if (tournament == null)
@@ -167,13 +166,6 @@ namespace KarateTournamentManager.Controllers
                 Status = tournament.Status,
                 EnrolledParticipantsCount = enrolledParticipants.Count,
                 EnrolledParticipants = enrolledParticipants,
-                Stages = tournament.Stages
-                    .Select(s => new StageViewModel
-                    {
-                        Name = s.Name,
-                        Id = s.Id
-                    })
-                    .ToList()
             };
 
             return View(model);
@@ -232,7 +224,6 @@ namespace KarateTournamentManager.Controllers
 
         [HttpPost]
         [Route("UpdateUserRole")]
-        [Authorize(Roles = "Administrator")]
         public async Task<IActionResult> UpdateUserRole(string userId, string selectedRole)
         {
             var user = await userManager.FindByIdAsync(userId);
@@ -265,7 +256,106 @@ namespace KarateTournamentManager.Controllers
             return View();
         }
 
+        [HttpPost]
+        [Route("{id}")]
+        public async Task<IActionResult> FinalizeEnrollment(Guid tournamentId)
+        {
+            var tournament = await context.Tournaments
+                .Include(t => t.EnrolledParticipants)
+                .FirstOrDefaultAsync(t => t.Id == tournamentId);
 
+            if (tournament == null)
+            {
+                return NotFound("Турнирът не е намерен.");
+            }
+
+            var participants = tournament.EnrolledParticipants.ToList();
+
+            if (participants.Count < 2)
+            {
+                return BadRequest("Необходими са поне двама участници за създаване на етапи.");
+            }
+
+            var existingStages = await context.Stages
+                .Where(s => s.TournamentId == tournamentId)
+                .ToListAsync();
+
+            foreach (var stage in existingStages)
+            {
+                var matches = await context.Matchs
+                    .Where(m => m.StageId == stage.Id)
+                    .ToListAsync();
+
+                context.Matchs.RemoveRange(matches);
+                context.Stages.Remove(stage);
+            }
+
+            await context.SaveChangesAsync();
+
+            if (participants.Count == 2)
+            {
+                var finalStage = new Stage
+                {
+                    Name = "Финал",
+                    TournamentId = tournamentId
+                };
+
+                await context.Stages.AddAsync(finalStage);
+                await context.SaveChangesAsync();
+
+                var finalMatch = new Match
+                {
+                    Participant1Id = participants[0].Id,
+                    Participant2Id = participants[1].Id,
+                    StageId = finalStage.Id,
+                    Tatami = 1
+                };
+
+                await context.Matchs.AddAsync(finalMatch);
+            }
+            else if (participants.Count == 3)
+            {
+                var groupStage = new Stage
+                {
+                    Name = "Всеки срещу всеки",
+                    TournamentId = tournamentId
+                };
+
+                await context.Stages.AddAsync(groupStage);
+                await context.SaveChangesAsync();
+
+                var matches = new List<Match>
+        {
+            new Match
+            {
+                Participant1Id = participants[0].Id,
+                Participant2Id = participants[1].Id,
+                StageId = groupStage.Id,
+                Tatami = 1
+            },
+            new Match
+            {
+                Participant1Id = participants[1].Id,
+                Participant2Id = participants[2].Id,
+                StageId = groupStage.Id,
+                Tatami = 2
+            },
+            new Match
+            {
+                Participant1Id = participants[0].Id,
+                Participant2Id = participants[2].Id,
+                StageId = groupStage.Id,
+                Tatami = 3
+            }
+        };
+
+                await context.Matchs.AddRangeAsync(matches);
+            }
+
+            await context.SaveChangesAsync();
+
+            return Ok("Етапите и мачовете бяха успешно създадени.");
+        }
 
     }
 }

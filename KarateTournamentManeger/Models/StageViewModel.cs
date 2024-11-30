@@ -1,5 +1,4 @@
-﻿using KarateTournamentManager.Models.ViewModels.KarateTournamentManager.Models.ViewModels;
-using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel.DataAnnotations;
 
 namespace KarateTournamentManager.Models.ViewModels
 {

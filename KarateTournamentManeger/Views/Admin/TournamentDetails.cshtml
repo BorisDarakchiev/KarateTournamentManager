@@ -60,7 +60,40 @@ else
     <ul>
         @foreach (var stage in Model.Stages)
         {
-            <li>@stage.Name</li>
+            <div class="card mt-3">
+                <div class="card-header">
+                    <strong>@stage.Name</strong>
+                </div>
+                <div class="card-body">
+                    <table class="table table-bordered">
+                        <thead>
+                            <tr>
+                                <th>Участник 1</th>
+                                <th>Участник 2</th>
+                                <th>Резултат</th>
+                                <th>Част</th>
+                                <th>Оставащо време</th>
+                                <th>Статус</th>
+                                <th>Победител</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            @foreach (var match in stage.Matches)
+                            {
+                                <tr>
+                                    <td>@match.Participant1Name</td>
+                                    <td>@match.Participant2Name</td>
+                                    <td>@match.Participant1Score : @match.Participant2Score</td>
+                                    <td>@match.Period</td>
+                                    <td>@match.RemainingTime</td>
+                                    <td>@match.Status</td>
+                                    <td>@(match.Participant1Score > match.Participant2Score ? match.Participant1Name : match.Participant2Name)</td>
+                                </tr>
+                            }
+                        </tbody>
+                    </table>
+                </div>
+            </div>
         }
     </ul>
 }
@@ -74,5 +107,10 @@ else
     <a class="btn btn-primary" asp-controller="Admin" asp-action="Tournaments" role="button">
         Всички турнири
     </a>
-    <button type="submit" class="btn btn-success">Край на записването</button>
+    <form asp-action="FinalizeEnrollment" asp-controller="Admin" method="post">
+        <input type="hidden" name="id" value="@Model.Id" />
+        <button type="submit" class="btn btn-success">Край на записването</button>
+    </form>
+
+    <p>ID на турнира: @Model.Id</p>
 </form>

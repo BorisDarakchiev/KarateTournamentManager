@@ -1,5 +1,6 @@
 ﻿using KarateTournamentManager.Controllers;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace KarateTournamentManager.Data.Models
 {
@@ -11,6 +12,12 @@ namespace KarateTournamentManager.Data.Models
         [Required]
         public string Name { get; set; } = null!;
 
-        public IList<Match> Matches { get; set; } = new List<Match>();
+        [Required]
+        public Guid TournamentId { get; set; }
+
+        [ForeignKey(nameof(TournamentId))]
+        public Tournament Tournament { get; set; } = null!;
     }
+
+
 }

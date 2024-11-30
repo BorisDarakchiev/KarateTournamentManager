@@ -1,0 +1,31 @@
+﻿@model KarateTournamentManager.Models.ViewModels.StageViewModel
+
+<h2>Детайли за етап: @Model.Name</h2>
+
+<table class="table table-bordered">
+    <thead>
+        <tr>
+            <th>Участник 1</th>
+            <th>Участник 2</th>
+            <th>Резултат</th>
+            <th>Част</th>
+            <th>Оставащо време</th>
+            <th>Статус</th>
+            <th>Победител</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var match in Model.Matches)
+        {
+            <tr>
+                <td>@match.Participant1Name</td>
+                <td>@match.Participant2Name</td>
+                <td>@match.Participant1Score : @match.Participant2Score</td>
+                <td>@match.Period</td>
+                <td>@match.RemainingTime</td>
+                <td>@match.Status</td>
+                <td>@(match.Participant1Score > match.Participant2Score ? match.Participant1Name : match.Participant2Name)</td>
+            </tr>
+        }
+    </tbody>
+</table>

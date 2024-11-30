@@ -4,8 +4,6 @@
     using System;
     using System.ComponentModel.DataAnnotations;
 
-    namespace KarateTournamentManager.Models.ViewModels
-    {
         public class MatchViewModel
         {
             public Guid Id { get; set; }
@@ -36,5 +34,3 @@
             public string TournamentName { get; set; } = string.Empty;
         }
     }
-
-}

@@ -54,12 +54,7 @@ namespace KarateTournamentManager.Controllers
                         .ToList()
                     : new List<ParticipantViewModel>(),
                 IsParticipant = currentUserParticipantId.HasValue &&
-                                t.EnrolledParticipants.Any(p => p.Id == currentUserParticipantId.Value),
-                Stages = t.Stages.Select(s => new StageViewModel
-                {
-                    Id = s.Id,
-                    Name = s.Name,
-                }).ToList()
+                                t.EnrolledParticipants.Any(p => p.Id == currentUserParticipantId.Value)
             }).ToList();
         }
 

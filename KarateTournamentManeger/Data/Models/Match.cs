@@ -16,20 +16,16 @@ namespace KarateTournamentManager.Controllers
         public int Tatami { get; set; }
 
         [Required]
-        public Guid TournamentId { get; set; }
-        public Tournament Tournament { get; set; } = null!;
-
-        [Required]
         public Guid Participant1Id { get; set; }
 
         [ForeignKey(nameof(Participant1Id))]
-        public Participant Participant1 { get; set; } = null!;
+        public Participant? Participant1 { get; set; }
 
         [Required]
         public Guid Participant2Id { get; set; }
 
         [ForeignKey(nameof(Participant2Id))]
-        public Participant Participant2 { get; set; } = null!;
+        public Participant? Participant2 { get; set; }
 
         public int Participant1Score { get; set; } = 0;
         public int Participant2Score { get; set; } = 0;
@@ -47,9 +43,17 @@ namespace KarateTournamentManager.Controllers
         [ForeignKey(nameof(WinnerId))]
         public Participant? Winner { get; set; }
 
+        [Required]
+        public Guid StageId { get; set; }
+
+        [ForeignKey(nameof(StageId))]
+        public Stage Stage { get; set; } = null!;
+
         public string? TimerManagerId { get; set; }
 
         [ForeignKey(nameof(TimerManagerId))]
         public ApplicationUser? TimerManager { get; set; }
     }
+
+
 }
