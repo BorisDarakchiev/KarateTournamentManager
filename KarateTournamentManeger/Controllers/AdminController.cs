@@ -146,6 +146,7 @@ namespace KarateTournamentManager.Controllers
                 return NotFound();
             }
 
+            // Зареждаме участниците
             var enrolledParticipants = tournament.EnrolledParticipants.Select(p =>
             {
                 var user = context.Users.FirstOrDefault(u => u.ParticipantId == p.Id);
@@ -157,6 +158,31 @@ namespace KarateTournamentManager.Controllers
                 };
             }).ToList();
 
+            var matches = await context.Matchеs
+                .Include(m => m.Stage) 
+                .Where(m => m.Stage.TournamentId == id)
+                .Include(m => m.Participant1)
+                .Include(m => m.Participant2)
+                .ToListAsync();
+
+            var stagesWithMatches = matches
+                .GroupBy(m => m.Stage) 
+                .Select(group => new StageViewModel
+                {
+                    Id = group.Key.Id,
+                    Name = group.Key.Name,
+                    Matches = group.Select(m => new MatchViewModel
+                    {
+                        Participant1Name = m.Participant1.Name,
+                        Participant2Name = m.Participant2.Name,
+                        Participant1Score = m.Participant1Score,
+                        Participant2Score = m.Participant2Score,
+                        Period = m.Period,
+                        RemainingTime = m.RemainingTime.ToString(@"hh\:mm\:ss"),
+                        Status = m.Status
+                    }).ToList()
+                }).ToList();
+
             var model = new TournamentViewModel
             {
                 Id = tournament.Id,
@@ -166,10 +192,17 @@ namespace KarateTournamentManager.Controllers
                 Status = tournament.Status,
                 EnrolledParticipantsCount = enrolledParticipants.Count,
                 EnrolledParticipants = enrolledParticipants,
+                Stages = stagesWithMatches
             };
 
             return View(model);
         }
+
+
+
+
+
+
 
         [HttpPost]
         [Route("Admin/DeleteTournament")]
@@ -282,11 +315,11 @@ namespace KarateTournamentManager.Controllers
 
             foreach (var stage in existingStages)
             {
-                var matches = await context.Matchs
+                var matches = await context.Matchеs
                     .Where(m => m.StageId == stage.Id)
                     .ToListAsync();
 
-                context.Matchs.RemoveRange(matches);
+                context.Matchеs.RemoveRange(matches);
                 context.Stages.Remove(stage);
             }
 
@@ -311,7 +344,7 @@ namespace KarateTournamentManager.Controllers
                     Tatami = 1
                 };
 
-                await context.Matchs.AddAsync(finalMatch);
+                await context.Matchеs.AddAsync(finalMatch);
             }
             else if (participants.Count == 3)
             {
@@ -349,7 +382,7 @@ namespace KarateTournamentManager.Controllers
             }
         };
 
-                await context.Matchs.AddRangeAsync(matches);
+                await context.Matchеs.AddRangeAsync(matches);
             }
 
             await context.SaveChangesAsync();

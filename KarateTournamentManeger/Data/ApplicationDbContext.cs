@@ -52,7 +52,7 @@ namespace KarateTournamentManager.Data
 
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Stage> Stages { get; set; }
-        public DbSet<Match> Matchs { get; set; }
+        public DbSet<Match> Matchеs { get; set; }
         public DbSet<Participant> Participants { get; set; }
 
     }

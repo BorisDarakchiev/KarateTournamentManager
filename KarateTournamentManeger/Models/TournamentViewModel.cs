@@ -26,10 +26,9 @@ namespace KarateTournamentManager.Models
 
         public List<ParticipantViewModel> EnrolledParticipants { get; set; } = new();
 
-        [Display(Name = "Етапи")]
         public List<StageViewModel> Stages { get; set; } = new();
 
         public bool IsParticipant { get; set; }
-
     }
+
 }
