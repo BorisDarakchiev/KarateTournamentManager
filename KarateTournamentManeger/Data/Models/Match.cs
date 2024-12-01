@@ -16,13 +16,13 @@ namespace KarateTournamentManager.Controllers
         public int Tatami { get; set; }
 
         [Required]
-        public Guid Participant1Id { get; set; }
+        public Guid? Participant1Id { get; set; }
 
         [ForeignKey(nameof(Participant1Id))]
         public Participant? Participant1 { get; set; }
 
         [Required]
-        public Guid Participant2Id { get; set; }
+        public Guid? Participant2Id { get; set; }
 
         [ForeignKey(nameof(Participant2Id))]
         public Participant? Participant2 { get; set; }

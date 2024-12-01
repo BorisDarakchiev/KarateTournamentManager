@@ -28,13 +28,15 @@ namespace KarateTournamentManager.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Participant1Id")
+                    b.Property<Guid?>("Participant1Id")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant1Score")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("Participant2Id")
+                    b.Property<Guid?>("Participant2Id")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant2Score")

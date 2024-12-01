@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241130230228_UpdateMatchesTable")]
-    partial class UpdateMatchesTable
+    [Migration("20241201103842_AllowNullParticipantsInMatch")]
+    partial class AllowNullParticipantsInMatch
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -31,13 +31,15 @@ namespace KarateTournamentManager.Migrations
                         .ValueGeneratedOnAdd()
                         .HasColumnType("uniqueidentifier");
 
-                    b.Property<Guid>("Participant1Id")
+                    b.Property<Guid?>("Participant1Id")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant1Score")
                         .HasColumnType("int");
 
-                    b.Property<Guid>("Participant2Id")
+                    b.Property<Guid?>("Participant2Id")
+                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant2Score")

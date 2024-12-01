@@ -6,7 +6,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 namespace KarateTournamentManager.Migrations
 {
     /// <inheritdoc />
-    public partial class UpdateMatchesTable : Migration
+    public partial class AllowNullParticipantsInMatch : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)

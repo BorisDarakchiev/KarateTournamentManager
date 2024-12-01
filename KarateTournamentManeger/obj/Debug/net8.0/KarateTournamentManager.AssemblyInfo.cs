@@ -16,7 +16,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("KarateTournamentManager")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+79c4d28c0bdabd63ca94a57fe66883d222cfe1ec")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+41b46802b4107ef80e511137559bc3ff611796b5")]
 [assembly: System.Reflection.AssemblyProductAttribute("KarateTournamentManager")]
 [assembly: System.Reflection.AssemblyTitleAttribute("KarateTournamentManager")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
