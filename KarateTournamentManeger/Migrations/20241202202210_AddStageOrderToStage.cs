@@ -5,26 +5,25 @@
 namespace KarateTournamentManager.Migrations
 {
     /// <inheritdoc />
-    public partial class AddRowVersionToTournament : Migration
+    public partial class AddStageOrderToStage : Migration
     {
         /// <inheritdoc />
         protected override void Up(MigrationBuilder migrationBuilder)
         {
-            migrationBuilder.AddColumn<byte[]>(
-                name: "RowVersion",
-                table: "Tournaments",
-                type: "rowversion",
-                rowVersion: true,
+            migrationBuilder.AddColumn<int>(
+                name: "StageOrder",
+                table: "Stages",
+                type: "int",
                 nullable: false,
-                defaultValue: new byte[0]);
+                defaultValue: 0);
         }
 
         /// <inheritdoc />
         protected override void Down(MigrationBuilder migrationBuilder)
         {
             migrationBuilder.DropColumn(
-                name: "RowVersion",
-                table: "Tournaments");
+                name: "StageOrder",
+                table: "Stages");
         }
     }
 }

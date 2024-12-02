@@ -54,6 +54,6 @@ namespace KarateTournamentManager.Data
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Match> Matchеs { get; set; }
         public DbSet<Participant> Participants { get; set; }
-
+        public IEnumerable<object> Matches { get; internal set; }
     }
 }

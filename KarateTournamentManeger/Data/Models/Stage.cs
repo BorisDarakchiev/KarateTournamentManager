@@ -1,4 +1,5 @@
 ﻿using KarateTournamentManager.Controllers;
+using KarateTournamentManager.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 
@@ -17,6 +18,7 @@ namespace KarateTournamentManager.Data.Models
 
         [ForeignKey(nameof(TournamentId))]
         public Tournament Tournament { get; set; } = null!;
+        public StageOrder StageOrder { get; set; }
     }
 
 

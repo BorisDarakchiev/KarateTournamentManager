@@ -172,8 +172,8 @@ namespace KarateTournamentManager.Controllers
                     Name = group.Key.Name,
                     Matches = group.Select(m => new MatchViewModel
                     {
-                        Participant1Name = m.Participant1.Name,
-                        Participant2Name = m.Participant2.Name,
+                        Participant1Name = m.Participant1 != null ? m.Participant1.Name : "Не е определен",
+                        Participant2Name = m.Participant2 != null ? m.Participant2.Name : "Не е определен",
                         Participant1Score = m.Participant1Score,
                         Participant2Score = m.Participant2Score,
                         Period = m.Period,
@@ -181,6 +181,19 @@ namespace KarateTournamentManager.Controllers
                         Status = m.Status
                     }).ToList()
                 }).ToList();
+
+
+            var sortedStages = new List<StageViewModel>();
+
+            foreach (StageOrder stageOrder in Enum.GetValues(typeof(StageOrder)))
+            {
+                var stage = stagesWithMatches.FirstOrDefault(s => s.Name == stageOrder.ToString());
+
+                if (stage != null)
+                {
+                    sortedStages.Add(stage);
+                }
+            }
 
             var model = new TournamentViewModel
             {
@@ -191,16 +204,11 @@ namespace KarateTournamentManager.Controllers
                 Status = tournament.Status,
                 EnrolledParticipantsCount = enrolledParticipants.Count,
                 EnrolledParticipants = enrolledParticipants,
-                Stages = stagesWithMatches
+                Stages = sortedStages
             };
 
             return View(model);
         }
-
-
-
-
-
 
 
         [HttpPost]
@@ -328,7 +336,8 @@ namespace KarateTournamentManager.Controllers
             {
                 var finalStage = new Stage
                 {
-                    Name = "Финал",
+                    Name = StageOrder.Final.ToString(),
+                    StageOrder = StageOrder.Final,
                     TournamentId = tournamentId
                 };
 
@@ -340,9 +349,7 @@ namespace KarateTournamentManager.Controllers
                     Participant1Id = participants[0].Id,
                     Participant2Id = participants[1].Id,
                     StageId = finalStage.Id,
-                    Tatami = 1,
-                    WinnerId = null,
-                    Winner = null
+                    Tatami = 1
                 };
 
                 await context.Matchеs.AddAsync(finalMatch);
@@ -351,7 +358,8 @@ namespace KarateTournamentManager.Controllers
             {
                 var groupStage = new Stage
                 {
-                    Name = "Всеки срещу всеки",
+                    Name = "RoundRobin",
+                    StageOrder = StageOrder.RoundRobin,
                     TournamentId = tournamentId
                 };
 
@@ -360,43 +368,19 @@ namespace KarateTournamentManager.Controllers
 
                 var matches = new List<Match>
         {
-            new Match
-            {
-                Participant1Id = participants[0].Id,
-                Participant2Id = participants[1].Id,
-                StageId = groupStage.Id,
-                Tatami = 1,
-                WinnerId = null,
-                Winner = null
-            },
-            new Match
-            {
-                Participant1Id = participants[1].Id,
-                Participant2Id = participants[2].Id,
-                StageId = groupStage.Id,
-                Tatami = 2,
-                WinnerId = null,
-                Winner = null
-            },
-            new Match
-            {
-                Participant1Id = participants[0].Id,
-                Participant2Id = participants[2].Id,
-                StageId = groupStage.Id,
-                Tatami = 3,
-                WinnerId = null,
-                Winner = null
-            }
+            new Match { Participant1Id = participants[0].Id, Participant2Id = participants[1].Id, StageId = groupStage.Id, Tatami = 1 },
+            new Match { Participant1Id = participants[1].Id, Participant2Id = participants[2].Id, StageId = groupStage.Id, Tatami = 2 },
+            new Match { Participant1Id = participants[0].Id, Participant2Id = participants[2].Id, StageId = groupStage.Id, Tatami = 3 }
         };
+
                 await context.Matchеs.AddRangeAsync(matches);
             }
-
             else if (participants.Count == 4)
             {
-                // Полуфинали и финал
                 var semiFinalStage = new Stage
                 {
-                    Name = "Полуфинал",
+                    Name = StageOrder.SemiFinal.ToString(),
+                    StageOrder = StageOrder.SemiFinal,
                     TournamentId = tournamentId
                 };
 
@@ -414,7 +398,8 @@ namespace KarateTournamentManager.Controllers
 
                 var finalStage = new Stage
                 {
-                    Name = "Финал",
+                    Name = StageOrder.Final.ToString(),
+                    StageOrder = StageOrder.Final,
                     TournamentId = tournamentId
                 };
 
@@ -423,8 +408,6 @@ namespace KarateTournamentManager.Controllers
 
                 var finalMatch = new Match
                 {
-                    Participant1Id = new Guid("8007F381-FAAE-4F8F-B4D9-788CBA307DA6"),
-                    Participant2Id = new Guid("A010317D-BB6E-4604-B8C6-380C2C030C9C"),
                     StageId = finalStage.Id,
                     Tatami = 1
                 };
@@ -433,10 +416,10 @@ namespace KarateTournamentManager.Controllers
             }
             else if (participants.Count >= 5 && participants.Count <= 7)
             {
-                // Предварителна фаза
                 var preliminaryStage = new Stage
                 {
-                    Name = "Предварителен етап",
+                    Name = StageOrder.Preliminary.ToString(),
+                    StageOrder = StageOrder.Preliminary,
                     TournamentId = tournamentId
                 };
 
@@ -460,10 +443,10 @@ namespace KarateTournamentManager.Controllers
                 await context.Matchеs.AddRangeAsync(preliminaryMatches);
                 await context.SaveChangesAsync();
 
-                // Полуфинал
                 var semiFinalStage = new Stage
                 {
-                    Name = "Полуфинал",
+                    Name = StageOrder.SemiFinal.ToString(),
+                    StageOrder = StageOrder.SemiFinal,
                     TournamentId = tournamentId
                 };
 
@@ -479,10 +462,10 @@ namespace KarateTournamentManager.Controllers
                 await context.Matchеs.AddRangeAsync(semiFinalMatches);
                 await context.SaveChangesAsync();
 
-                // Финал
                 var finalStage = new Stage
                 {
-                    Name = "Финал",
+                    Name = StageOrder.Final.ToString(),
+                    StageOrder = StageOrder.Final,
                     TournamentId = tournamentId
                 };
 
@@ -502,7 +485,8 @@ namespace KarateTournamentManager.Controllers
             await context.SaveChangesAsync();
 
             return RedirectToAction("TournamentDetails", new { id = tournamentId });
-
         }
+
+
     }
 }

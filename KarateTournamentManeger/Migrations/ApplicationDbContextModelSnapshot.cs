@@ -29,14 +29,12 @@ namespace KarateTournamentManager.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("Participant1Id")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant1Score")
                         .HasColumnType("int");
 
                     b.Property<Guid?>("Participant2Id")
-                        .IsRequired()
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant2Score")
@@ -107,6 +105,9 @@ namespace KarateTournamentManager.Migrations
                     b.Property<string>("Name")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<int>("StageOrder")
+                        .HasColumnType("int");
 
                     b.Property<Guid>("TournamentId")
                         .HasColumnType("uniqueidentifier");
@@ -368,14 +369,12 @@ namespace KarateTournamentManager.Migrations
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Participant1")
                         .WithMany()
                         .HasForeignKey("Participant1Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Participant2")
                         .WithMany()
                         .HasForeignKey("Participant2Id")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.Restrict);
 
                     b.HasOne("KarateTournamentManager.Controllers.Participant", null)
                         .WithMany("Matches")
