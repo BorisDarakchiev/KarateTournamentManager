@@ -14,7 +14,6 @@
     </div>
 </div>
 
-
 <h3>Участници</h3>
 @if (Model.EnrolledParticipants.Count > 0)
 {
@@ -24,7 +23,10 @@
                 <th>#</th>
                 <th>Име</th>
                 <th>Имейл</th>
-                <th>Действия</th>
+                @if (Model.Status.ToString() == "Upcoming")
+                {
+                    <th>Действия</th>
+                }
             </tr>
         </thead>
         <tbody>
@@ -35,13 +37,16 @@
                     <td>@(i + 1)</td>
                     <td>@participant.Name</td>
                     <td>@participant.Email</td>
-                    <td>
-                        <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
-                            <input type="hidden" name="tournamentId" value="@Model.Id" />
-                            <input type="hidden" name="participantId" value="@participant.Id" />
-                            <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
-                        </form>
-                    </td>
+                    @if (Model.Status.ToString() == "Upcoming")
+                    {
+                        <td>
+                            <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
+                                <input type="hidden" name="tournamentId" value="@Model.Id" />
+                                <input type="hidden" name="participantId" value="@participant.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
+                            </form>
+                        </td>
+                    }
                 </tr>
             }
         </tbody>
@@ -51,8 +56,6 @@ else
 {
     <p>Няма записани участници за този турнир.</p>
 }
-
-
 
 <h3>Етапи</h3>
 @if (Model.Stages.Count > 0)
@@ -102,13 +105,17 @@ else
     <p>Няма етапи за този турнир.</p>
 }
 
-<form asp-action="FinalizeEnrollment" method="post">
+<div>
     <input type="hidden" name="tournamentId" value="@Model.Id" />
     <a class="btn btn-primary" asp-controller="Admin" asp-action="Tournaments" role="button">
         Всички турнири
     </a>
-    <form asp-action="FinalizeEnrollment" asp-controller="Admin" method="post">
-        <input type="hidden" name="tournamentId" value="@Model.Id" />
-        <button type="submit" class="btn btn-success">Край на записването</button>
-    </form>
-</form>
+
+    @if (Model.Status.ToString() == "Upcoming")
+    {
+        <form asp-action="FinalizeEnrollment" asp-controller="Admin" method="post" style="display:inline;" onsubmit="return confirm('Сигурни ли сте, че искате да прекратите записването и да генерирате етапите на турнира?');">
+            <input type="hidden" name="tournamentId" value="@Model.Id" />
+            <button type="submit" class="btn btn-success">Прекрати записването</button>
+        </form>
+    }
+</div>

@@ -12,7 +12,6 @@ namespace KarateTournamentManager.Controllers
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Required]
         public int Tatami { get; set; }
 
         public Guid? Participant1Id { get; set; }
