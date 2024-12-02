@@ -1,4 +1,4 @@
-﻿@model IEnumerable<KarateTournamentManager.Data.Models.Tournament>
+﻿@model IEnumerable<TournamentViewModel>
 
 @{
     ViewData["Title"] = "Tournaments";
@@ -17,6 +17,7 @@
             <th>Description</th>
             <th>Date</th>
             <th>Status</th>
+            <th>Enrolled Participants</th>
             <th>Actions</th>
         </tr>
     </thead>
@@ -28,6 +29,7 @@
                 <td>@tournament.Description</td>
                 <td>@tournament.Date.ToShortDateString()</td>
                 <td>@tournament.Status</td>
+                <td>@tournament.EnrolledParticipantsCount</td>
                 <td>
                     <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
 
