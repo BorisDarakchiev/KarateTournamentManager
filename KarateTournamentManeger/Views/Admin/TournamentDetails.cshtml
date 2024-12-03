@@ -111,7 +111,8 @@ else
         Всички турнири
     </a>
 
-    @if (Model.Status.ToString() == "Upcoming")
+@*     @if (Model.Status.ToString() == "Upcoming" & true) *@
+    @if (true)
     {
         <form asp-action="FinalizeEnrollment" asp-controller="Admin" method="post" style="display:inline;" onsubmit="return confirm('Сигурни ли сте, че искате да прекратите записването и да генерирате етапите на турнира?');">
             <input type="hidden" name="tournamentId" value="@Model.Id" />

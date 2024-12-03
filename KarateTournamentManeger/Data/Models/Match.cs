@@ -50,6 +50,9 @@ namespace KarateTournamentManager.Controllers
 
         [ForeignKey(nameof(TimerManagerId))]
         public ApplicationUser? TimerManager { get; set; }
+
+        public Guid? WinnerNextMatchId { get; set; }
+        public Guid? LoserNextMatchId { get; set; }
     }
 
 

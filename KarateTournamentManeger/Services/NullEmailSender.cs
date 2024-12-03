@@ -7,7 +7,6 @@ namespace KarateTournamentManager.Services
     {
         public Task SendEmailAsync(string email, string subject, string htmlMessage)
         {
-            // Празна имплементация - не правим нищо
             return Task.CompletedTask;
         }
     }
