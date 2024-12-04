@@ -11,7 +11,7 @@ using System.Data;
 
 
 
-namespace KarateTournamentManager.Services.Admin.Tournaments
+namespace KarateTournamentManager.Services
 {
     public class TournamentService : ITournamentService
     {
@@ -23,6 +23,38 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
             context = _context;
             userManager = _userManager;
         }
+
+        public async Task<List<TournamentViewModel>> GetTournamentsViewModelsAsync(string userId)
+        {
+            var tournaments = await context.Tournaments
+                .Include(t => t.EnrolledParticipants)
+                .Where(t => t.Date >= DateTime.Now)
+                .OrderBy(t => t.Date)
+                .ToListAsync();
+
+            var currentUser = userId != null
+                ? await userManager.Users.Include(u => u.Participant).FirstOrDefaultAsync(u => u.Id == userId)
+                : null;
+            var currentUserParticipantId = currentUser?.Participant?.Id;
+
+            return tournaments.Select(t => new TournamentViewModel
+            {
+                Id = t.Id,
+                Location = t.Location,
+                Description = t.Description,
+                Date = t.Date,
+                Status = t.Status,
+                EnrolledParticipantsCount = t.EnrolledParticipants?.Count ?? 0,
+                EnrolledParticipants = t.EnrolledParticipants != null
+                    ? t.EnrolledParticipants
+                        .Select(p => new ParticipantViewModel { Name = p.Name, Id = p.Id })
+                        .ToList()
+                    : new List<ParticipantViewModel>(),
+                IsParticipant = currentUserParticipantId.HasValue &&
+                                t.EnrolledParticipants.Any(p => p.Id == currentUserParticipantId.Value)
+            }).ToList();
+        }
+
         public async Task<List<TournamentViewModel>> GetTournamentsAsync()
         {
             return await context.Tournaments
@@ -112,6 +144,7 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
                         Participant1Score = m.Participant1Score,
                         Participant2Score = m.Participant2Score,
                         Period = m.Period,
+                        Tatami = m.Tatami,
                         RemainingTime = m.RemainingTime.ToString(@"hh\:mm\:ss"),
                         Status = m.Status
                     }).ToList()
@@ -272,7 +305,6 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
                 Participant1Id = participants[0].Id,
                 Participant2Id = participants[1].Id,
                 StageId = finalStage.Id,
-                Tatami = 1
             };
 
             await context.Matchеs.AddAsync(finalMatch);
@@ -301,7 +333,6 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
                         Participant1Id = participants[i].Id,
                         Participant2Id = participants[j].Id,
                         StageId = roundRobinStage.Id,
-                        Tatami = (matches.Count % 2) + 1 // татамитата ще бъдат с друга логика
                     });
                 }
             }
@@ -310,43 +341,13 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
             await context.SaveChangesAsync();
         }
 
+        //Логика при 4-ма участника
         private async Task CreateSemiFinalAndFinalStagesAsync(Guid tournamentId, List<Participant> participants)
         {
             if (participants.Count < 4)
             {
                 throw new InvalidOperationException("Некоретни данни!");
             }
-
-            var semiFinalStage = new Stage
-            {
-                Name = StageOrder.SemiFinal.ToString(),
-                StageOrder = StageOrder.SemiFinal,
-                TournamentId = tournamentId
-            };
-
-            await context.Stages.AddAsync(semiFinalStage);
-            await context.SaveChangesAsync();
-
-            var semiFinalMatches = new List<Match>
-    {
-        new Match
-        {
-            Participant1Id = participants[0].Id,
-            Participant2Id = participants[1].Id,
-            StageId = semiFinalStage.Id,
-            Tatami = 1
-        },
-        new Match
-        {
-            Participant1Id = participants[2].Id,
-            Participant2Id = participants[3].Id,
-            StageId = semiFinalStage.Id,
-            Tatami = 2
-        }
-    };
-
-            await context.Matchеs.AddRangeAsync(semiFinalMatches);
-            await context.SaveChangesAsync();
 
             var finalStage = new Stage
             {
@@ -361,19 +362,87 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
             var finalMatch = new Match
             {
                 StageId = finalStage.Id,
-                Tatami = 1
             };
 
             await context.Matchеs.AddAsync(finalMatch);
             await context.SaveChangesAsync();
-        }
 
+            var semiFinalStage = new Stage
+            {
+                Name = StageOrder.SemiFinal.ToString(),
+                StageOrder = StageOrder.SemiFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(semiFinalStage);
+            await context.SaveChangesAsync();
+
+            var semiFinalMatches = new List<Match>
+
+    {
+        new Match
+{
+            Participant1Id = participants[0].Id,
+            Participant2Id = participants[1].Id,
+            StageId = semiFinalStage.Id,
+            WinnerNextMatchId = finalMatch.Id,
+        },
+        new Match
+        {
+            Participant1Id = participants[2].Id,
+            Participant2Id = participants[3].Id,
+            StageId = semiFinalStage.Id,
+            WinnerNextMatchId = finalMatch.Id,
+        }
+    };
+
+            await context.Matchеs.AddRangeAsync(semiFinalMatches);
+            await context.SaveChangesAsync();
+        }
+        //Логика от 5 до 7 участника
         public async Task CreatePreliminarySemiFinalAndFinalStagesAsync(Guid tournamentId, List<Participant> participants)
         {
             if (participants.Count < 5 || participants.Count > 7)
             {
                 throw new InvalidOperationException("Некоретни данни!");
             }
+
+            var finalStage = new Stage
+            {
+                Name = StageOrder.Final.ToString(),
+                StageOrder = StageOrder.Final,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(finalStage);
+            await context.SaveChangesAsync();
+
+            var finalMatch = new Match
+            {
+                StageId = finalStage.Id,
+            };
+
+            await context.Matchеs.AddAsync(finalMatch);
+            await context.SaveChangesAsync();
+
+            var semiFinalStage = new Stage
+            {
+                Name = StageOrder.SemiFinal.ToString(),
+                StageOrder = StageOrder.SemiFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(semiFinalStage);
+            await context.SaveChangesAsync();
+
+            var semiFinalMatches = new List<Match>
+            {
+                new Match { StageId = semiFinalStage.Id, WinnerNextMatchId = finalMatch.Id},
+                new Match { StageId = semiFinalStage.Id, WinnerNextMatchId = finalMatch.Id}
+            };
+
+            await context.Matchеs.AddRangeAsync(semiFinalMatches);
+            await context.SaveChangesAsync();
 
             var preliminaryStage = new Stage
             {
@@ -395,49 +464,10 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
                     Participant1Id = preliminaryParticipants[i].Id,
                     Participant2Id = preliminaryParticipants[i + 1].Id,
                     StageId = preliminaryStage.Id,
-                    Tatami = i / 2 + 1
                 });
             }
 
             await context.Matchеs.AddRangeAsync(preliminaryMatches);
-            await context.SaveChangesAsync();
-
-            var semiFinalStage = new Stage
-            {
-                Name = StageOrder.SemiFinal.ToString(),
-                StageOrder = StageOrder.SemiFinal,
-                TournamentId = tournamentId
-            };
-
-            await context.Stages.AddAsync(semiFinalStage);
-            await context.SaveChangesAsync();
-
-            var semiFinalMatches = new List<Match>
-            {
-                new Match { StageId = semiFinalStage.Id, Tatami = 1 },
-                new Match { StageId = semiFinalStage.Id, Tatami = 2 }
-            };
-
-            await context.Matchеs.AddRangeAsync(semiFinalMatches);
-            await context.SaveChangesAsync();
-
-            var finalStage = new Stage
-            {
-                Name = StageOrder.Final.ToString(),
-                StageOrder = StageOrder.Final,
-                TournamentId = tournamentId
-            };
-
-            await context.Stages.AddAsync(finalStage);
-            await context.SaveChangesAsync();
-
-            var finalMatch = new Match
-            {
-                StageId = finalStage.Id,
-                Tatami = 1
-            };
-
-            await context.Matchеs.AddAsync(finalMatch);
             await context.SaveChangesAsync();
         }
 
@@ -459,10 +489,10 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
 
             var quarterFinalMatches = new List<Match>
             {
-                new Match { StageId = quarterFinalStage.Id, Tatami = 1 },
-                new Match { StageId = quarterFinalStage.Id, Tatami = 2 },
-                new Match { StageId = quarterFinalStage.Id, Tatami = 3 },
-                new Match { StageId = quarterFinalStage.Id, Tatami = 4 }
+                new Match { StageId = quarterFinalStage.Id},
+                new Match { StageId = quarterFinalStage.Id},
+                new Match { StageId = quarterFinalStage.Id},
+                new Match { StageId = quarterFinalStage.Id}
             };
 
             await context.Matchеs.AddRangeAsync(quarterFinalMatches);
@@ -480,8 +510,8 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
 
             var semiFinalMatches = new List<Match>
             {
-                new Match { StageId = semiFinalStage.Id, Tatami = 1 },
-                new Match { StageId = semiFinalStage.Id, Tatami = 2 }
+                new Match { StageId = semiFinalStage.Id},
+                new Match { StageId = semiFinalStage.Id}
             };
 
             await context.Matchеs.AddRangeAsync(semiFinalMatches);
@@ -500,7 +530,6 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
             var finalMatch = new Match
             {
                 StageId = finalStage.Id,
-                Tatami = 1
             };
 
             await context.Matchеs.AddAsync(finalMatch);
@@ -534,7 +563,6 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
                     Participant1Id = preliminaryParticipants[i].Id,
                     Participant2Id = preliminaryParticipants[i + 1].Id,
                     StageId = preliminaryStage.Id,
-                    Tatami = i / 2 + 1
                 });
             }
 
@@ -553,10 +581,10 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
 
             var quarterFinalMatches = new List<Match>
             {
-                new Match { StageId = quarterFinalStage.Id, Tatami = 1 },
-                new Match { StageId = quarterFinalStage.Id, Tatami = 2 },
-                new Match { StageId = quarterFinalStage.Id, Tatami = 3 },
-                new Match { StageId = quarterFinalStage.Id, Tatami = 4 }
+                new Match { StageId = quarterFinalStage.Id},
+                new Match { StageId = quarterFinalStage.Id},
+                new Match { StageId = quarterFinalStage.Id},
+                new Match { StageId = quarterFinalStage.Id}
             };
 
             await context.Matchеs.AddRangeAsync(quarterFinalMatches);
@@ -574,8 +602,8 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
 
             var semiFinalMatches = new List<Match>
             {
-                new Match { StageId = semiFinalStage.Id, Tatami = 1 },
-                new Match { StageId = semiFinalStage.Id, Tatami = 2 }
+                new Match { StageId = semiFinalStage.Id},
+                new Match { StageId = semiFinalStage.Id}
             };
 
             await context.Matchеs.AddRangeAsync(semiFinalMatches);
@@ -594,7 +622,6 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
             var finalMatch = new Match
             {
                 StageId = finalStage.Id,
-                Tatami = 1
             };
 
             await context.Matchеs.AddAsync(finalMatch);

@@ -10,9 +10,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 using System.Security.Cryptography.X509Certificates;
-using KarateTournamentManager.Services.Admin.Tournaments;
-using KarateTournamentManager.Services.Admin.Users;
 using System.Diagnostics;
+using KarateTournamentManager.Services;
 
 
 namespace KarateTournamentManager.Controllers

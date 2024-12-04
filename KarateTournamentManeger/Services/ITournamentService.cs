@@ -1,7 +1,7 @@
 ﻿using KarateTournamentManager.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace KarateTournamentManager.Services.Admin.Tournaments
+namespace KarateTournamentManager.Services
 {
     public interface ITournamentService
     {
@@ -12,6 +12,7 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
         Task<bool> DeleteTournamentAsync(Guid id);
         Task<bool> RemoveParticipantAsync(Guid tournamentId, Guid participantId);
         Task<string?> FinalizeEnrollmentAsync(Guid tournamentId);
+        Task<List<TournamentViewModel>> GetTournamentsViewModelsAsync(string userId);
 
     }
 }

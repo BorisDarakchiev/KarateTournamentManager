@@ -4,7 +4,7 @@ using KarateTournamentManager.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 
-namespace KarateTournamentManager.Services.Admin.Users
+namespace KarateTournamentManager.Services
 {
     public class UserService : IUserService
     {

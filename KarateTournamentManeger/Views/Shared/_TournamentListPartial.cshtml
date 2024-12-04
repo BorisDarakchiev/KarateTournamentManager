@@ -27,7 +27,15 @@
                 <td>@tournament.Description</td>
                 <td>@tournament.Date.ToString("dd/MM/yyyy")</td>
                 <td>@tournament.Location</td>
-                <td>@tournament.Status</td>
+                <td>
+                    <p>
+                        @if (tournament.Status.ToString() == "Ongoing")
+                        {
+                            <strong class="blinking-dot"></strong>
+                        }
+                        @tournament.Status
+                    </p>
+                </td>
                 <td>@tournament.EnrolledParticipantsCount</td>
                 <td>
                     @if (!isAdmin) // Ако не е администратор, показваме бутоните

@@ -20,3 +20,24 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+
+.blinking-dot {
+    display: inline-block;
+    width: 10px;
+    height: 10px;
+    border-radius: 50%;
+    background-color: red;
+    animation: blink 1s infinite alternate;
+    margin-left: 5px;
+}
+
+@keyframes blink {
+    0% {
+        opacity: 1;
+    }
+
+    100% {
+        opacity: 0;
+    }
+}

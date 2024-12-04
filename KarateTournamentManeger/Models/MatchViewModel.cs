@@ -23,6 +23,9 @@
         [Display(Name = "Част")]
         public MatchPeriod Period { get; set; }
 
+        [Display(Name = "Татами")]
+        public int Tatami { get; set; }
+
         [Display(Name = "Оставащо време")]
         public string RemainingTime { get; set; } = string.Empty;
 

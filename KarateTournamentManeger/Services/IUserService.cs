@@ -1,6 +1,6 @@
 ﻿using KarateTournamentManager.Models.ViewModels;
 
-namespace KarateTournamentManager.Services.Admin.Users
+namespace KarateTournamentManager.Services
 {
     public interface IUserService
     {

@@ -28,7 +28,15 @@
                 <td>@tournament.Location</td>
                 <td>@tournament.Description</td>
                 <td>@tournament.Date.ToShortDateString()</td>
-                <td>@tournament.Status</td>
+                <td>
+                    <p>
+                        @if (tournament.Status.ToString() == "Ongoing")
+                        {
+                            <strong class="blinking-dot"></strong>
+                        }
+                        @tournament.Status
+                    </p>
+                </td>
                 <td>@tournament.EnrolledParticipantsCount</td>
                 <td>
                     <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
