@@ -11,7 +11,7 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
         Task<TournamentViewModel> GetTournamentDetailsAsync(Guid id);
         Task<bool> DeleteTournamentAsync(Guid id);
         Task<bool> RemoveParticipantAsync(Guid tournamentId, Guid participantId);
-        Task<IActionResult> FinalizeEnrollment(Guid tournamentId);
+        Task<string?> FinalizeEnrollmentAsync(Guid tournamentId);
 
     }
 }

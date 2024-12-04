@@ -6,7 +6,6 @@ using KarateTournamentManager.Identity;
 using KarateTournamentManager.Models;
 using KarateTournamentManager.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
-using Microsoft.AspNetCore.Mvc; 
 using Microsoft.EntityFrameworkCore;
 using System.Data;
 
@@ -79,10 +78,10 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
 
             if (tournament == null)
             {
-                return null;
+                return null!;
             }
 
-            var enrolledParticipants = tournament.EnrolledParticipants.Select(p =>
+            var enrolledParticipants = tournament.EnrolledParticipants?.Select(p =>
             {
                 var user = context.Users.FirstOrDefault(u => u.ParticipantId == p.Id);
                 return new ParticipantViewModel
@@ -168,40 +167,77 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
                 return false;
             }
 
-            var participant = tournament.EnrolledParticipants.FirstOrDefault(p => p.Id == participantId);
+            var participant = tournament.EnrolledParticipants?.FirstOrDefault(p => p.Id == participantId);
             if (participant == null)
             {
                 return false;
             }
 
-            tournament.EnrolledParticipants.Remove(participant);
+            tournament.EnrolledParticipants?.Remove(participant);
             await context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<IActionResult> FinalizeEnrollment(Guid tournamentId)
+        public async Task<string?> FinalizeEnrollmentAsync(Guid tournamentId)
         {
             var tournament = await context.Tournaments
                 .Include(t => t.EnrolledParticipants)
                 .FirstOrDefaultAsync(t => t.Id == tournamentId);
 
-            if (tournament?.Status != TournamentStatus.Upcoming)
-            {
-                return new NotFoundObjectResult("Не може да се изпълните това действие, когато турнира е започнал или завършил!");
-            }
-
             if (tournament == null)
             {
-                return new NotFoundObjectResult("Турнирът не е намерен.");
+                return "Турнирът не е намерен.";
+
+            }
+
+            if (tournament.Status != TournamentStatus.Upcoming)
+            {
+                return "Не може да се изпълните това действие, когато турнира е започнал или завършил!";
             }
 
             var participants = tournament.EnrolledParticipants.ToList();
 
             if (participants.Count < 2)
             {
-                return new NotFoundObjectResult("Необходими са поне двама участници за създаване на етапи.");
+                return "Необходими са поне двама участници за създаване на етапи.";
             }
 
+            await RemoveExistingStagesAsync(tournamentId);
+
+
+            if (participants.Count == 2)
+            {
+                await CreateFinalStageAsync(tournamentId, participants);
+            }
+            else if (participants.Count == 3)
+            {
+                await CreateRoundRobinStageAsync(tournamentId, participants);
+            }
+            else if (participants.Count == 4)
+            {
+                await CreateSemiFinalAndFinalStagesAsync(tournamentId, participants);
+            }
+            else if (participants.Count >= 5 && participants.Count <= 7)
+            {
+                await CreatePreliminarySemiFinalAndFinalStagesAsync(tournamentId, participants);
+            }
+            else if (participants.Count == 8)
+            {
+                await CreateStagesWithQuarterFinalsAsync(tournamentId, participants);
+            }
+            else if (participants.Count >= 9 && participants.Count <= 15)
+            {
+                await CreatePreliminaryStagesWithQuarterFinalsAsync(tournamentId, participants);
+            }
+
+            tournament.Status = TournamentStatus.Ongoing;
+            await context.SaveChangesAsync();
+
+            return string.Empty;
+        }
+
+        private async Task RemoveExistingStagesAsync(Guid tournamentId)
+        {
             var existingStages = await context.Stages
                 .Where(s => s.TournamentId == tournamentId)
                 .ToListAsync();
@@ -217,311 +253,356 @@ namespace KarateTournamentManager.Services.Admin.Tournaments
             }
 
             await context.SaveChangesAsync();
+        }
 
-            if (participants.Count == 2)
+        private async Task CreateFinalStageAsync(Guid tournamentId, List<Participant> participants)
+        {
+            var finalStage = new Stage
             {
-                var finalStage = new Stage
-                {
-                    Name = StageOrder.Final.ToString(),
-                    StageOrder = StageOrder.Final,
-                    TournamentId = tournamentId
-                };
+                Name = StageOrder.Final.ToString(),
+                StageOrder = StageOrder.Final,
+                TournamentId = tournamentId
+            };
 
-                await context.Stages.AddAsync(finalStage);
-                await context.SaveChangesAsync();
-
-                var finalMatch = new Match
-                {
-                    Participant1Id = participants[0].Id,
-                    Participant2Id = participants[1].Id,
-                    StageId = finalStage.Id,
-                    Tatami = 1
-                };
-
-                await context.Matchеs.AddAsync(finalMatch);
-            }
-            else if (participants.Count == 3)
-            {
-                var groupStage = new Stage
-                {
-                    Name = "RoundRobin",
-                    StageOrder = StageOrder.RoundRobin,
-                    TournamentId = tournamentId
-                };
-
-                await context.Stages.AddAsync(groupStage);
-                await context.SaveChangesAsync();
-
-                var matches = new List<Match>
-        {
-            new Match { Participant1Id = participants[0].Id, Participant2Id = participants[1].Id, StageId = groupStage.Id, Tatami = 1 },
-            new Match { Participant1Id = participants[1].Id, Participant2Id = participants[2].Id, StageId = groupStage.Id, Tatami = 2 },
-            new Match { Participant1Id = participants[0].Id, Participant2Id = participants[2].Id, StageId = groupStage.Id, Tatami = 3 }
-        };
-
-                await context.Matchеs.AddRangeAsync(matches);
-            }
-            else if (participants.Count == 4)
-            {
-                var semiFinalStage = new Stage
-                {
-                    Name = StageOrder.SemiFinal.ToString(),
-                    StageOrder = StageOrder.SemiFinal,
-                    TournamentId = tournamentId
-                };
-
-                await context.Stages.AddAsync(semiFinalStage);
-                await context.SaveChangesAsync();
-
-                var semiFinalMatches = new List<Match>
-        {
-            new Match { Participant1Id = participants[0].Id, Participant2Id = participants[1].Id, StageId = semiFinalStage.Id, Tatami = 1 },
-            new Match { Participant1Id = participants[2].Id, Participant2Id = participants[3].Id, StageId = semiFinalStage.Id, Tatami = 2 }
-        };
-
-                await context.Matchеs.AddRangeAsync(semiFinalMatches);
-                await context.SaveChangesAsync();
-
-                var finalStage = new Stage
-                {
-                    Name = StageOrder.Final.ToString(),
-                    StageOrder = StageOrder.Final,
-                    TournamentId = tournamentId
-                };
-
-                await context.Stages.AddAsync(finalStage);
-                await context.SaveChangesAsync();
-
-                var finalMatch = new Match
-                {
-                    StageId = finalStage.Id,
-                    Tatami = 1
-                };
-
-                await context.Matchеs.AddAsync(finalMatch);
-            }
-            else if (participants.Count >= 5 && participants.Count <= 7)
-            {
-                var preliminaryStage = new Stage
-                {
-                    Name = StageOrder.Preliminary.ToString(),
-                    StageOrder = StageOrder.Preliminary,
-                    TournamentId = tournamentId
-                };
-
-                await context.Stages.AddAsync(preliminaryStage);
-                await context.SaveChangesAsync();
-
-                var preliminaryMatches = new List<Match>();
-                var preliminaryParticipants = participants.Take((participants.Count - 4) * 2).ToList();
-
-                for (int i = 0; i < preliminaryParticipants.Count; i += 2)
-                {
-                    preliminaryMatches.Add(new Match
-                    {
-                        Participant1Id = preliminaryParticipants[i].Id,
-                        Participant2Id = preliminaryParticipants[i + 1].Id,
-                        StageId = preliminaryStage.Id,
-                        Tatami = i / 2 + 1
-                    });
-                }
-
-                await context.Matchеs.AddRangeAsync(preliminaryMatches);
-                await context.SaveChangesAsync();
-
-                var semiFinalStage = new Stage
-                {
-                    Name = StageOrder.SemiFinal.ToString(),
-                    StageOrder = StageOrder.SemiFinal,
-                    TournamentId = tournamentId
-                };
-
-                await context.Stages.AddAsync(semiFinalStage);
-                await context.SaveChangesAsync();
-
-                var semiFinalMatches = new List<Match>
-        {
-            new Match { StageId = semiFinalStage.Id, Tatami = 1 },
-            new Match { StageId = semiFinalStage.Id, Tatami = 2 }
-        };
-
-                await context.Matchеs.AddRangeAsync(semiFinalMatches);
-                await context.SaveChangesAsync();
-
-                var finalStage = new Stage
-                {
-                    Name = StageOrder.Final.ToString(),
-                    StageOrder = StageOrder.Final,
-                    TournamentId = tournamentId
-                };
-
-                await context.Stages.AddAsync(finalStage);
-                await context.SaveChangesAsync();
-
-                var finalMatch = new Match
-                {
-                    StageId = finalStage.Id,
-                    Tatami = 1
-                };
-
-                await context.Matchеs.AddAsync(finalMatch);
-            }
-
-            else if (participants.Count >= 8 && participants.Count <= 15)
-            {
-                if (participants.Count == 8)
-                {
-                    var quarterFinalStage = new Stage
-                    {
-                        Name = StageOrder.QuarterFinal.ToString(),
-                        StageOrder = StageOrder.QuarterFinal,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(quarterFinalStage);
-                    await context.SaveChangesAsync();
-
-                    var quarterFinalMatches = new List<Match>
-        {
-            new Match { StageId = quarterFinalStage.Id, Tatami = 1 },
-            new Match { StageId = quarterFinalStage.Id, Tatami = 2 },
-            new Match { StageId = quarterFinalStage.Id, Tatami = 3 },
-            new Match { StageId = quarterFinalStage.Id, Tatami = 4 }
-        };
-
-                    await context.Matchеs.AddRangeAsync(quarterFinalMatches);
-                    await context.SaveChangesAsync();
-
-                    var semiFinalStage = new Stage
-                    {
-                        Name = StageOrder.SemiFinal.ToString(),
-                        StageOrder = StageOrder.SemiFinal,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(semiFinalStage);
-                    await context.SaveChangesAsync();
-
-                    var semiFinalMatches = new List<Match>
-        {
-            new Match { StageId = semiFinalStage.Id, Tatami = 1 },
-            new Match { StageId = semiFinalStage.Id, Tatami = 2 }
-        };
-
-                    await context.Matchеs.AddRangeAsync(semiFinalMatches);
-                    await context.SaveChangesAsync();
-
-                    var finalStage = new Stage
-                    {
-                        Name = StageOrder.Final.ToString(),
-                        StageOrder = StageOrder.Final,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(finalStage);
-                    await context.SaveChangesAsync();
-
-                    var finalMatch = new Match
-                    {
-                        StageId = finalStage.Id,
-                        Tatami = 1
-                    };
-
-                    await context.Matchеs.AddAsync(finalMatch);
-                }
-                else if (participants.Count >= 9 && participants.Count <= 15)
-                {
-                    var preliminaryStage = new Stage
-                    {
-                        Name = StageOrder.Preliminary.ToString(),
-                        StageOrder = StageOrder.Preliminary,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(preliminaryStage);
-                    await context.SaveChangesAsync();
-
-                    var preliminaryMatches = new List<Match>();
-                    var preliminaryParticipants = participants.Take((participants.Count - 8) * 2).ToList();
-
-                    for (int i = 0; i < preliminaryParticipants.Count; i += 2)
-                    {
-                        preliminaryMatches.Add(new Match
-                        {
-                            Participant1Id = preliminaryParticipants[i].Id,
-                            Participant2Id = preliminaryParticipants[i + 1].Id,
-                            StageId = preliminaryStage.Id,
-                            Tatami = i / 2 + 1
-                        });
-                    }
-
-                    await context.Matchеs.AddRangeAsync(preliminaryMatches);
-                    await context.SaveChangesAsync();
-
-                    var quarterFinalStage = new Stage
-                    {
-                        Name = StageOrder.QuarterFinal.ToString(),
-                        StageOrder = StageOrder.QuarterFinal,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(quarterFinalStage);
-                    await context.SaveChangesAsync();
-
-                    var quarterFinalMatches = new List<Match>
-        {
-            new Match { StageId = quarterFinalStage.Id, Tatami = 1 },
-            new Match { StageId = quarterFinalStage.Id, Tatami = 2 },
-            new Match { StageId = quarterFinalStage.Id, Tatami = 3 },
-            new Match { StageId = quarterFinalStage.Id, Tatami = 4 }
-        };
-
-                    await context.Matchеs.AddRangeAsync(quarterFinalMatches);
-                    await context.SaveChangesAsync();
-
-                    var semiFinalStage = new Stage
-                    {
-                        Name = StageOrder.SemiFinal.ToString(),
-                        StageOrder = StageOrder.SemiFinal,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(semiFinalStage);
-                    await context.SaveChangesAsync();
-
-                    var semiFinalMatches = new List<Match>
-        {
-            new Match { StageId = semiFinalStage.Id, Tatami = 1 },
-            new Match { StageId = semiFinalStage.Id, Tatami = 2 }
-        };
-
-                    await context.Matchеs.AddRangeAsync(semiFinalMatches);
-                    await context.SaveChangesAsync();
-
-                    var finalStage = new Stage
-                    {
-                        Name = StageOrder.Final.ToString(),
-                        StageOrder = StageOrder.Final,
-                        TournamentId = tournamentId
-                    };
-
-                    await context.Stages.AddAsync(finalStage);
-                    await context.SaveChangesAsync();
-
-                    var finalMatch = new Match
-                    {
-                        StageId = finalStage.Id,
-                        Tatami = 1
-                    };
-
-                    await context.Matchеs.AddAsync(finalMatch);
-                }
-            }
-
-            tournament.Status = TournamentStatus.Ongoing;
+            await context.Stages.AddAsync(finalStage);
             await context.SaveChangesAsync();
 
-            return new RedirectToActionResult("TournamentDetails", "Admin", new { id = tournamentId });
+            var finalMatch = new Match
+            {
+                Participant1Id = participants[0].Id,
+                Participant2Id = participants[1].Id,
+                StageId = finalStage.Id,
+                Tatami = 1
+            };
+
+            await context.Matchеs.AddAsync(finalMatch);
+            await context.SaveChangesAsync();
+        }
+
+        private async Task CreateRoundRobinStageAsync(Guid tournamentId, List<Participant> participants)
+        {
+            var roundRobinStage = new Stage
+            {
+                Name = StageOrder.Preliminary.ToString(),
+                StageOrder = StageOrder.Preliminary,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(roundRobinStage);
+            await context.SaveChangesAsync();
+
+            var matches = new List<Match>();
+            for (int i = 0; i < participants.Count; i++)
+            {
+                for (int j = i + 1; j < participants.Count; j++)
+                {
+                    matches.Add(new Match
+                    {
+                        Participant1Id = participants[i].Id,
+                        Participant2Id = participants[j].Id,
+                        StageId = roundRobinStage.Id,
+                        Tatami = (matches.Count % 2) + 1 // татамитата ще бъдат с друга логика
+                    });
+                }
+            }
+
+            await context.Matchеs.AddRangeAsync(matches);
+            await context.SaveChangesAsync();
+        }
+
+        private async Task CreateSemiFinalAndFinalStagesAsync(Guid tournamentId, List<Participant> participants)
+        {
+            if (participants.Count < 4)
+            {
+                throw new InvalidOperationException("Некоретни данни!");
+            }
+
+            var semiFinalStage = new Stage
+            {
+                Name = StageOrder.SemiFinal.ToString(),
+                StageOrder = StageOrder.SemiFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(semiFinalStage);
+            await context.SaveChangesAsync();
+
+            var semiFinalMatches = new List<Match>
+    {
+        new Match
+        {
+            Participant1Id = participants[0].Id,
+            Participant2Id = participants[1].Id,
+            StageId = semiFinalStage.Id,
+            Tatami = 1
+        },
+        new Match
+        {
+            Participant1Id = participants[2].Id,
+            Participant2Id = participants[3].Id,
+            StageId = semiFinalStage.Id,
+            Tatami = 2
+        }
+    };
+
+            await context.Matchеs.AddRangeAsync(semiFinalMatches);
+            await context.SaveChangesAsync();
+
+            var finalStage = new Stage
+            {
+                Name = StageOrder.Final.ToString(),
+                StageOrder = StageOrder.Final,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(finalStage);
+            await context.SaveChangesAsync();
+
+            var finalMatch = new Match
+            {
+                StageId = finalStage.Id,
+                Tatami = 1
+            };
+
+            await context.Matchеs.AddAsync(finalMatch);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task CreatePreliminarySemiFinalAndFinalStagesAsync(Guid tournamentId, List<Participant> participants)
+        {
+            if (participants.Count < 5 || participants.Count > 7)
+            {
+                throw new InvalidOperationException("Некоретни данни!");
+            }
+
+            var preliminaryStage = new Stage
+            {
+                Name = StageOrder.Preliminary.ToString(),
+                StageOrder = StageOrder.Preliminary,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(preliminaryStage);
+            await context.SaveChangesAsync();
+
+            var preliminaryMatches = new List<Match>();
+            var preliminaryParticipants = participants.Take((participants.Count - 4) * 2).ToList();
+
+            for (int i = 0; i < preliminaryParticipants.Count; i += 2)
+            {
+                preliminaryMatches.Add(new Match
+                {
+                    Participant1Id = preliminaryParticipants[i].Id,
+                    Participant2Id = preliminaryParticipants[i + 1].Id,
+                    StageId = preliminaryStage.Id,
+                    Tatami = i / 2 + 1
+                });
+            }
+
+            await context.Matchеs.AddRangeAsync(preliminaryMatches);
+            await context.SaveChangesAsync();
+
+            var semiFinalStage = new Stage
+            {
+                Name = StageOrder.SemiFinal.ToString(),
+                StageOrder = StageOrder.SemiFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(semiFinalStage);
+            await context.SaveChangesAsync();
+
+            var semiFinalMatches = new List<Match>
+            {
+                new Match { StageId = semiFinalStage.Id, Tatami = 1 },
+                new Match { StageId = semiFinalStage.Id, Tatami = 2 }
+            };
+
+            await context.Matchеs.AddRangeAsync(semiFinalMatches);
+            await context.SaveChangesAsync();
+
+            var finalStage = new Stage
+            {
+                Name = StageOrder.Final.ToString(),
+                StageOrder = StageOrder.Final,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(finalStage);
+            await context.SaveChangesAsync();
+
+            var finalMatch = new Match
+            {
+                StageId = finalStage.Id,
+                Tatami = 1
+            };
+
+            await context.Matchеs.AddAsync(finalMatch);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task CreateStagesWithQuarterFinalsAsync(Guid tournamentId, List<Participant> participants)
+        {
+            if (participants.Count != 8)
+            {
+                throw new InvalidOperationException("Некоретни данни!");
+            }
+            var quarterFinalStage = new Stage
+            {
+                Name = StageOrder.QuarterFinal.ToString(),
+                StageOrder = StageOrder.QuarterFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(quarterFinalStage);
+            await context.SaveChangesAsync();
+
+            var quarterFinalMatches = new List<Match>
+            {
+                new Match { StageId = quarterFinalStage.Id, Tatami = 1 },
+                new Match { StageId = quarterFinalStage.Id, Tatami = 2 },
+                new Match { StageId = quarterFinalStage.Id, Tatami = 3 },
+                new Match { StageId = quarterFinalStage.Id, Tatami = 4 }
+            };
+
+            await context.Matchеs.AddRangeAsync(quarterFinalMatches);
+            await context.SaveChangesAsync();
+
+            var semiFinalStage = new Stage
+            {
+                Name = StageOrder.SemiFinal.ToString(),
+                StageOrder = StageOrder.SemiFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(semiFinalStage);
+            await context.SaveChangesAsync();
+
+            var semiFinalMatches = new List<Match>
+            {
+                new Match { StageId = semiFinalStage.Id, Tatami = 1 },
+                new Match { StageId = semiFinalStage.Id, Tatami = 2 }
+            };
+
+            await context.Matchеs.AddRangeAsync(semiFinalMatches);
+            await context.SaveChangesAsync();
+
+            var finalStage = new Stage
+            {
+                Name = StageOrder.Final.ToString(),
+                StageOrder = StageOrder.Final,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(finalStage);
+            await context.SaveChangesAsync();
+
+            var finalMatch = new Match
+            {
+                StageId = finalStage.Id,
+                Tatami = 1
+            };
+
+            await context.Matchеs.AddAsync(finalMatch);
+            await context.SaveChangesAsync();
+        }
+
+        public async Task CreatePreliminaryStagesWithQuarterFinalsAsync(Guid tournamentId, List<Participant> participants)
+        {
+            if (participants.Count < 9 && participants.Count > 15)
+            {
+                throw new InvalidOperationException("Некоретни данни!");
+            }
+
+            var preliminaryStage = new Stage
+            {
+                Name = StageOrder.Preliminary.ToString(),
+                StageOrder = StageOrder.Preliminary,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(preliminaryStage);
+            await context.SaveChangesAsync();
+
+            var preliminaryMatches = new List<Match>();
+            var preliminaryParticipants = participants.Take((participants.Count - 8) * 2).ToList();
+
+            for (int i = 0; i < preliminaryParticipants.Count; i += 2)
+            {
+                preliminaryMatches.Add(new Match
+                {
+                    Participant1Id = preliminaryParticipants[i].Id,
+                    Participant2Id = preliminaryParticipants[i + 1].Id,
+                    StageId = preliminaryStage.Id,
+                    Tatami = i / 2 + 1
+                });
+            }
+
+            await context.Matchеs.AddRangeAsync(preliminaryMatches);
+            await context.SaveChangesAsync();
+
+            var quarterFinalStage = new Stage
+            {
+                Name = StageOrder.QuarterFinal.ToString(),
+                StageOrder = StageOrder.QuarterFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(quarterFinalStage);
+            await context.SaveChangesAsync();
+
+            var quarterFinalMatches = new List<Match>
+            {
+                new Match { StageId = quarterFinalStage.Id, Tatami = 1 },
+                new Match { StageId = quarterFinalStage.Id, Tatami = 2 },
+                new Match { StageId = quarterFinalStage.Id, Tatami = 3 },
+                new Match { StageId = quarterFinalStage.Id, Tatami = 4 }
+            };
+
+            await context.Matchеs.AddRangeAsync(quarterFinalMatches);
+            await context.SaveChangesAsync();
+
+            var semiFinalStage = new Stage
+            {
+                Name = StageOrder.SemiFinal.ToString(),
+                StageOrder = StageOrder.SemiFinal,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(semiFinalStage);
+            await context.SaveChangesAsync();
+
+            var semiFinalMatches = new List<Match>
+            {
+                new Match { StageId = semiFinalStage.Id, Tatami = 1 },
+                new Match { StageId = semiFinalStage.Id, Tatami = 2 }
+            };
+
+            await context.Matchеs.AddRangeAsync(semiFinalMatches);
+            await context.SaveChangesAsync();
+
+            var finalStage = new Stage
+            {
+                Name = StageOrder.Final.ToString(),
+                StageOrder = StageOrder.Final,
+                TournamentId = tournamentId
+            };
+
+            await context.Stages.AddAsync(finalStage);
+            await context.SaveChangesAsync();
+
+            var finalMatch = new Match
+            {
+                StageId = finalStage.Id,
+                Tatami = 1
+            };
+
+            await context.Matchеs.AddAsync(finalMatch);
+            await context.SaveChangesAsync();
         }
     }
 }
+
+
+
+

@@ -12,6 +12,7 @@ using System.Data;
 using System.Security.Cryptography.X509Certificates;
 using KarateTournamentManager.Services.Admin.Tournaments;
 using KarateTournamentManager.Services.Admin.Users;
+using System.Diagnostics;
 
 
 namespace KarateTournamentManager.Controllers
@@ -31,8 +32,6 @@ namespace KarateTournamentManager.Controllers
             context = _context;
 
         }
-
-   
         public IActionResult Index()
         {
             return View();
@@ -140,7 +139,17 @@ namespace KarateTournamentManager.Controllers
         [Route("{id}")]
         public async Task<IActionResult> FinalizeEnrollment(Guid tournamentId)
         {
-            return await tournamentService.FinalizeEnrollment(tournamentId);
+            var errorMessage = await tournamentService.FinalizeEnrollmentAsync(tournamentId);
+
+            if (!string.IsNullOrEmpty(errorMessage))
+            {
+                return View("Error", new ErrorViewModel
+                {
+                    Message = errorMessage,
+                    RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier
+                });
+            }
+            return RedirectToAction("TournamentDetails", "Admin", new { id = tournamentId });
         }
     }
 }
