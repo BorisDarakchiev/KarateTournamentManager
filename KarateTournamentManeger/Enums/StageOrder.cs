@@ -2,10 +2,12 @@
 {
     public enum StageOrder
     {
+        RoundRobin,
         Preliminary,
-        QuarterFinal,
-        SemiFinal,
         Final,
-        RoundRobin
+        SemiFinal,
+        QuarterFinal,
+        EighthFinal,
+        SixteenthFinal  
     }
 }

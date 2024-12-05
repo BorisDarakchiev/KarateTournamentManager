@@ -38,7 +38,7 @@
                 </td>
                 <td>@tournament.EnrolledParticipantsCount</td>
                 <td>
-                    @if (!isAdmin) // Ако не е администратор, показваме бутоните
+                    @if (!isAdmin)
                     {
                         @if (User.Identity.IsAuthenticated)
                         {
