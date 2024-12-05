@@ -9,7 +9,8 @@
     <div class="card-body">
         <p><strong>Описание:</strong> @Model.Description</p>
         <p><strong>Дата:</strong> @Model.Date.ToString("dd/MM/yyyy")</p>
-        <p><strong >Статус:</strong>
+        <p>
+            <strong>Статус:</strong>
             @if (Model.Status.ToString() == "Ongoing")
             {
                 <strong class="blinking-dot"></strong>
@@ -20,47 +21,44 @@
     </div>
 </div>
 
-<h3>Участници</h3>
-@if (Model.EnrolledParticipants.Count > 0)
+@if (Model.Status.ToString() == "Upcoming")
 {
-    <table class="table table-striped">
-        <thead>
-            <tr>
-                <th>#</th>
-                <th>Име</th>
-                <th>Имейл</th>
-                @if (Model.Status.ToString() == "Upcoming")
-                {
-                    <th>Действия</th>
-                }
-            </tr>
-        </thead>
-        <tbody>
-            @for (int i = 0; i < Model.EnrolledParticipants.Count; i++)
-            {
-                var participant = Model.EnrolledParticipants[i];
+    <h3>Участници</h3>
+    @if (Model.EnrolledParticipants.Count > 0)
+    {
+        <table class="table table-striped">
+            <thead>
                 <tr>
-                    <td>@(i + 1)</td>
-                    <td>@participant.Name</td>
-                    <td>@participant.Email</td>
-                    @if (Model.Status.ToString() == "Upcoming")
-                    {
-                        <td>
-                            <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
-                                <input type="hidden" name="tournamentId" value="@Model.Id" />
-                                <input type="hidden" name="participantId" value="@participant.Id" />
-                                <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
-                            </form>
-                        </td>
-                    }
+                    <th>#</th>
+                    <th>Име</th>
+                    <th>Имейл</th>
+                    <th>Действия</th>
                 </tr>
-            }
-        </tbody>
-    </table>
-}
-else
-{
-    <p>Няма записани участници за този турнир.</p>
+            </thead>
+            <tbody>
+                @for (int i = 0; i < Model.EnrolledParticipants.Count; i++)
+                {
+                    var participant = Model.EnrolledParticipants[i];
+                    <tr>
+                        <td>@(i + 1)</td>
+                        <td>@participant.Name</td>
+                        <td>@participant.Email</td>
+                            <td>
+                                <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
+                                    <input type="hidden" name="tournamentId" value="@Model.Id" />
+                                    <input type="hidden" name="participantId" value="@participant.Id" />
+                                    <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
+                                </form>
+                            </td>
+                    </tr>
+                }
+            </tbody>
+        </table>
+    }
+    else
+    {
+        <p>Няма записани участници за този турнир.</p>
+    }
 }
 
 <h3>Етапи</h3>

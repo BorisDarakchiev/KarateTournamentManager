@@ -7,6 +7,7 @@ using KarateTournamentManager.Models;
 using KarateTournamentManager.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
+using System.Collections.Immutable;
 using System.Data;
 using static KarateTournamentManager.Constants.ModelConstants;
 
@@ -279,7 +280,7 @@ namespace KarateTournamentManager.Services
             int powerOfTwo = (int)Math.Pow(2, Math.Floor(Math.Log2(participants)));
             int preliminaryMatches = participants - powerOfTwo;
             int participantsInPreliminary = 2 * preliminaryMatches;
-            if (preliminaryMatches > 0)
+            if (preliminaryMatches > 0 && participants != 3)
             {
                 Stage stage = new Stage() { TournamentId = tournament.Id, Name = StageToName["Preliminary"], StageOrder = StageOrder.Preliminary };
                 var matches = new List<Match>();
@@ -296,14 +297,28 @@ namespace KarateTournamentManager.Services
             if (participants == 3)
             {
                 Stage stage = new Stage() { TournamentId = tournament.Id, Name = StageToName["RoundRobin"], StageOrder = StageOrder.RoundRobin };
-                var matches = new List<Match>
+
+                var participantsForRoundRobin = await context.Participants
+                    .Where(p => p.Tournaments.Any(t => t.Id == tournament.Id))
+                    .ToListAsync();
+
+                var matches = new List<Match>();
+
+                for (int i = 0; i < participantsForRoundRobin.Count; i++)
                 {
-                    new Match(){ StageId = stage.Id },
-                    new Match(){ StageId = stage.Id },
-                    new Match(){ StageId = stage.Id }
-                };
-                await context.Matchеs.AddRangeAsync(matches);
+                    for (int j = i + 1; j < participantsForRoundRobin.Count; j++)
+                    {
+                        var match = new Match
+                        {
+                            StageId = stage.Id,
+                            Participant1Id = participantsForRoundRobin[i].Id,
+                            Participant2Id = participantsForRoundRobin[j].Id
+                        };
+                        matches.Add(match);
+                    }
+                }
                 await context.Stages.AddAsync(stage);
+                await context.Matchеs.AddRangeAsync(matches);
                 await context.SaveChangesAsync();
             }
             if (participants >= 4 || participants == 2)
@@ -333,9 +348,72 @@ namespace KarateTournamentManager.Services
                 await context.Matchеs.AddRangeAsync(allMatches);
                 await context.SaveChangesAsync();
             }
+            await DistributeParticipantsRandomly(tournament);
+        }
+
+        public async Task DistributeParticipantsRandomly(Tournament tournament)
+        {
+            var participants = await context.Participants
+                .Where(p => p.Tournaments.Any(t => t.Id == tournament.Id))
+                .ToListAsync();
+
+            Random rand = new Random();
+            Queue<Participant> randomParticipants = new Queue<Participant>(participants.OrderBy(x => rand.Next()));
+
+            var stages = await context.Stages
+                .Where(s => s.TournamentId == tournament.Id)
+                .ToListAsync();
+
+            if (stages.Where(s => s.StageOrder == StageOrder.Preliminary).Any())
+            {
+                var preliminaryStage = await context.Stages
+                    .Where(s => s.TournamentId == tournament.Id && (int)s.StageOrder == (int)StageOrder.Preliminary)
+                    .ToListAsync();
+
+                if (preliminaryStage.Any())
+                {
+                    var preliminaryMatches = await context.Matchеs
+                        .Where(m => m.StageId == preliminaryStage[0].Id)
+                        .ToListAsync();
+
+                    foreach (var preliminaryMatch in preliminaryMatches)
+                    {
+                        if (randomParticipants.Any())
+                        {
+                            preliminaryMatch.Participant1Id = randomParticipants.Dequeue().Id;
+                        }
+                        if (randomParticipants.Any())
+                        {
+                            preliminaryMatch.Participant2Id = randomParticipants.Dequeue().Id;
+                        }
+                    }
+                }
+            }
+
+            var maxStage = stages
+                .OrderByDescending(s => s.StageOrder)
+                .FirstOrDefault();
+            var maxStageMatches = await context.Matchеs
+                .Where(m => m.StageId == maxStage.Id)
+                .ToListAsync();
+
+            foreach (var maxStageMatche in maxStageMatches)
+            {
+                if (randomParticipants.Any())
+                {
+                    maxStageMatche.Participant1Id = randomParticipants.Dequeue().Id;
+                }
+                if (randomParticipants.Any())
+                {
+                    maxStageMatche.Participant2Id = randomParticipants.Dequeue().Id;
+                }
+            }
+
+            await context.SaveChangesAsync();
         }
     }
 }
+
 
 
 

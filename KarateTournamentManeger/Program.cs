@@ -4,6 +4,7 @@ using KarateTournamentManager.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
+using KarateTournamentManager.Enums;
 
 
 var builder = WebApplication.CreateBuilder(args);
@@ -30,8 +31,6 @@ builder.Services.AddScoped<ITournamentService, TournamentService>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddControllersWithViews();
 builder.Services.AddRazorPages();
-
-
 
 var app = builder.Build();
 
@@ -60,7 +59,6 @@ using (var scope = app.Services.CreateScope())
         Console.WriteLine($"Грешка при инициализацията на ролите: {ex.Message}");
     }
 }
-
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 
