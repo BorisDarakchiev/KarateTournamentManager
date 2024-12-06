@@ -19,11 +19,13 @@ namespace KarateTournamentManager.Services
     {
         private readonly ApplicationDbContext context;
         private readonly UserManager<ApplicationUser> userManager;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public TournamentService(ApplicationDbContext _context, UserManager<ApplicationUser> _userManager)
+        public TournamentService(ApplicationDbContext _context, UserManager<ApplicationUser> _userManager, RoleManager<IdentityRole> _roleManager)
         {
             context = _context;
             userManager = _userManager;
+            roleManager = _roleManager;
         }
 
         public async Task<List<TournamentViewModel>> GetTournamentsViewModelsAsync(string userId)
@@ -96,8 +98,16 @@ namespace KarateTournamentManager.Services
                 Date = model.Date,
                 Status = TournamentStatus.Upcoming,
                 EnrolledParticipants = new List<Participant>(),
+
+            };
+            var Tatami = new Tatami
+            {
+                Id = Guid.NewGuid(),
+                Number = 1,
+                TournamentId = tournament.Id,
             };
 
+            context.Tatamis.Add(Tatami);
             context.Tournaments.Add(tournament);
             await context.SaveChangesAsync();
 
@@ -147,7 +157,7 @@ namespace KarateTournamentManager.Services
                         Participant2Score = m.Participant2Score,
                         Period = m.Period,
                         Tatami = m.Tatami,
-                        RemainingTime = m.RemainingTime.ToString(@"hh\:mm\:ss"),
+                        RemainingTime = m.RemainingTime.ToString(TimerFormat),
                         Status = m.Status
                     }).ToList()
                 }).ToList();
@@ -173,6 +183,19 @@ namespace KarateTournamentManager.Services
                 }
             }
 
+            var tatamis = await context.Tatamis.Where(t => t.TournamentId == tournament.Id).OrderBy(tt => tt.Number).ToListAsync();
+
+            var users = await userManager.Users.ToListAsync();
+            var timerManagerUsers = new List<ApplicationUser>();
+            foreach (var user in users)
+            {
+                var roles = await userManager.GetRolesAsync(user);
+                if (roles.Contains("TimerManager"))
+                {
+                    timerManagerUsers.Add(user);
+                }
+            }
+
             return new TournamentViewModel
             {
                 Id = tournament.Id,
@@ -182,7 +205,9 @@ namespace KarateTournamentManager.Services
                 Status = tournament.Status,
                 EnrolledParticipantsCount = enrolledParticipants.Count,
                 EnrolledParticipants = enrolledParticipants,
-                Stages = sortedStages
+                Stages = sortedStages,
+                Tatami = tatamis,
+                TimerManagers = timerManagerUsers
             };
         }
 
@@ -410,6 +435,37 @@ namespace KarateTournamentManager.Services
             }
 
             await context.SaveChangesAsync();
+        }
+
+        public async Task<bool> AddTatamiAsync(Guid tournamentId)
+        {
+            var tatamis = await context.Tatamis.Where(t => t.TournamentId == tournamentId).ToListAsync();
+            var tatami = new Tatami
+            {
+                Id = Guid.NewGuid(),
+                Number = tatamis.Count + 1,
+                TournamentId = tournamentId,
+            };
+
+            context.Tatamis.Add(tatami);
+            await context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> RemoveTatamiAsync(Guid tatamiId)
+        {
+            var tatami = await context.Tatamis
+                .FirstOrDefaultAsync(t => t.Id == tatamiId);
+
+            if (tatami == null)
+            {
+                return false;
+            }
+
+            context.Tatamis.Remove(tatami);
+            await context.SaveChangesAsync();
+            return true;
         }
     }
 }

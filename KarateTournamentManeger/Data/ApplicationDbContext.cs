@@ -17,13 +17,6 @@ namespace KarateTournamentManager.Data
         {
             base.OnModelCreating(modelBuilder);
 
-            modelBuilder.Entity<Match>()
-                .HasOne(m => m.TimerManager)
-                .WithMany()
-                .HasForeignKey(m => m.TimerManagerId)
-                .HasPrincipalKey(u => u.Id)
-                .OnDelete(DeleteBehavior.Restrict);
-
             modelBuilder.Entity<ApplicationUser>()
                 .HasOne(a => a.Participant)
                 .WithOne()
@@ -53,5 +46,6 @@ namespace KarateTournamentManager.Data
         public DbSet<Stage> Stages { get; set; }
         public DbSet<Match> Matchеs { get; set; }
         public DbSet<Participant> Participants { get; set; }
+        public DbSet<Tatami> Tatamis { get; set; }
     }
 }

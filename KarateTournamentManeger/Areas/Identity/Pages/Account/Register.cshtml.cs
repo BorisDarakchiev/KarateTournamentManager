@@ -94,10 +94,10 @@ namespace KarateTournamentManager.Areas.Identity.Pages.Account
             ///     This API supports the ASP.NET Core Identity default UI infrastructure and is not intended to be used
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
-            [Required]
-            [StringLength(100, ErrorMessage = "The {0} must be at least {2} and at max {1} characters long.", MinimumLength = 6)]
+            [Required(ErrorMessage = "Паролата е задължителна.")]
+            [StringLength(100, ErrorMessage = "{0} трябва да е с дължина най-малко {2} и максимум {1} знака.", MinimumLength = 6)]
             [DataType(DataType.Password)]
-            [Display(Name = "Password")]
+            [Display(Name = "Паролата")]
             public string Password { get; set; }
 
             /// <summary>
@@ -105,13 +105,21 @@ namespace KarateTournamentManager.Areas.Identity.Pages.Account
             ///     directly from your code. This API may change or be removed in future releases.
             /// </summary>
             [DataType(DataType.Password)]
-            [Display(Name = "Confirm password")]
-            [Compare("Password", ErrorMessage = "The password and confirmation password do not match.")]
+            [Display(Name = "Потвърдете паролата")]
+            [Compare("Password", ErrorMessage = "Паролата и паролата за потвърждение не съвпадат.")]
             public string ConfirmPassword { get; set; }
 
-            [Required]
-            [Display(Name = "Name")]
-            public string ParticipantName { get; set; } = null!;
+            [Required(ErrorMessage = "Името е задължително.")]
+            [StringLength(50, ErrorMessage = "Името трябва да е между {2} и {1} символа.", MinimumLength = 2)]
+            [RegularExpression(@"^[А-Яа-яA-Za-z]+$", ErrorMessage = "Името може да съдържа само букви.")]
+            [Display(Name = "Име")]
+            public string FirstName { get; set; } = null!;
+
+            [Required(ErrorMessage = "Фамилията е задължителна.")]
+            [StringLength(50, ErrorMessage = "Фамилията трябва да е между {2} и {1} символа.", MinimumLength = 2)]
+            [RegularExpression(@"^[А-Яа-яA-Za-z]+$", ErrorMessage = "Фамилията може да съдържа само букви.")]
+            [Display(Name = "Фамилия")]
+            public string LastName { get; set; } = null!;
         }
 
 
@@ -125,47 +133,37 @@ namespace KarateTournamentManager.Areas.Identity.Pages.Account
             returnUrl ??= Url.Content("~/");
             if (ModelState.IsValid)
             {
-                // Създаване на потребителя
-                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email };
+                var user = new ApplicationUser { UserName = Input.Email, Email = Input.Email, FirstName = Input.FirstName, LastName = Input.LastName };
                 var result = await _userManager.CreateAsync(user, Input.Password);
 
                 if (result.Succeeded)
                 {
-                    // Създаване на Participant
                     var participant = new Participant
                     {
-                        Name = Input.ParticipantName
+                        Name = $"{Input.FirstName} {Input.LastName}"
                     };
 
-                    // Добавяне на Participant в базата данни (само веднъж)
                     _dbContext.Participants.Add(participant);
-                    await _dbContext.SaveChangesAsync(); // Това ще генерира ID за Participant
+                    await _dbContext.SaveChangesAsync();
 
-                    // Свързване на Participant с ApplicationUser
                     user.ParticipantId = participant.Id;
 
-                    // Актуализиране на ApplicationUser с ParticipantId (не е необходимо да се добавя два пъти)
                     await _userManager.UpdateAsync(user);
 
-                    // Добавяне на потребителя към роля (например "Participant")
                     if (await _roleManager.RoleExistsAsync("Participant"))
                     {
                         await _userManager.AddToRoleAsync(user, "Participant");
                     }
 
-                    // Вход на потребителя след успешна регистрация
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     return LocalRedirect(returnUrl);
                 }
 
-                // Обработване на грешките при създаването на потребителя
                 foreach (var error in result.Errors)
                 {
                     ModelState.AddModelError(string.Empty, error.Description);
                 }
             }
-
-            // Ако стигнем дотук, значи е имало грешка, и трябва да се върнем на формата
             return Page();
         }
 

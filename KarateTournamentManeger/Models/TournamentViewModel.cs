@@ -1,4 +1,6 @@
-﻿using KarateTournamentManager.Enums;
+﻿using KarateTournamentManager.Data.Models;
+using KarateTournamentManager.Enums;
+using KarateTournamentManager.Identity;
 using KarateTournamentManager.Models.ViewModels;
 using System.ComponentModel.DataAnnotations;
 
@@ -24,7 +26,12 @@ namespace KarateTournamentManager.Models
         [Display(Name = "Записани участници")]
         public int EnrolledParticipantsCount { get; set; }
 
+        public List<Tatami> Tatami { get; set; } = null!;
         public List<ParticipantViewModel> EnrolledParticipants { get; set; } = new();
+
+        public List<ApplicationUser> TimerManagers { get; set; } = new();
+
+
 
         public List<StageViewModel> Stages { get; set; } = new();
 

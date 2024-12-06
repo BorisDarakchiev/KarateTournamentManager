@@ -1,27 +1,25 @@
 ﻿using KarateTournamentManager.Controllers;
-using KarateTournamentManager.Enums;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using static KarateTournamentManager.Constants.ModelConstants;
 
 namespace KarateTournamentManager.Data.Models
 {
-    public class Stage
+    public class Tatami
     {
         [Key]
         public Guid Id { get; set; } = Guid.NewGuid();
 
-        [Required]
-        [StringLength(MaxLenght)]
-        public string Name { get; set; } = null!;
+        [StringLength(MaxTatamiLenght)]
+        public int Number { get; set; }
+        public Guid? TimerManagerId { get; set; }
 
-        [Required]
+        [ForeignKey(nameof(TimerManagerId))]
+        public Participant? TimerManager { get; set; }
+        
         public Guid TournamentId { get; set; }
 
         [ForeignKey(nameof(TournamentId))]
         public Tournament Tournament { get; set; } = null!;
-        public StageOrder StageOrder { get; set; }
     }
-
-
 }

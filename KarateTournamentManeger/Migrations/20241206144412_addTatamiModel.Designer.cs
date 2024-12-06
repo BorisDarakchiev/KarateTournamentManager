@@ -4,6 +4,7 @@ using KarateTournamentManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241206144412_addTatamiModel")]
+    partial class addTatamiModel
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -189,14 +192,6 @@ namespace KarateTournamentManager.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
-
-                    b.Property<string>("FirstName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("LastName")
-                        .IsRequired()
-                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -453,7 +448,7 @@ namespace KarateTournamentManager.Migrations
                         .HasForeignKey("TimerManagerId");
 
                     b.HasOne("KarateTournamentManager.Data.Models.Tournament", "Tournament")
-                        .WithMany()
+                        .WithMany("Tatamis")
                         .HasForeignKey("TournamentId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
@@ -542,6 +537,11 @@ namespace KarateTournamentManager.Migrations
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>
                 {
                     b.Navigation("Matches");
+                });
+
+            modelBuilder.Entity("KarateTournamentManager.Data.Models.Tournament", b =>
+                {
+                    b.Navigation("Tatamis");
                 });
 #pragma warning restore 612, 618
         }

@@ -17,9 +17,69 @@
             }
             @Model.Status
         </p>
+
+        <p><strong>Брой татамита:</strong> @Model.Tatami.Count</p>
+
         <p><strong>Записани участници:</strong> @Model.EnrolledParticipantsCount</p>
     </div>
 </div>
+<h3>Татамита</h3>
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <td>Номер на татами</td>
+            <td>Таймер мениджър</td>
+            <td>Действия</td>
+        </tr>
+    </thead>
+    <tbody>
+
+        @for (int i = 0; i < @Model.Tatami.Count; i++)
+        {
+            var tatami = @Model.Tatami[i];
+
+            <tr>
+                <td>@Model.Tatami[i].Number</td>
+                <td>
+                </td>
+                <td>
+                    <button class="btn btn-primary btn-sm" data-bs-toggle="dropdown" aria-expanded="false">Избери таймер мениджър</button>
+                    <ul class="dropdown-menu">
+                        @foreach (var timerManager in Model.TimerManagers)
+                        {
+                            <li>
+                                <form method="post" asp-action="UpdateTatamiTimerManager">
+                                    <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
+                                    <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
+                                    <input type="hidden" name="SelectedTimerManagerId" value="@timerManager.Id" />
+                                    <button class="dropdown-item" type="submit">@timerManager.FirstName @timerManager.LastName</button>
+                                </form>
+                            </li>
+                        }
+                    </ul>
+                    @if (@Model.Tatami[i].Number != 1 && @Model.Tatami[i].Number == @Model.Tatami.Count)
+                    {
+                        <form asp-controller="Admin" asp-action="RemoveTatami" method="post" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="tournamentId" value="@Model.Id" />
+                            <input type="hidden" name="tatamiId" value="@tatami.Id" />
+                            <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
+                        </form>
+                    }
+                    @if (@Model.Tatami[i].Number == @Model.Tatami.Count)
+                    {
+                        <form asp-controller="Admin" asp-action="AddTatami" method="post" style="display:inline;">
+                            @Html.AntiForgeryToken()
+                            <input type="hidden" name="tournamentId" value="@Model.Id" />
+                            <button type="submit" class="btn btn-success btn-sm">Добави татами</button>
+                        </form>
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+
 
 @if (Model.Status.ToString() == "Upcoming")
 {
@@ -43,13 +103,14 @@
                         <td>@(i + 1)</td>
                         <td>@participant.Name</td>
                         <td>@participant.Email</td>
-                            <td>
-                                <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
-                                    <input type="hidden" name="tournamentId" value="@Model.Id" />
-                                    <input type="hidden" name="participantId" value="@participant.Id" />
-                                    <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
-                                </form>
-                            </td>
+                        <td>
+                            <form asp-controller="Admin" asp-action="RemoveParticipant" method="post" style="display:inline;">
+                                @Html.AntiForgeryToken()
+                                <input type="hidden" name="tournamentId" value="@Model.Id" />
+                                <input type="hidden" name="participantId" value="@participant.Id" />
+                                <button type="submit" class="btn btn-danger btn-sm">Премахни</button>
+                            </form>
+                        </td>
                     </tr>
                 }
             </tbody>

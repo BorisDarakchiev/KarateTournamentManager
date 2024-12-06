@@ -1,5 +1,6 @@
 ﻿using KarateTournamentManager.Data.Models;
 using System.ComponentModel.DataAnnotations;
+using static KarateTournamentManager.Constants.ModelConstants;
 
 
 namespace KarateTournamentManager.Controllers
@@ -10,6 +11,7 @@ namespace KarateTournamentManager.Controllers
         public Guid Id { get; set; } = Guid.NewGuid();
 
         [Required]
+        [StringLength(MaxLenght)]
         public string Name { get; set; } = null!;
 
         public ICollection<Match> Matches { get; set; } = new List<Match>();
