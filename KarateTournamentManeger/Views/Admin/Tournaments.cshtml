@@ -4,21 +4,21 @@
     ViewData["Title"] = "Tournaments";
 }
 
-<h1>All Tournaments</h1>
+<h1>Всички турнири</h1>
 
 <a class="btn btn-primary" asp-action="CreateTournament" asp-controller="Admin" role="button">
-    Add Tournament
+    Добави турнир
 </a>
 
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>Location</th>
-            <th>Description</th>
-            <th>Date</th>
-            <th>Status</th>
-            <th>Enrolled Participants</th>
-            <th>Actions</th>
+            <th>Локация</th>
+            <th>Информация</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Записани участници</th>
+            <th>Екшън</th>
         </tr>
     </thead>
     <tbody>
@@ -39,11 +39,11 @@
                 </td>
                 <td>@tournament.EnrolledParticipantsCount</td>
                 <td>
-                    <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
+                    <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Детайли</a>
 
                     <form asp-controller="Admin" asp-action="DeleteTournament" method="post" style="display:inline;" onsubmit="return confirm('Сигурни ли сте, че искате да изтриете този турнир?');">
                         <input type="hidden" name="id" value="@tournament.Id" />
-                        <button type="submit" class="btn btn-danger">Delete</button>
+                        <button type="submit" class="btn btn-danger">Изтриване</button>
                     </form>
                 </td>
             </tr>

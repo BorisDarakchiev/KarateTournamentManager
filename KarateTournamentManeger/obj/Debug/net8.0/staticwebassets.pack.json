@@ -245,6 +245,10 @@
       "PackagePath": "staticwebassets\\lib\\jquery\\dist\\jquery.min.map"
     },
     {
+      "Id": "D:\\_Repos\\KarateTournamentManeger\\wwwroot\\svg\\vecteezy_martial-arts_36653933.svg",
+      "PackagePath": "staticwebassets\\svg\\vecteezy_martial-arts_36653933.svg"
+    },
+    {
       "Id": "obj\\Debug\\net8.0\\staticwebassets\\msbuild.KarateTournamentManager.Microsoft.AspNetCore.StaticWebAssets.props",
       "PackagePath": "build\\Microsoft.AspNetCore.StaticWebAssets.props"
     },

@@ -12,21 +12,24 @@
 <table class="table table-striped">
     <thead>
         <tr>
+            <th>Локация</th>
             <th>Информация</th>
             <th>Дата</th>
-            <th>Локация</th>
             <th>Статус</th>
-            <th>Записани участници</th>
-            <th>Actions</th>
+            @if (User.IsInRole("Administrator") || User.IsInRole("Participant") || User.IsInRole("TimerManager"))
+            {
+                <th>Записани участници</th>
+                <th>Екшън</th>
+            }
         </tr>
     </thead>
     <tbody>
         @foreach (var tournament in Model)
         {
             <tr>
+                <td>@tournament.Location</td>
                 <td>@tournament.Description</td>
                 <td>@tournament.Date.ToString("dd/MM/yyyy")</td>
-                <td>@tournament.Location</td>
                 <td>
                     <p>
                         @if (tournament.Status.ToString() == "Ongoing")
@@ -36,11 +39,11 @@
                         @tournament.Status
                     </p>
                 </td>
-                <td>@tournament.EnrolledParticipantsCount</td>
-                <td>
-                    @if (!isAdmin)
-                    {
-                        @if (User.Identity.IsAuthenticated)
+                @if (User.Identity.IsAuthenticated)
+                {
+                    <td>@tournament.EnrolledParticipantsCount</td>
+                    <td>
+                        @if (User.IsInRole("Participant"))
                         {
                             if (!tournament.IsParticipant)
                             {
@@ -54,12 +57,21 @@
                                 <span>Записани сте за турнира!</span>
                             }
                         }
-                    }
-                    else
-                    {
-                        <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Details</a>
-                    }
-                </td>
+
+                        else if (User.IsInRole("Administrator"))
+                        {
+                            <a class="btn btn-warning" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Управление</a>
+
+                        }
+                        else if (User.IsInRole("TimerManager"))
+                        {
+                            <a class="btn btn-warning" asp-controller="Manager" asp-action="ManageTournament" asp-route-id="@tournament.Id">Управление</a>
+
+                        }
+
+                    </td>
+                }
+
             </tr>
         }
     </tbody>

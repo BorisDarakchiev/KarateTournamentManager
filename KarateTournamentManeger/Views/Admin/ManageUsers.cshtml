@@ -1,7 +1,7 @@
 ﻿@model List<KarateTournamentManager.Models.ViewModels.ManageUsersViewModel>
 
 @{
-    ViewData["Title"] = "Manage Users";
+    ViewData["Title"] = "Управление на потребителите";
 }
 
 <h1>@ViewData["Title"]</h1>
@@ -9,10 +9,10 @@
 <table class="table table-striped">
     <thead>
         <tr>
-            <th>User Name</th>
+            <th>Потребителско име</th>
             <th>Email</th>
-            <th>Current Roles</th>
-            <th>Assign Role</th>
+            <th>Роля</th>
+            <th>Промяна на ролята</th>
         </tr>
     </thead>
     <tbody>
@@ -23,7 +23,7 @@
                 <td>@user.Email</td>
                 <td>@user.CurrentRole</td>
                 <td>
-                    <button class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Update Role</button>
+                    <button class="btn btn-primary" data-bs-toggle="dropdown" aria-expanded="false">Избери</button>
                     <ul class="dropdown-menu">
                         @foreach (var role in user.AvailableRoles)
                         {

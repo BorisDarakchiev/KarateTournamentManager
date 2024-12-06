@@ -4,7 +4,6 @@ using KarateTournamentManager.Services;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
-using KarateTournamentManager.Enums;
 
 
 var builder = WebApplication.CreateBuilder(args);

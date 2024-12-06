@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "ZFvFmiCKa5hTJaCPGpnzHK/qt2tU1JFAhZCSMiMSqLQ=",
+  "Hash": "iwQvoVehcwBwJk+Z3hQnpruh0U2yLtN9PyS6ebX0QpY=",
   "Source": "KarateTournamentManager",
   "BasePath": "_content/KarateTournamentManager",
   "Mode": "Default",
@@ -2333,6 +2333,25 @@
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
       "OriginalItemSpec": "wwwroot\\lib\\jquery-validation-unobtrusive\\LICENSE.txt"
+    },
+    {
+      "Identity": "D:\\_Repos\\KarateTournamentManeger\\wwwroot\\svg\\vecteezy_martial-arts_36653933.svg",
+      "SourceId": "KarateTournamentManager",
+      "SourceType": "Discovered",
+      "ContentRoot": "D:\\_Repos\\KarateTournamentManeger\\wwwroot\\",
+      "BasePath": "_content/KarateTournamentManager",
+      "RelativePath": "svg/vecteezy_martial-arts_36653933.svg",
+      "AssetKind": "All",
+      "AssetMode": "All",
+      "AssetRole": "Primary",
+      "AssetMergeBehavior": "PreferTarget",
+      "AssetMergeSource": "",
+      "RelatedAsset": "",
+      "AssetTraitName": "",
+      "AssetTraitValue": "",
+      "CopyToOutputDirectory": "Never",
+      "CopyToPublishDirectory": "PreserveNewest",
+      "OriginalItemSpec": "wwwroot\\svg\\vecteezy_martial-arts_36653933.svg"
     }
   ]
 }

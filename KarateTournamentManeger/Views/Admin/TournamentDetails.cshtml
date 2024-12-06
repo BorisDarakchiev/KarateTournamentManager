@@ -124,9 +124,9 @@ else
 
     @if (Model.Status.ToString() == "Upcoming" & Model.EnrolledParticipantsCount > 1)
     {
-        <form asp-action="FinalizeEnrollment" asp-controller="Admin" method="post" style="display:inline;" onsubmit="return confirm('Сигурни ли сте, че искате да прекратите записването и да генерирате етапите на турнира?');">
+        <form asp-action="FinalizeEnrollment" asp-controller="Admin" method="post" style="display:inline;" onsubmit="return confirm('Записването ще бъде прекратено, ще бъдат генерирани етапите на турнира и ще бъдат разпределени на случаен принцпи участниците.');">
             <input type="hidden" name="tournamentId" value="@Model.Id" />
-            <button type="submit" class="btn btn-success">Прекрати записването</button>
+            <button type="submit" class="btn btn-success">Стартирай турнира</button>
         </form>
     }
 </div>
