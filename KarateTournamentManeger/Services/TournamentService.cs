@@ -9,6 +9,7 @@ using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using System.Collections.Immutable;
 using System.Data;
+using System.Linq;
 using static KarateTournamentManager.Constants.ModelConstants;
 
 
@@ -186,11 +187,22 @@ namespace KarateTournamentManager.Services
             var tatamis = await context.Tatamis.Where(t => t.TournamentId == tournament.Id).OrderBy(tt => tt.Number).ToListAsync();
 
             var users = await userManager.Users.ToListAsync();
+
+            var participantIds = await context.Tatamis
+                .Where(t => t.TimerManagerId != null)
+                .Select(t => t.TimerManagerId.Value)
+                .ToListAsync();
+
+            var participants = await context.Users
+                .Where(u => participantIds.Contains((Guid)u.ParticipantId))
+                .Select(u => u.ParticipantId.Value)
+                .ToArrayAsync();
+
             var timerManagerUsers = new List<ApplicationUser>();
             foreach (var user in users)
             {
                 var roles = await userManager.GetRolesAsync(user);
-                if (roles.Contains("TimerManager"))
+                if (roles.Contains("TimerManager") && !participants.Any(p=>p == user.ParticipantId))
                 {
                     timerManagerUsers.Add(user);
                 }
@@ -465,6 +477,38 @@ namespace KarateTournamentManager.Services
 
             context.Tatamis.Remove(tatami);
             await context.SaveChangesAsync();
+            return true;
+        }
+
+        public async Task<bool> UpdateTatamiTimerManagerAsync(Guid tatamiId, string tatamiNumber, string selectedTimerManagerId)
+        {
+            var tatami = await context.Tatamis.FindAsync(tatamiId);
+            var timerManager = await context.Users.FindAsync(selectedTimerManagerId);
+
+            if (tatami == null || timerManager == null)
+            {
+                return false;
+            }
+
+            tatami.TimerManagerId = timerManager.ParticipantId;
+            await context.SaveChangesAsync();
+            return true;
+        }
+
+
+        public async Task<bool> RemoveTatamiTimerManagerAsync(Guid tatamiId, string tatamiNumber)
+        {
+            var tatami = await context.Tatamis.FindAsync(tatamiId);
+
+
+            if (tatami == null)
+            {
+                return false;
+            }
+
+            tatami.TimerManagerId = null;
+            await context.SaveChangesAsync();
+
             return true;
         }
     }

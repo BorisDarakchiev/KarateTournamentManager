@@ -41,10 +41,20 @@
             <tr>
                 <td>@Model.Tatami[i].Number</td>
                 <td>
+                    @if (@Model.Tatami[i].TimerManagerId != null)
+                        @Model.Tatami[i].TimerManager.Name
                 </td>
                 <td>
                     <button class="btn btn-primary btn-sm" data-bs-toggle="dropdown" aria-expanded="false">Избери таймер мениджър</button>
                     <ul class="dropdown-menu">
+                        <li>
+                            <form method="post" asp-action="RemoveTatamiTimerManager">
+                                <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
+                                <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
+                                <input type="hidden" name="tournamentId" value="@Model.Id" />
+                                <button class="dropdown-item" type="submit">Без таймер мениджър</button>
+                            </form>
+                        </li>
                         @foreach (var timerManager in Model.TimerManagers)
                         {
                             <li>
@@ -52,6 +62,7 @@
                                     <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
                                     <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
                                     <input type="hidden" name="SelectedTimerManagerId" value="@timerManager.Id" />
+                                    <input type="hidden" name="tournamentId" value="@Model.Id" />
                                     <button class="dropdown-item" type="submit">@timerManager.FirstName @timerManager.LastName</button>
                                 </form>
                             </li>

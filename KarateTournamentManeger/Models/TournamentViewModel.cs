@@ -31,8 +31,6 @@ namespace KarateTournamentManager.Models
 
         public List<ApplicationUser> TimerManagers { get; set; } = new();
 
-
-
         public List<StageViewModel> Stages { get; set; } = new();
 
         public bool IsParticipant { get; set; }

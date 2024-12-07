@@ -150,7 +150,7 @@ namespace KarateTournamentManager.Controllers
 
             return RedirectToAction("TournamentDetails", "Admin", new { id = tournamentId });
         }
-        
+
         [HttpPost]
         [Route("RemoveTatami")]
         [ValidateAntiForgeryToken]
@@ -168,22 +168,30 @@ namespace KarateTournamentManager.Controllers
 
         [HttpPost]
         [Route("UpdateTatamiTimerManager")]
-        [HttpPost]
-        public async Task<IActionResult> UpdateTatamiTimerManager(Guid tatamiId, string tatamiNumber, string selectedTimerManagerId)
+        public async Task<IActionResult> UpdateTatamiTimerManager(Guid tatamiId, string tatamiNumber, string selectedTimerManagerId, string tournamentId)
         {
-            var tatami = await context.Tatamis.FindAsync(tatamiId);
-            var timerManager = await context.Users.FindAsync(selectedTimerManagerId);
+            var result = await tournamentService.UpdateTatamiTimerManagerAsync(tatamiId, tatamiNumber, selectedTimerManagerId);
 
-            if (tatami == null || timerManager == null)
+            if (!result)
             {
-                return View("Error");
+                return NotFound();
             }
 
-            tatami.TimerManagerId = timerManager.ParticipantId;
+            return RedirectToAction("TournamentDetails", "Admin", new { id = tournamentId });
+        }
+        
+        [HttpPost]
+        [Route("RemoveTatamiTimerManager")]
+        public async Task<IActionResult> RemoveTatamiTimerManager(Guid tatamiId, string tatamiNumber, string tournamentId)
+        {
+            var result = await tournamentService.RemoveTatamiTimerManagerAsync(tatamiId, tatamiNumber);
 
-            await context.SaveChangesAsync();
+            if (!result)
+            {
+                return NotFound();
+            }
 
-            return RedirectToAction("Index");
+            return RedirectToAction("TournamentDetails", "Admin", new { id = tournamentId });
         }
 
 

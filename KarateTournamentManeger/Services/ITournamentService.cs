@@ -15,7 +15,10 @@ namespace KarateTournamentManager.Services
         Task<bool> RemoveParticipantAsync(Guid tournamentId, Guid participantId);
         Task<string?> FinalizeEnrollmentAsync(Guid tournamentId);
         Task<List<TournamentViewModel>> GetTournamentsViewModelsAsync(string userId);
-        
+        Task<bool> UpdateTatamiTimerManagerAsync(Guid tatamiId, string tatamiNumber, string selectedTimerManagerId);
+        Task<bool> RemoveTatamiTimerManagerAsync(Guid tatamiId, string tatamiNumber);
+
+
 
     }
 }
