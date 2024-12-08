@@ -1,4 +1,5 @@
 ﻿using KarateTournamentManager.Controllers;
+using KarateTournamentManager.Identity;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using static KarateTournamentManager.Constants.ModelConstants;
@@ -12,10 +13,10 @@ namespace KarateTournamentManager.Data.Models
 
         [StringLength(MaxTatamiLenght)]
         public int Number { get; set; }
-        public Guid? TimerManagerId { get; set; }
+        public string? TimerManagerId { get; set; }
 
         [ForeignKey(nameof(TimerManagerId))]
-        public Participant? TimerManager { get; set; }
+        public ApplicationUser? TimerManager { get; set; }
         
         public Guid TournamentId { get; set; }
 

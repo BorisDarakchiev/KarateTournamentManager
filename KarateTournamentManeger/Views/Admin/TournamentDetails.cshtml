@@ -33,28 +33,36 @@
         </tr>
     </thead>
     <tbody>
-
         @for (int i = 0; i < @Model.Tatami.Count; i++)
         {
             var tatami = @Model.Tatami[i];
 
             <tr>
-                <td>@Model.Tatami[i].Number</td>
+                <td>@tatami.Number</td>
                 <td>
-                    @if (@Model.Tatami[i].TimerManagerId != null)
-                        @Model.Tatami[i].TimerManager.Name
-                </td>
-                <td>
-                    <button class="btn btn-primary btn-sm" data-bs-toggle="dropdown" aria-expanded="false">Избери таймер мениджър</button>
+                    <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                        @if (@tatami.TimerManager != null)
+                        {
+                            @tatami.TimerManager.FirstName
+                            @tatami.TimerManager.LastName
+                        }
+                        else
+                        {
+                            @:Избери
+                        }
+                    </button>
                     <ul class="dropdown-menu">
-                        <li>
-                            <form method="post" asp-action="RemoveTatamiTimerManager">
-                                <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
-                                <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
-                                <input type="hidden" name="tournamentId" value="@Model.Id" />
-                                <button class="dropdown-item" type="submit">Без таймер мениджър</button>
-                            </form>
-                        </li>
+                        @if (@tatami.TimerManagerId != null)
+                        {
+                            <li>
+                                <form method="post" asp-action="RemoveTatamiTimerManager">
+                                    <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
+                                    <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
+                                    <input type="hidden" name="tournamentId" value="@Model.Id" />
+                                    <button class="dropdown-item" type="submit">Премахни</button>
+                                </form>
+                            </li>
+                        }
                         @foreach (var timerManager in Model.TimerManagers)
                         {
                             <li>
@@ -68,6 +76,8 @@
                             </li>
                         }
                     </ul>
+                </td>
+                <td>
                     @if (@Model.Tatami[i].Number != 1 && @Model.Tatami[i].Number == @Model.Tatami.Count)
                     {
                         <form asp-controller="Admin" asp-action="RemoveTatami" method="post" style="display:inline;">
@@ -102,7 +112,7 @@
                 <tr>
                     <th>#</th>
                     <th>Име</th>
-                    <th>Имейл</th>
+                    <th>Emails</th>
                     <th>Действия</th>
                 </tr>
             </thead>
@@ -163,14 +173,24 @@
                                     <td>@match.Participant2Name</td>
                                     <td>@match.Participant1Score : @match.Participant2Score</td>
                                     <td>
-                                        @if (match.Tatami == 0)
-                                        {
-                                            <span>Не е определено</span>
-                                        }
-                                        else
-                                        {
-                                            <span>@match.Tatami</span>
-                                        }
+
+
+                                        <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Избери таймер мениджър</button>
+                                        <ul class="dropdown-menu">
+                                            @for (int i = 0; i < Model.Tatami.Count; i++)
+                                            {
+                                                <li>
+                                                    <form method="post" asp-action="UpdateTatamiForMatch">
+                                                        <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
+                                                        <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
+                                                        <input type="hidden" name="tournamentId" value="@Model.Id" />
+                                                        <button class="dropdown-item" type="submit">@Model.Tatami[i].Number</button>
+                                                    </form>
+                                                </li>
+
+                                            }
+                                        </ul>
+
                                     </td>
                                     <td>@match.Status</td>
                                     <td>@(match.WinnerName)</td>

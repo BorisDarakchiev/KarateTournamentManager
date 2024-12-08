@@ -19,9 +19,9 @@ namespace KarateTournamentManager.Data
 
             modelBuilder.Entity<ApplicationUser>()
                 .HasOne(a => a.Participant)
-                .WithOne()
+                .WithOne(p => p.ApplicationUser)
                 .HasForeignKey<ApplicationUser>(a => a.ParticipantId)
-                .OnDelete(DeleteBehavior.Restrict);
+                .OnDelete(DeleteBehavior.SetNull);
 
             modelBuilder.Entity<Match>()
                 .HasOne(m => m.Participant1)
@@ -39,6 +39,12 @@ namespace KarateTournamentManager.Data
                 .HasOne(m => m.Winner)
                 .WithMany()
                 .HasForeignKey(m => m.WinnerId)
+                .OnDelete(DeleteBehavior.SetNull);
+
+            modelBuilder.Entity<Tatami>()
+                .HasOne(t => t.TimerManager)
+                .WithMany()
+                .HasForeignKey(t => t.TimerManagerId)
                 .OnDelete(DeleteBehavior.SetNull);
         }
 

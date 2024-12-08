@@ -186,27 +186,10 @@ namespace KarateTournamentManager.Services
 
             var tatamis = await context.Tatamis.Where(t => t.TournamentId == tournament.Id).OrderBy(tt => tt.Number).ToListAsync();
 
-            var users = await userManager.Users.ToListAsync();
 
-            var participantIds = await context.Tatamis
-                .Where(t => t.TimerManagerId != null)
-                .Select(t => t.TimerManagerId.Value)
-                .ToListAsync();
 
-            var participants = await context.Users
-                .Where(u => participantIds.Contains((Guid)u.ParticipantId))
-                .Select(u => u.ParticipantId.Value)
-                .ToArrayAsync();
+            var usersInRoleTimerManager = await userManager.GetUsersInRoleAsync("TimerManager");
 
-            var timerManagerUsers = new List<ApplicationUser>();
-            foreach (var user in users)
-            {
-                var roles = await userManager.GetRolesAsync(user);
-                if (roles.Contains("TimerManager") && !participants.Any(p=>p == user.ParticipantId))
-                {
-                    timerManagerUsers.Add(user);
-                }
-            }
 
             return new TournamentViewModel
             {
@@ -219,7 +202,7 @@ namespace KarateTournamentManager.Services
                 EnrolledParticipants = enrolledParticipants,
                 Stages = sortedStages,
                 Tatami = tatamis,
-                TimerManagers = timerManagerUsers
+                TimerManagers = usersInRoleTimerManager.ToList(),
             };
         }
 
@@ -490,7 +473,7 @@ namespace KarateTournamentManager.Services
                 return false;
             }
 
-            tatami.TimerManagerId = timerManager.ParticipantId;
+            tatami.TimerManagerId = timerManager.Id;
             await context.SaveChangesAsync();
             return true;
         }

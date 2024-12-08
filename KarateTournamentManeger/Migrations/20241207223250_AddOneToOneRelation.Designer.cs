@@ -4,6 +4,7 @@ using KarateTournamentManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241207223250_AddOneToOneRelation")]
+    partial class AddOneToOneRelation
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -129,8 +132,8 @@ namespace KarateTournamentManager.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<string>("TimerManagerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid?>("TimerManagerId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid>("TournamentId")
                         .HasColumnType("uniqueidentifier");
@@ -448,7 +451,7 @@ namespace KarateTournamentManager.Migrations
 
             modelBuilder.Entity("KarateTournamentManager.Data.Models.Tatami", b =>
                 {
-                    b.HasOne("KarateTournamentManager.Identity.ApplicationUser", "TimerManager")
+                    b.HasOne("KarateTournamentManager.Controllers.Participant", "TimerManager")
                         .WithMany()
                         .HasForeignKey("TimerManagerId");
 
