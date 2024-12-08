@@ -43,8 +43,11 @@
                     <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
                         @if (@tatami.TimerManager != null)
                         {
-                            @tatami.TimerManager.FirstName
-                            @tatami.TimerManager.LastName
+                            var firstName = @tatami.TimerManager.FirstName;
+                            var lastName = @tatami.TimerManager.LastName;
+                            var interpolatedString = $"{firstName} {lastName}";
+
+                            @interpolatedString
                         }
                         else
                         {
@@ -168,29 +171,31 @@
                         <tbody>
                             @foreach (var match in stage.Matches)
                             {
+                                var tatami = Model.Tatami;
+
                                 <tr>
                                     <td>@match.Participant1Name</td>
                                     <td>@match.Participant2Name</td>
                                     <td>@match.Participant1Score : @match.Participant2Score</td>
                                     <td>
 
-
-                                        <button class="btn btn-primary dropdown-toggle" data-bs-toggle="dropdown" aria-expanded="false">Избери таймер мениджър</button>
+                                        <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
+                                            @(match.Tatami > 0 ? match.Tatami.ToString() : "Избери")
+                                        </button>
                                         <ul class="dropdown-menu">
-                                            @for (int i = 0; i < Model.Tatami.Count; i++)
+                                            @for (int i = 0; i < tatami.Count; i++)
                                             {
                                                 <li>
                                                     <form method="post" asp-action="UpdateTatamiForMatch">
-                                                        <input type="hidden" name="TatamiId" value="@Model.Tatami[i].Id" />
-                                                        <input type="hidden" name="TatamiNumber" value="@Model.Tatami[i].Number" />
+                                                        <input type="hidden" name="matchId" value="@match.Id" />
+                                                        <input type="hidden" name="tatamiNumber" value="@tatami[i].Number" />
                                                         <input type="hidden" name="tournamentId" value="@Model.Id" />
-                                                        <button class="dropdown-item" type="submit">@Model.Tatami[i].Number</button>
+                                                        <button class="dropdown-item" type="submit">@tatami[i].Number</button>
                                                     </form>
                                                 </li>
 
                                             }
                                         </ul>
-
                                     </td>
                                     <td>@match.Status</td>
                                     <td>@(match.WinnerName)</td>

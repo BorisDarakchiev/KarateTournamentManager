@@ -156,6 +156,7 @@ namespace KarateTournamentManager.Services
                         Participant2Name = m.Participant2 != null ? m.Participant2.Name : "Не е определен",
                         Participant1Score = m.Participant1Score,
                         Participant2Score = m.Participant2Score,
+                        Id = m.Id,
                         Period = m.Period,
                         Tatami = m.Tatami,
                         RemainingTime = m.RemainingTime.ToString(TimerFormat),
@@ -185,10 +186,16 @@ namespace KarateTournamentManager.Services
             }
 
             var tatamis = await context.Tatamis.Where(t => t.TournamentId == tournament.Id).OrderBy(tt => tt.Number).ToListAsync();
-
-
-
             var usersInRoleTimerManager = await userManager.GetUsersInRoleAsync("TimerManager");
+
+            var timerManagerIdsInTatamis = tatamis
+                .Where(t => t.TimerManagerId != null)
+                .Select(t => t.TimerManagerId)
+                .ToList();
+
+            var timerManagersAvailable = usersInRoleTimerManager
+                .Where(u => !timerManagerIdsInTatamis.Contains(u.Id))
+                .ToList();
 
 
             return new TournamentViewModel
@@ -202,7 +209,7 @@ namespace KarateTournamentManager.Services
                 EnrolledParticipants = enrolledParticipants,
                 Stages = sortedStages,
                 Tatami = tatamis,
-                TimerManagers = usersInRoleTimerManager.ToList(),
+                TimerManagers = timerManagersAvailable.ToList(),
             };
         }
 
@@ -468,6 +475,8 @@ namespace KarateTournamentManager.Services
             var tatami = await context.Tatamis.FindAsync(tatamiId);
             var timerManager = await context.Users.FindAsync(selectedTimerManagerId);
 
+
+
             if (tatami == null || timerManager == null)
             {
                 return false;
@@ -490,6 +499,21 @@ namespace KarateTournamentManager.Services
             }
 
             tatami.TimerManagerId = null;
+            await context.SaveChangesAsync();
+
+            return true;
+        }
+
+        public async Task<bool> UpdateTatamiForMatchAsync(string matchId, string tatamiNumber)
+        {
+            var match = await context.Matchеs.FindAsync(Guid.Parse(matchId));
+
+            if (match == null)
+            {
+                return false;
+            }
+
+            match.Tatami = int.Parse(tatamiNumber);
             await context.SaveChangesAsync();
 
             return true;

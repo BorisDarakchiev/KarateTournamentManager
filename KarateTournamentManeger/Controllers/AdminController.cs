@@ -84,7 +84,7 @@ namespace KarateTournamentManager.Controllers
         }
 
         [HttpGet]
-        [Route("Admin/CreateTournament")]
+        [Route("CreateTournament")]
         public async Task<IActionResult> CreateTournament()
         {
             var model = await tournamentService.CreateTournamentViewModelAsync();
@@ -93,7 +93,7 @@ namespace KarateTournamentManager.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Route("Admin/CreateTournament")]
+        [Route("CreateTournament")]
         public async Task<IActionResult> CreateTournament(TournamentViewModel model)
         {
             if (ModelState.IsValid)
@@ -185,6 +185,20 @@ namespace KarateTournamentManager.Controllers
         public async Task<IActionResult> RemoveTatamiTimerManager(Guid tatamiId, string tatamiNumber, string tournamentId)
         {
             var result = await tournamentService.RemoveTatamiTimerManagerAsync(tatamiId, tatamiNumber);
+
+            if (!result)
+            {
+                return NotFound();
+            }
+
+            return RedirectToAction("TournamentDetails", "Admin", new { id = tournamentId });
+        }
+
+        [HttpPost]
+        [Route("UpdateTatamiForMatch")]
+        public async Task<IActionResult> UpdateTatamiForMatch(string matchId, string tatamiNumber, string tournamentId)
+        {
+            var result = await tournamentService.UpdateTatamiForMatchAsync(matchId, tatamiNumber);
 
             if (!result)
             {

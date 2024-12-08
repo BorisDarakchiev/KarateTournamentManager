@@ -26,7 +26,7 @@ namespace KarateTournamentManager.Models
         [Display(Name = "Записани участници")]
         public int EnrolledParticipantsCount { get; set; }
 
-        public List<Tatami> Tatami { get; set; } = null!;
+        public List<Tatami>? Tatami { get; set; }
         public List<ParticipantViewModel> EnrolledParticipants { get; set; } = new();
 
         public List<ApplicationUser> TimerManagers { get; set; } = new();
