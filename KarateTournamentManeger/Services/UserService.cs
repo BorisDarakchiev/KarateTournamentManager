@@ -74,6 +74,7 @@ namespace KarateTournamentManager.Services
 
         public async Task<bool> UpdateUserRoleAsync(string userId, string selectedRole)
         {
+
             var user = await userManager.FindByIdAsync(userId);
             if (user == null)
             {
@@ -85,6 +86,12 @@ namespace KarateTournamentManager.Services
             if (currentRoles.Contains(selectedRole))
             {
                 return true;
+            }
+
+            var tatamis = await context.Tatamis.Where(t => t.TimerManagerId == userId).ToListAsync();
+            foreach (var tatami in tatamis)
+            {
+                tatami.TimerManagerId = null;
             }
 
             await userManager.RemoveFromRolesAsync(user, currentRoles);

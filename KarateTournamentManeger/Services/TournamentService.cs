@@ -460,9 +460,27 @@ namespace KarateTournamentManager.Services
             var tatami = await context.Tatamis
                 .FirstOrDefaultAsync(t => t.Id == tatamiId);
 
+
             if (tatami == null)
             {
                 return false;
+            }
+
+            var stageIds = await context.Stages
+                .Where(s => s.TournamentId == tatami.TournamentId)
+                .Select(s => s.Id)
+                .ToListAsync();
+
+            var matches = await context.Matchеs
+                .Where(m => stageIds.Contains(m.StageId))
+                .ToListAsync();
+
+            foreach (var match in matches)
+            {
+                if (match.Tatami == tatami.Number)
+                {
+                    match.Tatami = 0;
+                }
             }
 
             context.Tatamis.Remove(tatami);

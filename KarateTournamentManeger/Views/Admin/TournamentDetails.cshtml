@@ -66,6 +66,14 @@
                                 </form>
                             </li>
                         }
+                        @if (Model.TimerManagers.Count == 0)
+                        {
+                            <li>
+                                <form method="get" asp-controller="Admin" asp-action="ManageUsers">
+                                    <button class="dropdown-item" type="submit">- Няма свободни таймер мениджъри</button>
+                                </form>
+                            </li>
+                        }
                         @foreach (var timerManager in Model.TimerManagers)
                         {
                             <li>
