@@ -142,6 +142,10 @@ build_metadata.AdditionalFiles.CssScope =
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcU2hhcmVkXF9WYWxpZGF0aW9uU2NyaXB0c1BhcnRpYWwuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 
 
+[D:/_Repos/KarateTournamentManeger/Views/TimerManager/ManageMatch.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZXJNYW5hZ2VyXE1hbmFnZU1hdGNoLmNzaHRtbA==
+build_metadata.AdditionalFiles.CssScope = 
+
 [D:/_Repos/KarateTournamentManeger/Views/TimerManager/Matches.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcVGltZXJNYW5hZ2VyXE1hdGNoZXMuY3NodG1s
 build_metadata.AdditionalFiles.CssScope = 

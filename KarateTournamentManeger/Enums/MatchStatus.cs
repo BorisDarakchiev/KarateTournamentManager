@@ -4,6 +4,7 @@
     {
         Upcoming,  
         InProgress,
+        Paused,
         Finished
     }
 

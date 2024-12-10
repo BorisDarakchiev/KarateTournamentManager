@@ -1,6 +1,7 @@
 ﻿namespace KarateTournamentManager.Models.ViewModels
 {
     using global::KarateTournamentManager.Enums;
+    using KarateTournamentManager.Controllers;
     using System;
     using System.ComponentModel.DataAnnotations;
 
@@ -10,9 +11,12 @@
 
         [Display(Name = "Участник 1")]
         public string Participant1Name { get; set; } = string.Empty;
+        public Guid Participant1Id { get; set; }
 
         [Display(Name = "Участник 2")]
         public string Participant2Name { get; set; } = string.Empty;
+
+        public Guid Participant2Id { get; set; }
 
         [Display(Name = "Резултат на участник 1")]
         public int Participant1Score { get; set; }

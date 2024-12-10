@@ -4,6 +4,7 @@ using KarateTournamentManager.Identity;
 using KarateTournamentManager.Data.Models;
 using KarateTournamentManager.Controllers;
 
+
 namespace KarateTournamentManager.Data
 {
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
@@ -74,11 +75,12 @@ namespace KarateTournamentManager.Data
                 .WithMany()
                 .HasForeignKey(m => m.TournamentId)
                 .OnDelete(DeleteBehavior.Restrict);
+
         }
 
         public DbSet<Tournament> Tournaments { get; set; }
         public DbSet<Stage> Stages { get; set; }
-        public DbSet<Match> Matchеs { get; set; }
+        public DbSet<Match> Matches { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Tatami> Tatamis { get; set; }
     }

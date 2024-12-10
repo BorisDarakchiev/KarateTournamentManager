@@ -7,3 +7,12 @@ D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger
 D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.RazorAssemblyInfo.cache
 D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.RazorAssemblyInfo.cs
 D:\repos\Karate\KarateTournamentManeger\obj\Debug\net8.0\KarateTournamentManeger.sourcelink.json
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.csproj.AssemblyReference.cache
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.GeneratedMSBuildEditorConfig.editorconfig
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.AssemblyInfoInputs.cache
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.AssemblyInfo.cs
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.csproj.CoreCompileInputs.cache
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.MvcApplicationPartsAssemblyInfo.cache
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.RazorAssemblyInfo.cache
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.RazorAssemblyInfo.cs
+D:\_Repos\obj\Debug\net8.0\KarateTournamentManeger.sourcelink.json

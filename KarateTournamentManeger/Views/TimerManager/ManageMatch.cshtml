@@ -1,0 +1,164 @@
+﻿@model KarateTournamentManager.Models.ViewModels.MatchViewModel
+
+<h1>Управление на мача</h1>
+
+<div>
+    <h3>Участници</h3>
+    <p>@Model.Participant1Name срещу @Model.Participant2Name</p>
+</div>
+
+<div>
+    <h3>Резултат</h3>
+    <p>
+        @Model.Participant1Name: <span id="participant1Score">@Model.Participant1Score точки</span>
+        <button onclick="updateScore('@Model.Id', 'Participant1', 1)">+1</button>
+        <button onclick="updateScore('@Model.Id', 'Participant1', 2)">+2</button>
+        <button onclick="updateScore('@Model.Id', 'Participant1', 3)">+3</button>
+        <button id="participant1Minus1" @(Model.Participant1Score < 1 ? "disabled" : "") onclick="updateScore('@Model.Id', 'Participant1', -1)">-1</button>
+        <button id="participant1Minus2" @(Model.Participant1Score < 2 ? "disabled" : "") onclick="updateScore('@Model.Id', 'Participant1', -2)">-2</button>
+        <button id="participant1Minus3" @(Model.Participant1Score < 3 ? "disabled" : "") onclick="updateScore('@Model.Id', 'Participant1', -3)">-3</button>
+    </p>
+    <p>
+        @Model.Participant2Name: <span id="participant2Score">@Model.Participant2Score точки</span>
+        <button onclick="updateScore('@Model.Id', 'Participant2', 1)">+1</button>
+        <button onclick="updateScore('@Model.Id', 'Participant2', 2)">+2</button>
+        <button onclick="updateScore('@Model.Id', 'Participant2', 3)">+3</button>
+        <button id="participant2Minus1" @(Model.Participant2Score < 1 ? "disabled" : "") onclick="updateScore('@Model.Id', 'Participant2', -1)">-1</button>
+        <button id="participant2Minus2" @(Model.Participant2Score < 2 ? "disabled" : "") onclick="updateScore('@Model.Id', 'Participant2', -2)">-2</button>
+        <button id="participant2Minus3" @(Model.Participant2Score < 3 ? "disabled" : "") onclick="updateScore('@Model.Id', 'Participant2', -3)">-3</button>
+    </p>
+
+</div>
+
+
+@* <div>
+    <h3>Управление на таймера</h3>
+    <p>Оставащо време: @Model.RemainingTime</p>
+    <button onclick="startTimer('@Model.Id')">Старт</button>
+    <button onclick="stopTimer('@Model.Id')">Стоп</button>
+    <input type="number" id="duration" placeholder="Продължителност (секунди)" />
+    <button onclick="setDuration('@Model.Id')">Задай продължителност</button>
+</div> *@
+    <div>
+        <h3>Оставащо време</h3>
+        <div id="timer">02:00</div>
+        <button onclick="startTimerLoop('@Model.Id')">Старт на таймера</button>
+        <button onclick="stopTimerLoop()">Стоп на таймера</button>
+    </div>
+<div>
+    <h3>Управление на таймера</h3>
+    <input type="number" id="duration" placeholder="Продължителност (секунди)" />
+    <button onclick="setTimerDuration('@Model.Id', document.getElementById('duration').value)">Създай и стартирай таймер</button>
+</div>
+
+<div>
+    <h3>Допълнителна част</h3>
+    <button onclick="addExtraPeriod('@Model.Id')">Добави допълнителна част</button>
+</div>
+
+<div>
+    <h3>Определяне на победител</h3>
+    <button onclick="setWinner('@Model.Id', 'Participant1')">Определи @Model.Participant1Name за победител</button>
+    <button onclick="setWinner('@Model.Id', 'Participant2')">Определи @Model.Participant2Name за победител</button>
+</div>
+
+<script>
+    // Динамично генерирани пътища от Razor
+    const urls = {
+        updateScore: '@Url.Action("UpdateScore", "TimerManager")',
+        startTimer: '@Url.Action("StartTimer", "TimerManager")',
+        stopTimer: '@Url.Action("StopTimer", "TimerManager")',
+        setDuration: '@Url.Action("SetDuration", "TimerManager")',
+        addExtraPeriod: '@Url.Action("AddExtraPeriod", "TimerManager")',
+        setWinner: '@Url.Action("SetWinner", "TimerManager")'
+    };
+
+    async function sendAjaxRequest(url, data) {
+        try {
+            const response = await fetch(url, {
+                method: "POST",
+                headers: {
+                    "Content-Type": "application/json"
+                },
+                body: JSON.stringify(data)
+            });
+
+            if (!response.ok) throw new Error("Server Error");
+
+            const result = await response.json();
+            console.log("Response from server:", result); // Проверка на отговора
+            updateUI(result.participant1Score, result.participant2Score);
+        } catch (error) {
+            alert('Грешка: ' + error.message);
+        }
+    }
+
+    // JavaScript функции за извикване на сървърните маршрути
+    function updateScore(matchId, participant, points) {
+        sendAjaxRequest(urls.updateScore, { matchId, participant, points });
+    }
+
+    let timerInterval;
+
+    async function fetchTimerState(matchId) {
+        try {
+            const response = await fetch(`/api/timer/state/${matchId}`);
+            const result = await response.json();
+
+            if (result.success) {
+                const remainingTime = result.remainingTimeInSeconds;
+                updateTimerUI(remainingTime);
+            } else {
+                console.log("Таймерът не е намерен");
+            }
+        } catch (error) {
+            console.error('Грешка при извличане на таймера:', error);
+        }
+    }
+
+    function updateTimerUI(remainingSeconds) {
+        const timerElement = document.getElementById('timer');
+        const minutes = Math.floor(remainingSeconds / 60);
+        const seconds = remainingSeconds % 60;
+        timerElement.innerText = `${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+    }
+
+    function startTimerLoop(matchId) {
+        fetchTimerState(matchId);
+        timerInterval = setInterval(() => fetchTimerState(matchId), 1000);
+    }
+
+    function stopTimerLoop() {
+        clearInterval(timerInterval);
+    }
+
+
+    function addExtraPeriod(matchId) {
+        sendAjaxRequest(urls.addExtraPeriod, { matchId });
+    }
+
+    function setWinner(matchId, participant) {
+        sendAjaxRequest(urls.setWinner, { matchId, participant });
+    }
+
+
+    function updateUI(participant1Score, participant2Score) {
+        document.querySelector("#participant1Score").innerText = participant1Score + " точки";
+        document.querySelector("#participant2Score").innerText = participant2Score + " точки";
+
+        updateButtonState("#participant1Minus1", participant1Score >= 1);
+        updateButtonState("#participant1Minus2", participant1Score >= 2);
+        updateButtonState("#participant1Minus3", participant1Score >= 3);
+
+        updateButtonState("#participant2Minus1", participant2Score >= 1);
+        updateButtonState("#participant2Minus2", participant2Score >= 2);
+        updateButtonState("#participant2Minus3", participant2Score >= 3);
+    }
+
+    function updateButtonState(buttonSelector, isEnabled) {
+        const button = document.querySelector(buttonSelector);
+        if (button) {
+            button.disabled = !isEnabled;
+        }
+    }
+</script>

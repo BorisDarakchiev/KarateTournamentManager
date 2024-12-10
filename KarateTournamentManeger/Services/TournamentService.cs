@@ -137,7 +137,7 @@ namespace KarateTournamentManager.Services
                 };
             }).ToList();
 
-            var matches = await context.Matchеs
+            var matches = await context.Matches
                 .Include(m => m.Stage)
                 .Where(m => m.Stage.TournamentId == id)
                 .Include(m => m.Participant1)
@@ -290,11 +290,11 @@ namespace KarateTournamentManager.Services
 
             foreach (var stage in existingStages)
             {
-                var matches = await context.Matchеs
+                var matches = await context.Matches
                     .Where(m => m.StageId == stage.Id)
                     .ToListAsync();
 
-                context.Matchеs.RemoveRange(matches);
+                context.Matches.RemoveRange(matches);
                 context.Stages.Remove(stage);
             }
 
@@ -322,7 +322,7 @@ namespace KarateTournamentManager.Services
                     matches.Add(match);
                     preliminaryMatches--;
                 }
-                await context.Matchеs.AddRangeAsync(matches);
+                await context.Matches.AddRangeAsync(matches);
                 await context.Stages.AddAsync(stage);
                 await context.SaveChangesAsync();
             }
@@ -351,7 +351,7 @@ namespace KarateTournamentManager.Services
                     }
                 }
                 await context.Stages.AddAsync(stage);
-                await context.Matchеs.AddRangeAsync(matches);
+                await context.Matches.AddRangeAsync(matches);
                 await context.SaveChangesAsync();
             }
             if (participants >= 4 || participants == 2)
@@ -382,7 +382,7 @@ namespace KarateTournamentManager.Services
                     allStages.Add(stage);
                 }
                 await context.Stages.AddRangeAsync(allStages);
-                await context.Matchеs.AddRangeAsync(allMatches);
+                await context.Matches.AddRangeAsync(allMatches);
                 await context.SaveChangesAsync();
             }
             await DistributeParticipantsRandomly(tournament);
@@ -409,7 +409,7 @@ namespace KarateTournamentManager.Services
 
                 if (preliminaryStage.Any())
                 {
-                    var preliminaryMatches = await context.Matchеs
+                    var preliminaryMatches = await context.Matches
                         .Where(m => m.StageId == preliminaryStage[0].Id)
                         .ToListAsync();
 
@@ -434,7 +434,7 @@ namespace KarateTournamentManager.Services
             var maxStage = stages
                 .OrderByDescending(s => s.StageOrder)
                 .FirstOrDefault();
-            var maxStageMatches = await context.Matchеs
+            var maxStageMatches = await context.Matches
                 .Where(m => m.StageId == maxStage.Id)
                 .ToListAsync();
 
@@ -489,7 +489,7 @@ namespace KarateTournamentManager.Services
                 .Select(s => s.Id)
                 .ToListAsync();
 
-            var matches = await context.Matchеs
+            var matches = await context.Matches
                 .Where(m => stageIds.Contains(m.StageId))
                 .ToListAsync();
 
@@ -542,7 +542,7 @@ namespace KarateTournamentManager.Services
 
         public async Task<bool> UpdateTatamiForMatchAsync(string matchId, string tatamiNumber)
         {
-            var match = await context.Matchеs.FindAsync(Guid.Parse(matchId));
+            var match = await context.Matches.FindAsync(Guid.Parse(matchId));
 
             if (match == null)
             {

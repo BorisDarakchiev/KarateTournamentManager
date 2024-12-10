@@ -4,6 +4,7 @@ using KarateTournamentManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241210103359_Update-MatchesTable")]
+    partial class UpdateMatchesTable
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -259,22 +262,6 @@ namespace KarateTournamentManager.Migrations
                     b.ToTable("AspNetUsers", (string)null);
                 });
 
-            modelBuilder.Entity("KarateTournamentManager.Models.Database.TimerState", b =>
-                {
-                    b.Property<Guid>("MatchId")
-                        .HasColumnType("uniqueidentifier");
-
-                    b.Property<int>("DurationInSeconds")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("StartTime")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("MatchId");
-
-                    b.ToTable("TimerStates");
-                });
-
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
                 {
                     b.Property<string>("Id")
@@ -504,15 +491,6 @@ namespace KarateTournamentManager.Migrations
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Participant");
-                });
-
-            modelBuilder.Entity("KarateTournamentManager.Models.Database.TimerState", b =>
-                {
-                    b.HasOne("KarateTournamentManager.Controllers.Match", null)
-                        .WithOne()
-                        .HasForeignKey("KarateTournamentManager.Models.Database.TimerState", "MatchId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>

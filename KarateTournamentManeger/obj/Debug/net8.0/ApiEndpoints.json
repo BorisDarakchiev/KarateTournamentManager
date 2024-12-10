@@ -1,1 +1,187 @@
-[]
+[
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "ManageMatch",
+    "RelativePath": "TimerManager",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matchId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "AddExtraPeriod",
+    "RelativePath": "TimerManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matchId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "StartMatch",
+    "RelativePath": "TimerManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matchId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "StopMatch",
+    "RelativePath": "TimerManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matchId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "SetWinner",
+    "RelativePath": "TimerManager",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "matchId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      },
+      {
+        "Name": "winnerId",
+        "Type": "System.Guid",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "Matches",
+    "RelativePath": "TimerManager/Matches",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "SetDuration",
+    "RelativePath": "TimerManager/setduration",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "KarateTournamentManager.Models.Requests.SetDurationRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "SetWinner",
+    "RelativePath": "TimerManager/setwinner",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "KarateTournamentManager.Models.Requests.SetWinnerRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "StartTimer",
+    "RelativePath": "TimerManager/starttimer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "KarateTournamentManager.Models.Requests.TimerRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "StopTimer",
+    "RelativePath": "TimerManager/stoptimer",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "KarateTournamentManager.Models.Requests.TimerRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "Tournaments",
+    "RelativePath": "TimerManager/Tournaments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
+    "Method": "UpdateScore",
+    "RelativePath": "TimerManager/updatescore",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "request",
+        "Type": "KarateTournamentManager.Models.Requests.UpdateScoreRequest",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  }
+]

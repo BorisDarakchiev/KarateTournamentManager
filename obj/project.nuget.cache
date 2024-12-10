@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "3zAA+kZRdx0=",
+  "dgSpecHash": "8KVYeKvnZCM=",
   "success": true,
-  "projectFilePath": "D:\\repos\\Karate\\KarateTournamentManeger\\KarateTournamentManeger.csproj",
+  "projectFilePath": "D:\\_Repos\\KarateTournamentManeger.csproj",
   "expectedPackageFiles": [
     "C:\\Users\\Boris\\.nuget\\packages\\humanizer.core\\2.14.1\\humanizer.core.2.14.1.nupkg.sha512",
     "C:\\Users\\Boris\\.nuget\\packages\\microsoft.aspnetcore.cryptography.internal\\8.0.11\\microsoft.aspnetcore.cryptography.internal.8.0.11.nupkg.sha512",
