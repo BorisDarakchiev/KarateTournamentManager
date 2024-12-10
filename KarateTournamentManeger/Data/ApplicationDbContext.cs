@@ -3,6 +3,9 @@ using Microsoft.EntityFrameworkCore;
 using KarateTournamentManager.Identity;
 using KarateTournamentManager.Data.Models;
 using KarateTournamentManager.Controllers;
+using KarateTournamentManager.Models;
+using Timer = KarateTournamentManager.Models.Timer;
+
 
 
 namespace KarateTournamentManager.Data
@@ -17,7 +20,6 @@ namespace KarateTournamentManager.Data
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
             base.OnModelCreating(modelBuilder);
-
 
             modelBuilder.Entity<ApplicationUser>()
                 .HasQueryFilter(a => !a.IsDeleted);
@@ -76,6 +78,13 @@ namespace KarateTournamentManager.Data
                 .HasForeignKey(m => m.TournamentId)
                 .OnDelete(DeleteBehavior.Restrict);
 
+
+            modelBuilder.Entity<Match>()
+                .HasOne(m => m.Timer)
+                .WithOne(t => t.Match)
+                .HasForeignKey<Timer>(t => t.MatchId)
+                .OnDelete(DeleteBehavior.Cascade);
+
         }
 
         public DbSet<Tournament> Tournaments { get; set; }
@@ -83,5 +92,6 @@ namespace KarateTournamentManager.Data
         public DbSet<Match> Matches { get; set; }
         public DbSet<Participant> Participants { get; set; }
         public DbSet<Tatami> Tatamis { get; set; }
+        public DbSet<Timer> Timers { get; set; }
     }
 }

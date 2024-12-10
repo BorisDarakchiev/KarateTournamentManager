@@ -5,11 +5,13 @@ using KarateTournamentManager.Enums;
 using KarateTournamentManager.Identity;
 using KarateTournamentManager.Models;
 using KarateTournamentManager.Models.Response;
+using KarateTournamentManager.Models.Requests;
 using KarateTournamentManager.Models.ViewModels;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
+using Timer = KarateTournamentManager.Models.Timer;
 
 namespace KarateTournamentManager.Services
 {
@@ -25,7 +27,7 @@ namespace KarateTournamentManager.Services
             userManager = _userManager;
             roleManager = _roleManager;
         }
-        
+
         public async Task<TournamentViewModel> GetMatchesForTimerManagerAsync(string? userId)
         {
             var tatamis = await context.Tatamis
@@ -70,7 +72,6 @@ namespace KarateTournamentManager.Services
                         Participant2Score = match.Participant2Score,
                         Period = match.Period,
                         Tatami = match.Tatami,
-                        RemainingTime = match.RemainingTime.ToString(@"mm\:ss"),
                         Status = match.Status,
                         TournamentId = match.TournamentId,
                         WinnerName = match.Winner?.Name
@@ -110,6 +111,9 @@ namespace KarateTournamentManager.Services
                 .Include(m => m.Tournament)
                 .FirstOrDefaultAsync(m => m.Id == matchId);
 
+            var timer = await context.Timers
+                .FirstOrDefaultAsync(t => t.MatchId == matchId);
+
             if (match == null)
             {
                 throw new InvalidOperationException("Мачът не е намерен.");
@@ -126,7 +130,7 @@ namespace KarateTournamentManager.Services
                 Participant2Id = match.Participant2Id.Value,
                 Period = match.Period,
                 Tatami = match.Tatami,
-                RemainingTime = match.RemainingTime != default(TimeSpan) ? match.RemainingTime.ToString(@"mm\:ss") : "00:00",
+                Timer = timer,
                 Status = match.Status,
                 TournamentId = match.TournamentId,
                 TournamentName = match.Tournament?.Location ?? "Непосочен",
@@ -181,12 +185,11 @@ namespace KarateTournamentManager.Services
                 return false; // Мачът не съществува
             }
 
-            match.RemainingTime = duration; // Задаваме оставащото време
             await context.SaveChangesAsync();
             return true;
         }
 
-        public async Task<bool> SetWinnerAsync(Guid matchId, Guid winnerId)
+        public async Task<SetWinnerResponse> SetWinnerAsync(Guid matchId, Guid winnerId)
         {
             var match = await context.Matches
                 .Include(m => m.Participant1)
@@ -195,53 +198,62 @@ namespace KarateTournamentManager.Services
 
             if (match == null)
             {
-                return false; // Мачът не съществува
+                return new SetWinnerResponse(false, "Мачът не е намерен.");
             }
 
-            if (match.Participant1?.Id == winnerId)
+            if (match.Participant1Id != winnerId && match.Participant2Id != winnerId)
             {
-                match.Winner = match.Participant1;
+                return new SetWinnerResponse(false, "Посоченият участник не е част от този мач.");
             }
-            else if (match.Participant2?.Id == winnerId)
+
+            match.WinnerId = winnerId;
+            match.Status = MatchStatus.Finished;
+            await context.SaveChangesAsync();
+
+            var winnerName = winnerId == match.Participant1Id ? match.Participant1.Name : match.Participant2.Name;
+
+            return new SetWinnerResponse(
+                true,
+                "Победителят е зададен успешно.",
+                winnerId,
+                winnerName,
+                match.Status.ToString()
+            );
+        }
+
+        public async Task StartTimerAsync(Guid matchId)
+        {
+            var timer = await context.Timers.FirstOrDefaultAsync(t => t.MatchId == matchId);
+
+            if (timer == null)
             {
-                match.Winner = match.Participant2;
+                timer = new Timer
+                {
+                    MatchId = matchId,
+                    CountdownTime = TimeSpan.FromMinutes(2),
+                    StartedAt = DateTime.Now
+                };
+                context.Timers.Add(timer);
             }
             else
             {
-                return false; // Невалиден победител
+                timer.StartedAt = DateTime.Now;
             }
 
-            match.Status = MatchStatus.Finished;
             await context.SaveChangesAsync();
-            return true;
         }
 
-        public async Task<bool> StartTimerAsync(Guid matchId)
+        public async Task StopTimerAsync(Guid matchId)
         {
-            var match = await context.Matches.FindAsync(matchId);
-            if (match == null)
-            {
-                return false; // Мачът не съществува
-            }
+            var timer = await context.Timers.FirstOrDefaultAsync(t => t.MatchId == matchId);
+            if (timer == null) throw new InvalidOperationException("Таймерът не е намерен.");
 
-            match.Status = MatchStatus.InProgress;
+            var elapsed = DateTime.Now - (timer.StartedAt ?? DateTime.Now);
+            timer.CountdownTime -= elapsed;
+            timer.StartedAt = null;
+
             await context.SaveChangesAsync();
-            return true;
         }
-
-        public async Task<bool> StopTimerAsync(Guid matchId)
-        {
-            var match = await context.Matches.FindAsync(matchId);
-            if (match == null)
-            {
-                return false; // Мачът не съществува
-            }
-
-            match.Status = MatchStatus.Paused;
-            await context.SaveChangesAsync();
-            return true;
-        }
-
         public async Task<UpdateScoreResponse> UpdateScoreAsync(Guid matchId, string participant, int points)
         {
             var match = await context.Matches
@@ -306,3 +318,4 @@ namespace KarateTournamentManager.Services
         }
     }
 }
+

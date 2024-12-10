@@ -99,37 +99,39 @@ namespace KarateTournamentManager.Controllers
             return RedirectToAction(nameof(ManageMatch), new { matchId });
         }
 
-        [HttpPost]
-        public async Task<IActionResult> SetWinner(Guid matchId, Guid winnerId)
-        {
-            try
-            {
-                await timerManagerService.SetWinnerAsync(matchId, winnerId);
-                return RedirectToAction(nameof(ManageMatch), new { matchId });
-            }
-            catch (InvalidOperationException ex)
-            {
-                ModelState.AddModelError(string.Empty, ex.Message);
-                var matchViewModel = await timerManagerService.GetMatchViewModelAsync(matchId);
-                return View("MatchDetails", matchViewModel);
-            }
-        }
-
         //AJAX
 
 
         [HttpPost("starttimer")]
         public async Task<IActionResult> StartTimer([FromBody] TimerRequest request)
         {
-            await timerManagerService.StartTimerAsync(request.MatchId);
-            return Ok("Таймерът е стартиран!");
+            try
+            {
+                await timerManagerService.StartTimerAsync(request.MatchId);
+                return Ok(new { success = true, action = "startTimer" });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Грешка при стартиране на таймера.", error = ex.Message });
+            }
         }
 
         [HttpPost("stoptimer")]
         public async Task<IActionResult> StopTimer([FromBody] TimerRequest request)
         {
-            await timerManagerService.StopTimerAsync(request.MatchId);
-            return Ok("Таймерът е спрян!");
+            try
+            {
+                await timerManagerService.StopTimerAsync(request.MatchId);
+                return Ok(new { success = true, action = "stopTimer" });
+            }
+            catch (InvalidOperationException ex)
+            {
+                return NotFound(new { message = ex.Message });
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { message = "Грешка при спиране на таймера.", error = ex.Message });
+            }
         }
 
         [HttpPost("setduration")]
@@ -153,7 +155,8 @@ namespace KarateTournamentManager.Controllers
             {
                 success = true,
                 participant1Score = result.Participant1Score,
-                participant2Score = result.Participant2Score
+                participant2Score = result.Participant2Score,
+                action = "updateScore"
             });
         }
 
@@ -161,8 +164,21 @@ namespace KarateTournamentManager.Controllers
         [HttpPost("setwinner")]
         public async Task<IActionResult> SetWinner([FromBody] SetWinnerRequest request)
         {
-            await timerManagerService.SetWinnerAsync(request.MatchId, request.WinnerId);
-            return Ok($"Победител е: {request.WinnerId}");
+            try
+            {
+                var response = await timerManagerService.SetWinnerAsync(request.MatchId, request.WinnerId);
+
+                if (!response.Success)
+                {
+                    return BadRequest(response);
+                }
+
+                return Ok(response);
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, new { Success = false, Message = "Възникна грешка на сървъра." });
+            }
         }
     }
 }

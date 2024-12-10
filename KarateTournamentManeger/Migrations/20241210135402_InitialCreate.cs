@@ -30,7 +30,7 @@ namespace KarateTournamentManager.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false)
                 },
                 constraints: table =>
                 {
@@ -42,8 +42,8 @@ namespace KarateTournamentManager.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Location = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    Description = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    Location = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    Description = table.Column<string>(type: "nvarchar(500)", maxLength: 500, nullable: false),
                     Date = table.Column<DateTime>(type: "datetime2", nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false)
                 },
@@ -79,6 +79,9 @@ namespace KarateTournamentManager.Migrations
                 {
                     Id = table.Column<string>(type: "nvarchar(450)", nullable: false),
                     ParticipantId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
+                    FirstName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    LastName = table.Column<string>(type: "nvarchar(max)", nullable: false),
+                    IsDeleted = table.Column<bool>(type: "bit", nullable: false),
                     UserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     NormalizedUserName = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
                     Email = table.Column<string>(type: "nvarchar(256)", maxLength: 256, nullable: true),
@@ -134,8 +137,9 @@ namespace KarateTournamentManager.Migrations
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Name = table.Column<string>(type: "nvarchar(max)", nullable: false),
-                    TournamentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                    Name = table.Column<string>(type: "nvarchar(50)", maxLength: 50, nullable: false),
+                    TournamentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    StageOrder = table.Column<int>(type: "int", nullable: false)
                 },
                 constraints: table =>
                 {
@@ -234,61 +238,87 @@ namespace KarateTournamentManager.Migrations
                 });
 
             migrationBuilder.CreateTable(
-                name: "Matchеs",
+                name: "Tatamis",
                 columns: table => new
                 {
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    Tatami = table.Column<int>(type: "int", nullable: false),
+                    Number = table.Column<int>(type: "int", maxLength: 10, nullable: false),
+                    TimerManagerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    TournamentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false)
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_Tatamis", x => x.Id);
+                    table.ForeignKey(
+                        name: "FK_Tatamis_AspNetUsers_TimerManagerId",
+                        column: x => x.TimerManagerId,
+                        principalTable: "AspNetUsers",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.SetNull);
+                    table.ForeignKey(
+                        name: "FK_Tatamis_Tournaments_TournamentId",
+                        column: x => x.TournamentId,
+                        principalTable: "Tournaments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Cascade);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "Matches",
+                columns: table => new
+                {
+                    Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
+                    Tatami = table.Column<int>(type: "int", maxLength: 10, nullable: false),
                     Participant1Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     Participant2Id = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
-                    Participant1Score = table.Column<int>(type: "int", nullable: false),
-                    Participant2Score = table.Column<int>(type: "int", nullable: false),
+                    Participant1Score = table.Column<int>(type: "int", maxLength: 100, nullable: false),
+                    Participant2Score = table.Column<int>(type: "int", maxLength: 100, nullable: false),
                     Status = table.Column<int>(type: "int", nullable: false),
                     Period = table.Column<int>(type: "int", nullable: false),
                     RemainingTime = table.Column<TimeSpan>(type: "time", nullable: false),
                     WinnerId = table.Column<Guid>(type: "uniqueidentifier", nullable: true),
                     StageId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
-                    TimerManagerId = table.Column<string>(type: "nvarchar(450)", nullable: true),
+                    TournamentId = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     ParticipantId = table.Column<Guid>(type: "uniqueidentifier", nullable: true)
                 },
                 constraints: table =>
                 {
-                    table.PrimaryKey("PK_Matchеs", x => x.Id);
+                    table.PrimaryKey("PK_Matches", x => x.Id);
                     table.ForeignKey(
-                        name: "FK_Matchеs_AspNetUsers_TimerManagerId",
-                        column: x => x.TimerManagerId,
-                        principalTable: "AspNetUsers",
-                        principalColumn: "Id",
-                        onDelete: ReferentialAction.Restrict);
-                    table.ForeignKey(
-                        name: "FK_Matchеs_Participants_Participant1Id",
+                        name: "FK_Matches_Participants_Participant1Id",
                         column: x => x.Participant1Id,
                         principalTable: "Participants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Matchеs_Participants_Participant2Id",
+                        name: "FK_Matches_Participants_Participant2Id",
                         column: x => x.Participant2Id,
                         principalTable: "Participants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Restrict);
                     table.ForeignKey(
-                        name: "FK_Matchеs_Participants_ParticipantId",
+                        name: "FK_Matches_Participants_ParticipantId",
                         column: x => x.ParticipantId,
                         principalTable: "Participants",
                         principalColumn: "Id");
                     table.ForeignKey(
-                        name: "FK_Matchеs_Participants_WinnerId",
+                        name: "FK_Matches_Participants_WinnerId",
                         column: x => x.WinnerId,
                         principalTable: "Participants",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.SetNull);
                     table.ForeignKey(
-                        name: "FK_Matchеs_Stages_StageId",
+                        name: "FK_Matches_Stages_StageId",
                         column: x => x.StageId,
                         principalTable: "Stages",
                         principalColumn: "Id",
                         onDelete: ReferentialAction.Cascade);
+                    table.ForeignKey(
+                        name: "FK_Matches_Tournaments_TournamentId",
+                        column: x => x.TournamentId,
+                        principalTable: "Tournaments",
+                        principalColumn: "Id",
+                        onDelete: ReferentialAction.Restrict);
                 });
 
             migrationBuilder.CreateIndex(
@@ -338,33 +368,33 @@ namespace KarateTournamentManager.Migrations
                 filter: "[NormalizedUserName] IS NOT NULL");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matchеs_Participant1Id",
-                table: "Matchеs",
+                name: "IX_Matches_Participant1Id",
+                table: "Matches",
                 column: "Participant1Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matchеs_Participant2Id",
-                table: "Matchеs",
+                name: "IX_Matches_Participant2Id",
+                table: "Matches",
                 column: "Participant2Id");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matchеs_ParticipantId",
-                table: "Matchеs",
+                name: "IX_Matches_ParticipantId",
+                table: "Matches",
                 column: "ParticipantId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matchеs_StageId",
-                table: "Matchеs",
+                name: "IX_Matches_StageId",
+                table: "Matches",
                 column: "StageId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matchеs_TimerManagerId",
-                table: "Matchеs",
-                column: "TimerManagerId");
+                name: "IX_Matches_TournamentId",
+                table: "Matches",
+                column: "TournamentId");
 
             migrationBuilder.CreateIndex(
-                name: "IX_Matchеs_WinnerId",
-                table: "Matchеs",
+                name: "IX_Matches_WinnerId",
+                table: "Matches",
                 column: "WinnerId");
 
             migrationBuilder.CreateIndex(
@@ -375,6 +405,16 @@ namespace KarateTournamentManager.Migrations
             migrationBuilder.CreateIndex(
                 name: "IX_Stages_TournamentId",
                 table: "Stages",
+                column: "TournamentId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tatamis_TimerManagerId",
+                table: "Tatamis",
+                column: "TimerManagerId");
+
+            migrationBuilder.CreateIndex(
+                name: "IX_Tatamis_TournamentId",
+                table: "Tatamis",
                 column: "TournamentId");
         }
 
@@ -397,25 +437,28 @@ namespace KarateTournamentManager.Migrations
                 name: "AspNetUserTokens");
 
             migrationBuilder.DropTable(
-                name: "Matchеs");
+                name: "Matches");
 
             migrationBuilder.DropTable(
                 name: "ParticipantTournament");
 
             migrationBuilder.DropTable(
-                name: "AspNetRoles");
+                name: "Tatamis");
 
             migrationBuilder.DropTable(
-                name: "AspNetUsers");
+                name: "AspNetRoles");
 
             migrationBuilder.DropTable(
                 name: "Stages");
 
             migrationBuilder.DropTable(
-                name: "Participants");
+                name: "AspNetUsers");
 
             migrationBuilder.DropTable(
                 name: "Tournaments");
+
+            migrationBuilder.DropTable(
+                name: "Participants");
         }
     }
 }

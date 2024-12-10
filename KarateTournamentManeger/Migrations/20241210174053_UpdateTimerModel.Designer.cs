@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241202202210_AddStageOrderToStage")]
-    partial class AddStageOrderToStage
+    [Migration("20241210174053_UpdateTimerModel")]
+    partial class UpdateTimerModel
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -35,12 +35,14 @@ namespace KarateTournamentManager.Migrations
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant1Score")
+                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<Guid?>("Participant2Id")
                         .HasColumnType("uniqueidentifier");
 
                     b.Property<int>("Participant2Score")
+                        .HasMaxLength(100)
                         .HasColumnType("int");
 
                     b.Property<Guid?>("ParticipantId")
@@ -49,9 +51,6 @@ namespace KarateTournamentManager.Migrations
                     b.Property<int>("Period")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("RemainingTime")
-                        .HasColumnType("time");
-
                     b.Property<Guid>("StageId")
                         .HasColumnType("uniqueidentifier");
 
@@ -59,10 +58,11 @@ namespace KarateTournamentManager.Migrations
                         .HasColumnType("int");
 
                     b.Property<int>("Tatami")
+                        .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<string>("TimerManagerId")
-                        .HasColumnType("nvarchar(450)");
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
 
                     b.Property<Guid?>("WinnerId")
                         .HasColumnType("uniqueidentifier");
@@ -77,11 +77,11 @@ namespace KarateTournamentManager.Migrations
 
                     b.HasIndex("StageId");
 
-                    b.HasIndex("TimerManagerId");
+                    b.HasIndex("TournamentId");
 
                     b.HasIndex("WinnerId");
 
-                    b.ToTable("Matchеs");
+                    b.ToTable("Matches");
                 });
 
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>
@@ -92,7 +92,8 @@ namespace KarateTournamentManager.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.HasKey("Id");
 
@@ -107,7 +108,8 @@ namespace KarateTournamentManager.Migrations
 
                     b.Property<string>("Name")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("StageOrder")
                         .HasColumnType("int");
@@ -122,6 +124,31 @@ namespace KarateTournamentManager.Migrations
                     b.ToTable("Stages");
                 });
 
+            modelBuilder.Entity("KarateTournamentManager.Data.Models.Tatami", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<int>("Number")
+                        .HasMaxLength(10)
+                        .HasColumnType("int");
+
+                    b.Property<string>("TimerManagerId")
+                        .HasColumnType("nvarchar(450)");
+
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("TimerManagerId");
+
+                    b.HasIndex("TournamentId");
+
+                    b.ToTable("Tatamis");
+                });
+
             modelBuilder.Entity("KarateTournamentManager.Data.Models.Tournament", b =>
                 {
                     b.Property<Guid>("Id")
@@ -133,11 +160,13 @@ namespace KarateTournamentManager.Migrations
 
                     b.Property<string>("Description")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(500)
+                        .HasColumnType("nvarchar(500)");
 
                     b.Property<string>("Location")
                         .IsRequired()
-                        .HasColumnType("nvarchar(max)");
+                        .HasMaxLength(50)
+                        .HasColumnType("nvarchar(50)");
 
                     b.Property<int>("Status")
                         .HasColumnType("int");
@@ -165,6 +194,17 @@ namespace KarateTournamentManager.Migrations
 
                     b.Property<bool>("EmailConfirmed")
                         .HasColumnType("bit");
+
+                    b.Property<string>("FirstName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
+
+                    b.Property<string>("LastName")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<bool>("LockoutEnabled")
                         .HasColumnType("bit");
@@ -217,6 +257,32 @@ namespace KarateTournamentManager.Migrations
                         .HasFilter("[ParticipantId] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("KarateTournamentManager.Models.Timer", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeSpan>("CountdownTime")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsRunning")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("MatchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<DateTime?>("StartedAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MatchId")
+                        .IsUnique();
+
+                    b.ToTable("Timers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -389,10 +455,11 @@ namespace KarateTournamentManager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KarateTournamentManager.Identity.ApplicationUser", "TimerManager")
+                    b.HasOne("KarateTournamentManager.Data.Models.Tournament", "Tournament")
                         .WithMany()
-                        .HasForeignKey("TimerManagerId")
-                        .OnDelete(DeleteBehavior.Restrict);
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
 
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Winner")
                         .WithMany()
@@ -405,7 +472,7 @@ namespace KarateTournamentManager.Migrations
 
                     b.Navigation("Stage");
 
-                    b.Navigation("TimerManager");
+                    b.Navigation("Tournament");
 
                     b.Navigation("Winner");
                 });
@@ -421,14 +488,43 @@ namespace KarateTournamentManager.Migrations
                     b.Navigation("Tournament");
                 });
 
+            modelBuilder.Entity("KarateTournamentManager.Data.Models.Tatami", b =>
+                {
+                    b.HasOne("KarateTournamentManager.Identity.ApplicationUser", "TimerManager")
+                        .WithMany()
+                        .HasForeignKey("TimerManagerId")
+                        .OnDelete(DeleteBehavior.SetNull);
+
+                    b.HasOne("KarateTournamentManager.Data.Models.Tournament", "Tournament")
+                        .WithMany()
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("TimerManager");
+
+                    b.Navigation("Tournament");
+                });
+
             modelBuilder.Entity("KarateTournamentManager.Identity.ApplicationUser", b =>
                 {
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Participant")
-                        .WithOne()
+                        .WithOne("ApplicationUser")
                         .HasForeignKey("KarateTournamentManager.Identity.ApplicationUser", "ParticipantId")
                         .OnDelete(DeleteBehavior.Restrict);
 
                     b.Navigation("Participant");
+                });
+
+            modelBuilder.Entity("KarateTournamentManager.Models.Timer", b =>
+                {
+                    b.HasOne("KarateTournamentManager.Controllers.Match", "Match")
+                        .WithOne("Timer")
+                        .HasForeignKey("KarateTournamentManager.Models.Timer", "MatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Match");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -497,8 +593,15 @@ namespace KarateTournamentManager.Migrations
                         .IsRequired();
                 });
 
+            modelBuilder.Entity("KarateTournamentManager.Controllers.Match", b =>
+                {
+                    b.Navigation("Timer");
+                });
+
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>
                 {
+                    b.Navigation("ApplicationUser");
+
                     b.Navigation("Matches");
                 });
 #pragma warning restore 612, 618

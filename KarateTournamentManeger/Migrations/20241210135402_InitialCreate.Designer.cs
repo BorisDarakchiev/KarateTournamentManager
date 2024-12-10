@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241206192339_AddFirstNameAndLastNameToUser")]
-    partial class AddFirstNameAndLastNameToUser
+    [Migration("20241210135402_InitialCreate")]
+    partial class InitialCreate
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -64,6 +64,9 @@ namespace KarateTournamentManager.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
+                    b.Property<Guid>("TournamentId")
+                        .HasColumnType("uniqueidentifier");
+
                     b.Property<Guid?>("WinnerId")
                         .HasColumnType("uniqueidentifier");
 
@@ -77,9 +80,11 @@ namespace KarateTournamentManager.Migrations
 
                     b.HasIndex("StageId");
 
+                    b.HasIndex("TournamentId");
+
                     b.HasIndex("WinnerId");
 
-                    b.ToTable("Matchеs");
+                    b.ToTable("Matches");
                 });
 
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>
@@ -132,8 +137,8 @@ namespace KarateTournamentManager.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<Guid?>("TimerManagerId")
-                        .HasColumnType("uniqueidentifier");
+                    b.Property<string>("TimerManagerId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<Guid>("TournamentId")
                         .HasColumnType("uniqueidentifier");
@@ -196,6 +201,9 @@ namespace KarateTournamentManager.Migrations
                     b.Property<string>("FirstName")
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsDeleted")
+                        .HasColumnType("bit");
 
                     b.Property<string>("LastName")
                         .IsRequired()
@@ -424,6 +432,12 @@ namespace KarateTournamentManager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
+                    b.HasOne("KarateTournamentManager.Data.Models.Tournament", "Tournament")
+                        .WithMany()
+                        .HasForeignKey("TournamentId")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Winner")
                         .WithMany()
                         .HasForeignKey("WinnerId")
@@ -434,6 +448,8 @@ namespace KarateTournamentManager.Migrations
                     b.Navigation("Participant2");
 
                     b.Navigation("Stage");
+
+                    b.Navigation("Tournament");
 
                     b.Navigation("Winner");
                 });
@@ -451,9 +467,10 @@ namespace KarateTournamentManager.Migrations
 
             modelBuilder.Entity("KarateTournamentManager.Data.Models.Tatami", b =>
                 {
-                    b.HasOne("KarateTournamentManager.Controllers.Participant", "TimerManager")
+                    b.HasOne("KarateTournamentManager.Identity.ApplicationUser", "TimerManager")
                         .WithMany()
-                        .HasForeignKey("TimerManagerId");
+                        .HasForeignKey("TimerManagerId")
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.HasOne("KarateTournamentManager.Data.Models.Tournament", "Tournament")
                         .WithMany()
@@ -469,7 +486,7 @@ namespace KarateTournamentManager.Migrations
             modelBuilder.Entity("KarateTournamentManager.Identity.ApplicationUser", b =>
                 {
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Participant")
-                        .WithOne()
+                        .WithOne("ApplicationUser")
                         .HasForeignKey("KarateTournamentManager.Identity.ApplicationUser", "ParticipantId")
                         .OnDelete(DeleteBehavior.Restrict);
 
@@ -544,6 +561,8 @@ namespace KarateTournamentManager.Migrations
 
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>
                 {
+                    b.Navigation("ApplicationUser");
+
                     b.Navigation("Matches");
                 });
 #pragma warning restore 612, 618

@@ -8,7 +8,7 @@
         <p><strong>Участник 2:</strong> @Model.Participant2Name</p>
         <p><strong>Резултат:</strong> @Model.Participant1Score : @Model.Participant2Score</p>
         <p><strong>Част:</strong> @Model.Period</p>
-        <p><strong>Оставащо време:</strong> @Model.RemainingTime</p>
+        <p><strong>Оставащо време:</strong> @Model.Timer.CountdownTime</p>
         <p><strong>Статус:</strong> @Model.Status</p>
         <p><strong>Турнир:</strong> @Model.TournamentName</p>
         <p><strong>Победител:</strong> @(Model.Participant1Score > Model.Participant2Score ? Model.Participant1Name : Model.Participant2Name)</p>

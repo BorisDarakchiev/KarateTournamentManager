@@ -30,8 +30,7 @@
         [Display(Name = "Татами")]
         public int Tatami { get; set; }
 
-        [Display(Name = "Оставащо време")]
-        public string RemainingTime { get; set; } = string.Empty;
+        public Timer? Timer { get; set; }
 
         [Display(Name = "Статус")]
         public MatchStatus Status { get; set; }

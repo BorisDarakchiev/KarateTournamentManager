@@ -65,27 +65,6 @@
   },
   {
     "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
-    "Method": "SetWinner",
-    "RelativePath": "TimerManager",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "matchId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      },
-      {
-        "Name": "winnerId",
-        "Type": "System.Guid",
-        "IsRequired": false
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "KarateTournamentManager.Controllers.TimerManagerController",
     "Method": "Matches",
     "RelativePath": "TimerManager/Matches",
     "HttpMethod": "GET",

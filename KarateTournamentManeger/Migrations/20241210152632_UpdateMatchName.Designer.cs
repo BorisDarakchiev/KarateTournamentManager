@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20241209211746_MatchRelationToTournament")]
-    partial class MatchRelationToTournament
+    [Migration("20241210152632_UpdateMatchName")]
+    partial class UpdateMatchName
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -51,9 +51,6 @@ namespace KarateTournamentManager.Migrations
                     b.Property<int>("Period")
                         .HasColumnType("int");
 
-                    b.Property<TimeSpan>("RemainingTime")
-                        .HasColumnType("time");
-
                     b.Property<Guid>("StageId")
                         .HasColumnType("uniqueidentifier");
 
@@ -84,7 +81,7 @@ namespace KarateTournamentManager.Migrations
 
                     b.HasIndex("WinnerId");
 
-                    b.ToTable("Matchеs");
+                    b.ToTable("Match", (string)null);
                 });
 
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>
@@ -260,6 +257,29 @@ namespace KarateTournamentManager.Migrations
                         .HasFilter("[ParticipantId] IS NOT NULL");
 
                     b.ToTable("AspNetUsers", (string)null);
+                });
+
+            modelBuilder.Entity("KarateTournamentManager.Models.TimerMatch", b =>
+                {
+                    b.Property<Guid>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("uniqueidentifier");
+
+                    b.Property<TimeSpan>("CountdownTime")
+                        .HasColumnType("time");
+
+                    b.Property<bool>("IsRunning")
+                        .HasColumnType("bit");
+
+                    b.Property<Guid>("MatchId")
+                        .HasColumnType("uniqueidentifier");
+
+                    b.HasKey("Id");
+
+                    b.HasIndex("MatchId")
+                        .IsUnique();
+
+                    b.ToTable("Timers");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRole", b =>
@@ -493,6 +513,17 @@ namespace KarateTournamentManager.Migrations
                     b.Navigation("Participant");
                 });
 
+            modelBuilder.Entity("KarateTournamentManager.Models.TimerMatch", b =>
+                {
+                    b.HasOne("KarateTournamentManager.Controllers.Match", "Match")
+                        .WithOne("TimerMatch")
+                        .HasForeignKey("KarateTournamentManager.Models.TimerMatch", "MatchId")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.Navigation("Match");
+                });
+
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
                 {
                     b.HasOne("Microsoft.AspNetCore.Identity.IdentityRole", null)
@@ -557,6 +588,11 @@ namespace KarateTournamentManager.Migrations
                         .HasForeignKey("TournamentsId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("KarateTournamentManager.Controllers.Match", b =>
+                {
+                    b.Navigation("TimerMatch");
                 });
 
             modelBuilder.Entity("KarateTournamentManager.Controllers.Participant", b =>

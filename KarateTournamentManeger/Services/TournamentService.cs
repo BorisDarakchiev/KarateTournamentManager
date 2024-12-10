@@ -159,7 +159,7 @@ namespace KarateTournamentManager.Services
                         Id = m.Id,
                         Period = m.Period,
                         Tatami = m.Tatami,
-                        RemainingTime = m.RemainingTime.ToString(TimerFormat),
+                        Timer =m.Timer,
                         Status = m.Status
                     }).ToList()
                 }).ToList();
@@ -312,6 +312,11 @@ namespace KarateTournamentManager.Services
             {
                 Stage stage = new Stage() { TournamentId = tournament.Id, Name = StageToName["Preliminary"], StageOrder = StageOrder.Preliminary };
                 var matches = new List<Match>();
+                var newTimer = new Models.Timer()
+                {
+                    Id = Guid.NewGuid(),
+                    IsRunning = false
+                };
                 while (preliminaryMatches != 0)
                 {
                     var match = new Match()
@@ -321,10 +326,14 @@ namespace KarateTournamentManager.Services
                     };
                     matches.Add(match);
                     preliminaryMatches--;
+                    newTimer.MatchId = match.Id;
                 }
                 await context.Matches.AddRangeAsync(matches);
                 await context.Stages.AddAsync(stage);
+                await context.Timers.AddAsync(newTimer);
                 await context.SaveChangesAsync();
+
+
             }
             if (participants == 3)
             {
@@ -335,6 +344,11 @@ namespace KarateTournamentManager.Services
                     .ToListAsync();
 
                 var matches = new List<Match>();
+                var newTimer = new Models.Timer()
+                {
+                    Id = Guid.NewGuid(),
+                    IsRunning = false
+                };
 
                 for (int i = 0; i < participantsForRoundRobin.Count; i++)
                 {
@@ -348,10 +362,12 @@ namespace KarateTournamentManager.Services
                             TournamentId = tournament.Id
                         };
                         matches.Add(match);
+                        newTimer.MatchId = match.Id;
                     }
                 }
                 await context.Stages.AddAsync(stage);
                 await context.Matches.AddRangeAsync(matches);
+                await context.Timers.AddAsync(newTimer);
                 await context.SaveChangesAsync();
             }
             if (participants >= 4 || participants == 2)
@@ -359,6 +375,11 @@ namespace KarateTournamentManager.Services
                 int numberStages = (int)Math.Log2(powerOfTwo);
                 var allStages = new List<Stage>();
                 var allMatches = new List<Match>();
+                    var newTimer = new Models.Timer()
+                    {
+                        Id = Guid.NewGuid(),
+                        IsRunning = false
+                    };
 
                 for (int i = 1; i <= numberStages; i++)
                 {
@@ -377,12 +398,14 @@ namespace KarateTournamentManager.Services
                             TournamentId = tournament.Id
                         };
                         allMatches.Add(match);
+                        newTimer.MatchId = match.Id;
                         numberOfMatches--;
                     }
                     allStages.Add(stage);
                 }
                 await context.Stages.AddRangeAsync(allStages);
                 await context.Matches.AddRangeAsync(allMatches);
+                await context.Timers.AddAsync(newTimer);
                 await context.SaveChangesAsync();
             }
             await DistributeParticipantsRandomly(tournament);
@@ -556,8 +579,3 @@ namespace KarateTournamentManager.Services
         }
     }
 }
-
-
-
-
-

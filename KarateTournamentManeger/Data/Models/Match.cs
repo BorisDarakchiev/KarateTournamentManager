@@ -4,6 +4,8 @@ using KarateTournamentManager.Enums;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.ComponentModel.DataAnnotations;
 using static KarateTournamentManager.Constants.ModelConstants;
+using KarateTournamentManager.Models;
+
 
 
 namespace KarateTournamentManager.Controllers
@@ -38,7 +40,7 @@ namespace KarateTournamentManager.Controllers
         [Required]
         public MatchPeriod Period { get; set; } = MatchPeriod.Main;
 
-        public TimeSpan RemainingTime { get; set; } = TimeSpan.FromMinutes(2);
+        public Models.Timer? Timer { get; set; }
 
         public Guid? WinnerId { get; set; }
 
