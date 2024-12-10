@@ -33,6 +33,8 @@ namespace KarateTournamentManager.Models
 
         public List<StageViewModel> Stages { get; set; } = new();
 
+        public List<MatchViewModel> Matches { get; set; } = new();
+
         public bool IsParticipant { get; set; }
     }
 

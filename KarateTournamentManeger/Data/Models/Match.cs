@@ -28,6 +28,7 @@ namespace KarateTournamentManager.Controllers
 
         [StringLength(MaxScoreLenght)]
         public int Participant1Score { get; set; } = 0;
+
         [StringLength(MaxScoreLenght)]
         public int Participant2Score { get; set; } = 0;
 
@@ -37,7 +38,7 @@ namespace KarateTournamentManager.Controllers
         [Required]
         public MatchPeriod Period { get; set; } = MatchPeriod.Main;
 
-        public TimeSpan RemainingTime { get; set; }
+        public TimeSpan RemainingTime { get; set; } = TimeSpan.FromMinutes(2);
 
         public Guid? WinnerId { get; set; }
 
@@ -47,9 +48,16 @@ namespace KarateTournamentManager.Controllers
         [Required]
         public Guid StageId { get; set; }
 
+        [Required]
         [ForeignKey(nameof(StageId))]
         [StringLength(MaxStageLenght)]
         public Stage Stage { get; set; } = null!;
+
+        public Guid TournamentId { get; set; }
+
+        [Required]
+        [ForeignKey(nameof(TournamentId))]
+        public Tournament Tournament { get; set; } = null!;
 
     }
 }

@@ -1,0 +1,47 @@
+﻿@model TournamentViewModel
+
+<h1>Срещи</h1>
+@if (@Model.Matches.Count > 0)
+{
+<h6>Вашите назначения като таймер мениджър:</h6>
+    <div class="card">
+        <div class="card-header">
+            <strong>@Model.Description</strong> - @Model.Location (@Model.Date.ToString("dd/MM/yyyy")г.)
+            @if (Model.Status.ToString() == "Ongoing")
+            {
+                <strong class="blinking-dot"></strong>
+            }
+            @Model.Status
+        </div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Участник 1</th>
+                        <th>Участник 2</th>
+                        <th>Резултат</th>
+                        <th>Статус</th>
+                        <th>Победител</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    @foreach (var match in Model.Matches)
+                    {
+                        <tr>
+                            <td>@match.Participant1Name</td>
+                            <td>@match.Participant2Name</td>
+                            <td>@match.Participant1Score : @match.Participant2Score</td>
+                            <td>@match.Status</td>
+                            <td>@match.WinnerName</td>
+                        </tr>
+                    }
+                </tbody>
+            </table>
+        </div>
+    </div>
+
+}
+else
+{
+    <p>Нямате предстоящи срещи.</p>
+}

@@ -22,5 +22,6 @@ namespace KarateTournamentManager.Data.Models
 
         [ForeignKey(nameof(TournamentId))]
         public Tournament Tournament { get; set; } = null!;
+
     }
 }

@@ -4,6 +4,7 @@ using KarateTournamentManager.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace KarateTournamentManager.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    partial class ApplicationDbContextModelSnapshot : ModelSnapshot
+    [Migration("20241208220618_CascadeDeleteConfigurations")]
+    partial class CascadeDeleteConfigurations
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder
@@ -61,9 +64,6 @@ namespace KarateTournamentManager.Migrations
                         .HasMaxLength(10)
                         .HasColumnType("int");
 
-                    b.Property<Guid>("TournamentId")
-                        .HasColumnType("uniqueidentifier");
-
                     b.Property<Guid?>("WinnerId")
                         .HasColumnType("uniqueidentifier");
 
@@ -76,8 +76,6 @@ namespace KarateTournamentManager.Migrations
                     b.HasIndex("ParticipantId");
 
                     b.HasIndex("StageId");
-
-                    b.HasIndex("TournamentId");
 
                     b.HasIndex("WinnerId");
 
@@ -429,12 +427,6 @@ namespace KarateTournamentManager.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("KarateTournamentManager.Data.Models.Tournament", "Tournament")
-                        .WithMany()
-                        .HasForeignKey("TournamentId")
-                        .OnDelete(DeleteBehavior.Restrict)
-                        .IsRequired();
-
                     b.HasOne("KarateTournamentManager.Controllers.Participant", "Winner")
                         .WithMany()
                         .HasForeignKey("WinnerId")
@@ -445,8 +437,6 @@ namespace KarateTournamentManager.Migrations
                     b.Navigation("Participant2");
 
                     b.Navigation("Stage");
-
-                    b.Navigation("Tournament");
 
                     b.Navigation("Winner");
                 });

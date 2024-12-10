@@ -34,7 +34,7 @@ namespace KarateTournamentManager.Controllers
             userManager = _userManager;
 
         }
-        public IActionResult Index()
+        public async Task<IActionResult> Index()
         {
             return View();
         }
@@ -76,6 +76,7 @@ namespace KarateTournamentManager.Controllers
             return RedirectToAction("ManageUsers");
         }
 
+        [HttpGet]
         [Route("Tournaments")]
         public async Task<IActionResult> Tournaments()
         {

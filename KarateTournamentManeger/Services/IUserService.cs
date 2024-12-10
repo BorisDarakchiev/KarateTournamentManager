@@ -7,8 +7,5 @@ namespace KarateTournamentManager.Services
         Task<List<ManageUsersViewModel>> GetManageUsersViewModelAsync();
         Task<bool> RemoveParticipantAsync(Guid tournamentId, Guid participantId);
         Task<bool> UpdateUserRoleAsync(string userId, string selectedRole);
-
-
-
     }
 }

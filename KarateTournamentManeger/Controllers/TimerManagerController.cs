@@ -1,7 +1,11 @@
-﻿using KarateTournamentManager.Identity;
+﻿using KarateTournamentManager.Data;
+using KarateTournamentManager.Identity;
+using KarateTournamentManager.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
+using SQLitePCL;
+
 
 namespace KarateTournamentManager.Controllers
 {
@@ -9,23 +13,47 @@ namespace KarateTournamentManager.Controllers
     [Authorize(Roles = "TimerManager")]
     public class TimerManagerController : Controller
     {
-        private readonly UserManager<ApplicationUser> _userManager;
-        private readonly RoleManager<IdentityRole> _roleManager;
+        private readonly UserManager<ApplicationUser> userManager;
+        private readonly ApplicationDbContext context;
+        private readonly ITimerManagerService timerManagerService;
 
-        public TimerManagerController(UserManager<ApplicationUser> userManager, RoleManager<IdentityRole> roleManager)
+
+        public TimerManagerController(UserManager<ApplicationUser> _userManager, ApplicationDbContext _context, ITimerManagerService _timerManagerService)
         {
-            _userManager = userManager;
-            _roleManager = roleManager;
+            userManager = _userManager;
+            context = _context;
+            timerManagerService = _timerManagerService;
+
         }
-        public IActionResult Matches()
+
+        [HttpGet]
+        [Route("Tournaments")]
+        public async Task<IActionResult> Tournaments()
         {
-            return View();
+            var model = await timerManagerService.GetTournamentsAsync();
+            return View(model);
         }
+
+        [HttpGet]
+        [Route("Matches")]
+        public async Task<IActionResult> Matches()
+        {
+            var userId = User.FindFirst(System.Security.Claims.ClaimTypes.NameIdentifier)?.Value;
+
+            if (string.IsNullOrEmpty(userId))
+            {
+                return Unauthorized();
+            }
+
+            var matches = await timerManagerService.GetMatchesForTimerManagerAsync(userId);
+            return View(matches);
+        }
+
 
         [HttpPost]
-        public IActionResult UpdateScore(Guid matchId, int scoreA, int scoreB)
-        {
-            return RedirectToAction("Matches");
-        }
+    public IActionResult UpdateScore(Guid matchId, int scoreA, int scoreB)
+    {
+        return RedirectToAction("Matches");
     }
+}
 }

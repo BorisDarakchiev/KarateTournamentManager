@@ -216,14 +216,15 @@ namespace KarateTournamentManager.Services
         public async Task<bool> DeleteTournamentAsync(Guid id)
         {
             var tournament = await context.Tournaments.FindAsync(id);
+
             if (tournament == null)
             {
                 return false;
             }
 
             context.Tournaments.Remove(tournament);
-            await context.SaveChangesAsync();
 
+            await context.SaveChangesAsync();
             return true;
         }
 
@@ -313,7 +314,11 @@ namespace KarateTournamentManager.Services
                 var matches = new List<Match>();
                 while (preliminaryMatches != 0)
                 {
-                    var match = new Match() { StageId = stage.Id };
+                    var match = new Match()
+                    {
+                        StageId = stage.Id,
+                        TournamentId = tournament.Id
+                    };
                     matches.Add(match);
                     preliminaryMatches--;
                 }
@@ -338,8 +343,9 @@ namespace KarateTournamentManager.Services
                         var match = new Match
                         {
                             StageId = stage.Id,
-                            Participant1Id = participantsForRoundRobin[i].Id,
-                            Participant2Id = participantsForRoundRobin[j].Id
+                            Participant1 = participantsForRoundRobin[i],
+                            Participant2 = participantsForRoundRobin[j],
+                            TournamentId = tournament.Id
                         };
                         matches.Add(match);
                     }
@@ -365,7 +371,11 @@ namespace KarateTournamentManager.Services
 
                     while (numberOfMatches != 0)
                     {
-                        var match = new Match() { StageId = stage.Id };
+                        var match = new Match()
+                        {
+                            StageId = stage.Id,
+                            TournamentId = tournament.Id
+                        };
                         allMatches.Add(match);
                         numberOfMatches--;
                     }
@@ -407,11 +417,15 @@ namespace KarateTournamentManager.Services
                     {
                         if (randomParticipants.Any())
                         {
-                            preliminaryMatch.Participant1Id = randomParticipants.Dequeue().Id;
+                            var randomParticipant = randomParticipants.Dequeue();
+                            //preliminaryMatch.Participant1Id = randomParticipants.Dequeue().Id;
+                            preliminaryMatch.Participant1 = randomParticipant;
                         }
                         if (randomParticipants.Any())
                         {
-                            preliminaryMatch.Participant2Id = randomParticipants.Dequeue().Id;
+                            var randomParticipant = randomParticipants.Dequeue();
+                            //preliminaryMatch.Participant2Id = randomParticipants.Dequeue().Id;
+                            preliminaryMatch.Participant2 = randomParticipant;
                         }
                     }
                 }
@@ -428,11 +442,15 @@ namespace KarateTournamentManager.Services
             {
                 if (randomParticipants.Any())
                 {
-                    maxStageMatche.Participant1Id = randomParticipants.Dequeue().Id;
+                    var randomParticipant = randomParticipants.Dequeue();
+                    //maxStageMatche.Participant1Id = randomParticipant.Id;
+                    maxStageMatche.Participant1 = randomParticipant;
                 }
                 if (randomParticipants.Any())
                 {
-                    maxStageMatche.Participant2Id = randomParticipants.Dequeue().Id;
+                    var randomParticipant = randomParticipants.Dequeue();
+                    //maxStageMatche.Participant2Id = randomParticipants.Dequeue().Id;
+                    maxStageMatche.Participant2 = randomParticipant;
                 }
             }
 

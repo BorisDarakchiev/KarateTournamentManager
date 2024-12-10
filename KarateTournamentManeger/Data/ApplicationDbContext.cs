@@ -17,6 +17,7 @@ namespace KarateTournamentManager.Data
         {
             base.OnModelCreating(modelBuilder);
 
+
             modelBuilder.Entity<ApplicationUser>()
                 .HasQueryFilter(a => !a.IsDeleted);
 
@@ -50,16 +51,28 @@ namespace KarateTournamentManager.Data
                 .HasForeignKey(t => t.TimerManagerId)
                 .OnDelete(DeleteBehavior.SetNull);
 
-            modelBuilder.Entity<Match>()
-                .HasOne(m => m.Participant1)
+            modelBuilder.Entity<Tatami>()
+                .HasOne(t => t.Tournament)
                 .WithMany()
-                .HasForeignKey(m => m.Participant1Id)
-                .OnDelete(DeleteBehavior.Restrict);
+                .HasForeignKey(t => t.TournamentId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Stage>()
+                .HasOne(s => s.Tournament)
+                .WithMany()
+                .HasForeignKey(s => s.TournamentId)
+                .OnDelete(DeleteBehavior.Cascade);
 
             modelBuilder.Entity<Match>()
-                .HasOne(m => m.Participant2)
+                .HasOne(m => m.Stage)
                 .WithMany()
-                .HasForeignKey(m => m.Participant2Id)
+                .HasForeignKey(m => m.StageId)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            modelBuilder.Entity<Match>()
+                .HasOne(m => m.Tournament)
+                .WithMany()
+                .HasForeignKey(m => m.TournamentId)
                 .OnDelete(DeleteBehavior.Restrict);
         }
 

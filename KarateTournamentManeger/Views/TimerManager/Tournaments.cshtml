@@ -1,0 +1,43 @@
+﻿@model IEnumerable<TournamentViewModel>
+
+@{
+    ViewData["Title"] = "Tournaments";
+}
+
+<h1>Всички турнири</h1>
+
+<table class="table table-striped">
+    <thead>
+        <tr>
+            <th>Локация</th>
+            <th>Информация</th>
+            <th>Дата</th>
+            <th>Статус</th>
+            <th>Записани участници</th>
+            <th>Екшън</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var tournament in Model)
+        {
+            <tr>
+                <td>@tournament.Location</td>
+                <td>@tournament.Description</td>
+                <td>@tournament.Date.ToShortDateString()</td>
+                <td>
+                    <p>
+                        @if (tournament.Status.ToString() == "Ongoing")
+                        {
+                            <strong class="blinking-dot"></strong>
+                        }
+                        @tournament.Status
+                    </p>
+                </td>
+                <td>@tournament.EnrolledParticipantsCount</td>
+                <td>
+                    <a class="btn btn-info" asp-controller="Admin" asp-action="TournamentDetails" asp-route-id="@tournament.Id">Детайли</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
