@@ -26,7 +26,7 @@ namespace KarateTournamentManager.Identity
         public static async Task SeedUsersAndTournamentAsync(IServiceProvider services)
         {
             var userManager = services.GetRequiredService<UserManager<ApplicationUser>>();
-            var context = services.GetRequiredService<ApplicationDbContext>(); // Вземане на контекста
+            var context = services.GetRequiredService<ApplicationDbContext>();
 
             if (!await context.Participants.AnyAsync())
             {
@@ -76,6 +76,7 @@ namespace KarateTournamentManager.Identity
                         };
                         await userManager.CreateAsync(participantUser, "asdasd");
                         await userManager.AddToRoleAsync(participantUser, "Participant");
+                        await context.SaveChangesAsync();
                     }
                 }
             }
