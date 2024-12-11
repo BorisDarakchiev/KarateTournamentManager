@@ -1,49 +1,60 @@
-﻿@model IEnumerable<dynamic>
+﻿@model TournamentViewModel
 
-<h2>Мачове на потребителя</h2>
-
-@if (!Model.Any())
+<h1>Срещи</h1>
+@if (@Model.Matches.Count > 0)
 {
-    <p>Няма намерени мачове за този потребител.</p>
-}
-else
-{
-    @foreach (var tournament in Model)
-    {
-        <h3>@tournament.TournamentName</h3>
-        @if (!tournament.Matches.Any())
-        {
-            <p>Няма мачове за този турнир.</p>
-        }
-        else
-        {
+    <h6>Вашите назначения като таймер мениджър:</h6>
+    <div class="card">
+        <div class="card-header">
+            <strong>@Model.Description</strong> - @Model.Location (@Model.Date.ToString("dd/MM/yyyy")г.)
+            @if (Model.Status.ToString() == "Ongoing")
+            {
+                <strong class="blinking-dot"></strong>
+            }
+            @Model.Status
+        </div>
+        <div class="card-body">
             <table class="table">
                 <thead>
                     <tr>
                         <th>Участник 1</th>
                         <th>Участник 2</th>
                         <th>Резултат</th>
-                        <th>Част</th>
-                        <th>Татами</th>
                         <th>Статус</th>
                         <th>Победител</th>
+                        <th>Действия</th>
                     </tr>
                 </thead>
                 <tbody>
-                    @foreach (var match in tournament.Matches)
+                    @foreach (var match in Model.Matches)
                     {
                         <tr>
                             <td>@match.Participant1Name</td>
                             <td>@match.Participant2Name</td>
                             <td>@match.Participant1Score : @match.Participant2Score</td>
-                            <td>@match.Period</td>
-                            <td>@match.Tatami</td>
                             <td>@match.Status</td>
-                            <td>@match.WinnerName ?? "Все още няма победител"</td>
+                            <td>@match.WinnerName</td>
+                            <td>
+                                @if (match.Status.ToString() == "Upcoming")
+                                {
+                                    <a class="btn btn-primary btn-sm" href="@Url.Action("ManageMatch", "TimerManager", new { matchId = match.Id })">
+                                        Управлявай
+                                    </a>
+                                }
+                                else
+                                {
+                                    <span class="text-muted">Вече стартиран</span>
+                                }
+                            </td>
                         </tr>
                     }
                 </tbody>
             </table>
-        }
-    }
+        </div>
+    </div>
+
+}
+else
+{
+    <p>Нямате предстоящи срещи.</p>
 }

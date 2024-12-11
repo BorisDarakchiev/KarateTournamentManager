@@ -227,14 +227,14 @@ namespace KarateTournamentManager.Services
             for (int i = 0; i < stages.Count; i++)
             {
                 var matches = await context.Matches.Where(m => m.StageId == stages[i].Id).ToListAsync();
-                Queue<Participant> winners = new Queue<Participant>();
+                Queue<Guid?> winners = new Queue<Guid?>();
 
                 foreach (var match1 in matches)
                 {
                     var winner = await context.Participants.FirstOrDefaultAsync(p => p.Id == match1.WinnerId);
                     if (winner != null)
                     {
-                        winners.Enqueue(winner);
+                        winners.Enqueue(winner.Id);
                     }
                 }
                 if (!(i == (stages.Count - 1)))
@@ -245,11 +245,11 @@ namespace KarateTournamentManager.Services
                     {
                         if (winners.Any())
                         {
-                            nextStageMatches[j].Participant1Id = winners.Dequeue().Id;
+                            nextStageMatches[j].Participant1Id = winners.Dequeue();
                             await context.SaveChangesAsync();
                             if (winners.Any())
                             {
-                                nextStageMatches[j].Participant2Id = winners.Dequeue().Id;
+                                nextStageMatches[j].Participant2Id = winners.Dequeue();
                             await context.SaveChangesAsync();
                             }
 
