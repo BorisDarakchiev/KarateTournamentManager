@@ -164,9 +164,11 @@ namespace KarateTournamentManager.Controllers
         [HttpPost("setwinner")]
         public async Task<IActionResult> SetWinner([FromBody] SetWinnerRequest request)
         {
+            Guid matchId = request.MatchId;
+            Guid winnerId = request.WinnerId;
             try
             {
-                var response = await timerManagerService.SetWinnerAsync(request.MatchId, request.WinnerId);
+                var response = await timerManagerService.SetWinnerAsync(matchId, winnerId);
 
                 if (!response.Success)
                 {

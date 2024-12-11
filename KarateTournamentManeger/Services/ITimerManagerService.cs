@@ -19,5 +19,6 @@ namespace KarateTournamentManager.Services
         Task<UpdateScoreResponse> UpdateScoreAsync(Guid matchId, string participant, int points);
         Task<bool> AddExtraPeriodAsync(Guid matchId);
         Task<bool> StopMatchAsync(Guid matchId);
+        //Task DistributeWinnerToNextMatch(Guid tournamentId);
     }
 }

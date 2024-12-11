@@ -60,26 +60,32 @@ namespace KarateTournamentManager.Services
                         Status = tournament.Status,
                         Tatami = tatami
                     };
-
-                    var matchViewModel = new MatchViewModel
+                    if (match.Participant1 != null && match.Participant2 != null)
                     {
-                        Id = match.Id,
-                        Participant1Name = match.Participant1?.Name ?? "N/A",
-                        Participant1Id = match.Participant1.Id,
-                        Participant2Name = match.Participant2?.Name ?? "N/A",
-                        Participant2Id = match.Participant2.Id,
-                        Participant1Score = match.Participant1Score,
-                        Participant2Score = match.Participant2Score,
-                        Period = match.Period,
-                        Tatami = match.Tatami,
-                        Status = match.Status,
-                        TournamentId = match.TournamentId,
-                        WinnerName = match.Winner?.Name
-                    };
 
-                    tournamentViewModel.Matches.Add(matchViewModel);
 
-                    model = tournamentViewModel;
+                        //Timer timer = new Timer { Id = Guid.NewGuid(), Match = match, MatchId = match.Id};
+                        //context.Timers.Add(timer);
+
+                        var matchViewModel = new MatchViewModel
+                        {
+                            Id = match.Id,
+                            Participant1Name = match.Participant1?.Name ?? "N/A",
+                            Participant1Id = match.Participant1.Id,
+                            Participant2Name = match.Participant2?.Name ?? "N/A",
+                            Participant2Id = match.Participant2.Id,
+                            Participant1Score = match.Participant1Score,
+                            Participant2Score = match.Participant2Score,
+                            Period = match.Period,
+                            Tatami = match.Tatami,
+                            Status = match.Status,
+                            Timer = match.Timer,
+                            TournamentId = match.TournamentId,
+                            WinnerName = match.Winner?.Name
+                        };
+                        model.Matches.Add(matchViewModel);
+                        //model = tournamentViewModel;
+                    }
                 }
             }
 
@@ -212,6 +218,51 @@ namespace KarateTournamentManager.Services
 
             var winnerName = winnerId == match.Participant1Id ? match.Participant1.Name : match.Participant2.Name;
 
+
+            //await DistributeWinnerToNextMatch(match.TournamentId);
+            var tournament = await context.Tournaments.FirstOrDefaultAsync(t => t.Id == match.TournamentId);
+
+            var stages = await context.Stages.Where(s => s.TournamentId == tournament.Id).ToListAsync();
+
+            for (int i = 0; i < stages.Count; i++)
+            {
+                var matches = await context.Matches.Where(m => m.StageId == stages[i].Id).ToListAsync();
+                Queue<Participant> winners = new Queue<Participant>();
+
+                foreach (var match1 in matches)
+                {
+                    var winner = await context.Participants.FirstOrDefaultAsync(p => p.Id == match1.WinnerId);
+                    if (winner != null)
+                    {
+                        winners.Enqueue(winner);
+                    }
+                }
+                if (!(i == (stages.Count - 1)))
+                {
+                    var nextStageMatches = await context.Matches.Where(m => m.StageId == stages[i + 1].Id).ToListAsync();
+
+                    for (int j = 0; j < nextStageMatches.Count; j++)
+                    {
+                        if (winners.Any())
+                        {
+                            nextStageMatches[j].Participant1Id = winners.Dequeue().Id;
+                            await context.SaveChangesAsync();
+                            if (winners.Any())
+                            {
+                                nextStageMatches[j].Participant2Id = winners.Dequeue().Id;
+                            await context.SaveChangesAsync();
+                            }
+
+                        }
+                    }
+
+                }
+            }
+
+
+
+
+
             return new SetWinnerResponse(
                 true,
                 "Победителят е зададен успешно.",
@@ -316,6 +367,39 @@ namespace KarateTournamentManager.Services
                 Participant2Score = match.Participant2Score
             };
         }
+
+
+        //public async Task DistributeWinnerToNextMatch(Guid tournamentId)
+        //{
+        //    var tournament = await context.Tournaments.FirstOrDefaultAsync(t => t.Id == tournamentId);
+
+        //    var stages = await context.Stages.Where(s => s.TournamentId == tournament.Id).ToListAsync();
+
+        //    for (int i = 0; i < stages.Count; i++)
+        //    {
+        //        var matches = await context.Matches.Where(m => m.StageId == stages[i].Id).ToListAsync();
+        //        Queue<Participant> winners = new Queue<Participant>();
+
+        //        foreach (var match in matches)
+        //        {
+        //            var winner = await context.Participants.FirstOrDefaultAsync(p => p.Id == match.WinnerId);
+        //            winners.Append(winner);
+        //        }
+        //        if (!(i == (stages.Count - 1)))
+        //        {
+        //            var nextStageMatches = await context.Matches.Where(m => m.StageId == stages[i + 1].Id).ToListAsync();
+
+        //            for (int j = 0; j < nextStageMatches.Count; j++)
+        //            {
+        //                nextStageMatches[j].Participant1 = winners.Dequeue();
+        //                nextStageMatches[j].Participant2 = winners.Dequeue();
+        //                await context.SaveChangesAsync();
+        //            }
+
+        //        }
+        //    }
+
+        //}
     }
 }
 

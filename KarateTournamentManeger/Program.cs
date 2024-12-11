@@ -53,11 +53,11 @@ using (var scope = app.Services.CreateScope())
     try
     {
         await ApplicationDbInitializer.SeedRolesAsync(services);
+        await ApplicationDbInitializer.SeedUsersAndTournamentAsync(services);
     }
     catch (Exception ex)
     {
-        // Логни грешката
-        Console.WriteLine($"Грешка при инициализацията на ролите: {ex.Message}");
+        Console.WriteLine($"Грешка при инициализацията: {ex.Message}");
     }
 }
 app.UseHttpsRedirection();

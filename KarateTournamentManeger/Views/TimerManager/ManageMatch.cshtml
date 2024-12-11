@@ -56,9 +56,8 @@
     </div>
 </div>
 
-
-
 <script>
+    
     const urls = {
         updateScore: '@Url.Action("UpdateScore", "TimerManager")',
         startTimer: '@Url.Action("StartTimer", "TimerManager")',
@@ -68,8 +67,16 @@
         setWinner: '@Url.Action("SetWinner", "TimerManager")'
     };
 
+    let countdownInterval;
+    let countdownTime = @Model.Timer?.CountdownTime.TotalSeconds ?? 0;
+
+    function updateScore(matchId, participant, points) {
+        console.log('updateScore called with:', { matchId, participant, points });
+        sendAjaxRequest(urls.updateScore, { matchId, participant, points }, "updateScore");
+    }
+
+
     async function sendAjaxRequest(url, data, action) {
-        console.log(matchId, participantId);
         try {
             const response = await fetch(url, {
                 method: "POST",
@@ -85,38 +92,11 @@
 
             const result = await response.json();
             updateUI(result.participant1Score, result.participant2Score, result.action);
-
         } catch (error) {
             alert('Грешка: ' + error.message);
         }
     }
 
-    function setWinner(matchId, participantId) {
-    fetch('/TimerManager/setwinner', {
-        method: 'POST',
-        headers: { 'Content-Type': 'application/json' },
-        body: JSON.stringify({ matchId, winnerId: participantId })
-    })
-    .then(response => response.json())
-    .then(data => {
-        if (data.success) {
-            alert(data.message);
-        } else {
-            alert(`Error: ${data.message}`);
-        }
-    })
-    .catch(error => {
-        console.error('Error:', error);
-        alert('Възникна грешка на сървъра.');
-    });
-}
-
-    function updateScore(matchId, participant, points) {
-        sendAjaxRequest(urls.updateScore, { matchId, participant, points });
-    }
-
-    let countdownInterval;
-    let countdownTime = @Model.Timer?.CountdownTime.TotalSeconds ?? 0;
     function startTimer(matchId) {
         sendAjaxRequest(urls.startTimer, { matchId });
 
@@ -147,6 +127,32 @@
         return num < 10 ? `0${num}` : num;
     }
 
+    async function setWinner(matchId, participantId) {
+        console.log("Match ID:", matchId);
+        console.log("Participant ID:", participantId);
+        try {
+            const response = await fetch(urls.setWinner, {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ matchId, winnerId: participantId })
+            });
+
+            if (!response.ok) {
+                throw new Error(`HTTP Error: ${response.status}`);
+            }
+
+            const data = await response.json();
+            if (data.success) {
+                alert(data.message);
+            } else {
+                alert(`Error: ${data.message}`);
+            }
+        } catch (error) {
+            console.error('Error:', error);
+            alert('Възникна грешка при комуникация със сървъра.');
+        }
+    }
+
     function updateUI(participant1Score, participant2Score, action) {
         if (action === "updateScore") {
 
@@ -170,14 +176,11 @@
             updateButtonState("#startTimerButton", true);
             updateButtonState("#stopTimerButton", false);
         }
+    }
         function updateButtonState(buttonSelector, isEnabled) {
             const button = document.querySelector(buttonSelector);
             if (button) {
                 button.disabled = !isEnabled;
             }
         }
-    }
-
 </script>
-
-

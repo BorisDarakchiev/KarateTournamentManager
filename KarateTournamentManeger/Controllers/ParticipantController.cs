@@ -4,6 +4,11 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using KarateTournamentManager.Enums;
+using KarateTournamentManager.Models.ViewModels;
+using KarateTournamentManager.Models;
+using KarateTournamentManager.Data.Models;
+using System.Security.Claims;
 
 
 namespace KarateTournamentManager.Controllers
@@ -26,6 +31,15 @@ namespace KarateTournamentManager.Controllers
         {
             return View();
         }
+
+        [HttpGet]
+        [Route("Matches")]
+        public async Task<IActionResult> Matches()
+        {
+            return View();
+        }
+
+
 
         [HttpPost]
         [Route("RegisterForTournament")]
