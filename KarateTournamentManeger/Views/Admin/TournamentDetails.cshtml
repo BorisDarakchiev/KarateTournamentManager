@@ -41,13 +41,13 @@
                 <td>@tatami.Number</td>
                 <td>
                     <button class="btn btn-primary dropdown-toggle btn-sm" data-bs-toggle="dropdown" aria-expanded="false">
-                        @if (@tatami.TimerManager != null)
+                        @if (tatami.TimerManager != null)
                         {
-                            var firstName = @tatami.TimerManager.FirstName;
-                            var lastName = @tatami.TimerManager.LastName;
+                            var firstName = tatami.TimerManager.FirstName;
+                            var lastName = tatami.TimerManager.LastName;
                             var interpolatedString = $"{firstName} {lastName}";
 
-                            @interpolatedString;
+                            @interpolatedString
                         }
                         else
                         {
